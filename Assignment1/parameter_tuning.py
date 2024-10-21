@@ -42,8 +42,26 @@ def testDp(dp, position_values):
     return squared_error
 
 
-def testPID(Kp, Ki, Kd):
-    simulationCommand = './Pendulum_swinging_motion -override dp=' + str(dp)
+def testPID(kp, ki, kd):
+    simulationCommand = './PID_controller_block -override pID_block.kp=' + str(kp) + ',pID_block.ki=' + str(ki) + ',pID_block.kd=' + str(kd)
+    os.chdir('Assignment1.PID_controller_block')
+    os.system(simulationCommand)
+    # Obtain the variable values by reading the MAT-file
+    [names, simulated_data] = readMat('PID_controller_block_res.mat')
+
+    dataLength = len(simulated_data[names.index('time')])
+
+    figure, axis = pyplot.subplots()
+    axis.plot(simulated_data[names.index('time')], simulated_data[names.index('x')])
+    axis.plot(simulated_data[names.index('time')], [20]*dataLength)
+    pyplot.xlabel('time (seconds)')
+    pyplot.ylabel('distance (meters)')
+    pyplot.show()
+
+    os.chdir('../')
+
+    return simulated_data
+
 
 
 # You need scipy package to read MAT-files
@@ -100,28 +118,34 @@ def openDataPlot(xdata, ydata, xLabel, yLabel):
 
 # "function" that calls the single simulation function from shell. In your code, this function call should be in a loop ove the combinations of parameters.
 if __name__ == "__main__":
-    real_positions = read_csv('calibration_data_d_c.csv', usecols=['index', 'value'])
-    dc_min = 0
-    result_min = math.inf
-    for x in range(0,500):
-        dc = x/100
-        test_result = testDc(dc, real_positions['value'].values)
-        if test_result < result_min:
-            result_min = test_result
-            dc_min = dc
+    # real_positions = read_csv('calibration_data_d_c.csv', usecols=['index', 'value'])
+    # dc_min = 0
+    # result_min = math.inf
+    # for x in range(0,500):
+    #     dc = x/100
+    #     test_result = testDc(dc, real_positions['value'].values)
+    #     if test_result < result_min:
+    #         result_min = test_result
+    #         dc_min = dc
+    #
+    # real_positions = read_csv('calibration_data_d_p.csv', usecols=['index', 'value'])
+    # dp_min = 0
+    # result_min = math.inf
+    # for x in range(0,500):
+    #     dp = x/100
+    #     test_result = testDp(dp, real_positions['value'].values)
+    #     if test_result < result_min:
+    #         result_min = test_result
+    #         dp_min = dp
+    #
+    # print(dc_min)
+    # print(dp_min)
 
-    real_positions = read_csv('calibration_data_d_p.csv', usecols=['index', 'value'])
-    dp_min = 0
-    result_min = math.inf
-    for x in range(0,500):
-        dp = x/100
-        test_result = testDp(dp, real_positions['value'].values)
-        if test_result < result_min:
-            result_min = test_result
-            dp_min = dp
+    testPID(1,1,1)
+    testPID(10,1,1)
+    testPID(1, 10, 1)
+    testPID(1, 1, 10)
 
-    print(dc_min)
-    print(dp_min)
 
 
 # The follwing function is an alternative way of executing/simulating the Modelica model using the OMPython package. This method is not recommended.

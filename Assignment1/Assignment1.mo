@@ -101,17 +101,20 @@ package Assignment1
 
   block PID_block
     extends Modelica.Blocks.Icons.Block;
+    parameter Real kp(start = 10);
+    parameter Real kd(start = 1);
+    parameter Real ki(start = 1);
     Modelica.Blocks.Interfaces.RealInput e annotation(
       Placement(transformation(origin = {-100, 0}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-120, 0}, extent = {{-20, -20}, {20, 20}})));
     Modelica.Blocks.Interfaces.RealOutput u annotation(
       Placement(transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {110, 0}, extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Math.Add3 add3 annotation(
       Placement(transformation(origin = {60, 0}, extent = {{-10, -10}, {10, 10}})));
-  Modelica.Blocks.Continuous.Integrator i(k = 1)  annotation(
+  Modelica.Blocks.Continuous.Integrator i(k = ki)  annotation(
       Placement(transformation(extent = {{-10, -10}, {10, 10}})));
-  Modelica.Blocks.Continuous.Derivative d(k = 1)  annotation(
+  Modelica.Blocks.Continuous.Derivative d(k = kd)  annotation(
       Placement(transformation(origin = {0, -32}, extent = {{-10, -10}, {10, 10}})));
-  Modelica.Blocks.Math.Gain p(k = 1)  annotation(
+  Modelica.Blocks.Math.Gain p(k = kp)  annotation(
       Placement(transformation(origin = {0, 30}, extent = {{-10, -10}, {10, 10}})));
   equation
     connect(add3.y, u) annotation(
