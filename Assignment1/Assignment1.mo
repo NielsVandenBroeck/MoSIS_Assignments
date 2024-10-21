@@ -101,8 +101,8 @@ package Assignment1
 
   block PID_block
     extends Modelica.Blocks.Icons.Block;
-    parameter Real kp(start = 10);
-    parameter Real kd(start = 1);
+    parameter Real kp(start = 1);
+    parameter Real kd(start = 10);
     parameter Real ki(start = 1);
     Modelica.Blocks.Interfaces.RealInput e annotation(
       Placement(transformation(origin = {-100, 0}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-120, 0}, extent = {{-20, -20}, {20, 20}})));

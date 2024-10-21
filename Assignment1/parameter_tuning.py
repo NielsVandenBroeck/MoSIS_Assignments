@@ -42,7 +42,7 @@ def testDp(dp, position_values):
     return squared_error
 
 
-def testPID(kp, ki, kd):
+def testPID(kp, ki, kd, plot=True):
     simulationCommand = './PID_controller_block -override pID_block.kp=' + str(kp) + ',pID_block.ki=' + str(ki) + ',pID_block.kd=' + str(kd)
     os.chdir('Assignment1.PID_controller_block')
     os.system(simulationCommand)
@@ -51,18 +51,47 @@ def testPID(kp, ki, kd):
 
     dataLength = len(simulated_data[names.index('time')])
 
-    figure, axis = pyplot.subplots()
-    axis.plot(simulated_data[names.index('time')], simulated_data[names.index('x')])
-    axis.plot(simulated_data[names.index('time')], [20]*dataLength)
-    pyplot.xlabel('time (seconds)')
-    pyplot.ylabel('distance (meters)')
-    pyplot.show()
+    if plot:
+        figure, axis = pyplot.subplots()
+        axis.plot(simulated_data[names.index('time')], simulated_data[names.index('x')])
+        axis.plot(simulated_data[names.index('time')], [20]*dataLength)
+        pyplot.xlabel('time (seconds)')
+        pyplot.ylabel('distance (meters)')
+        pyplot.show()
 
     os.chdir('../')
 
-    return simulated_data
+    return [names, simulated_data]
 
+def costFunction(thetaMax, ttask):
+    cost = 94 * thetaMax + 71 * ttask
+    return cost
 
+maxSwing = 10
+def costSimulation():
+    minKp = math.inf
+    minkd = math.inf
+    minCost = math.inf
+    for Kp in range(1, 40):
+        for Kd in range(10, 500, 10):
+            [names, simulated_data] = testPID(Kp,0 , Kd, False)
+            thetaValues = simulated_data[names.index('gantry_system_block.theta')]
+            index, thetaMax = max(enumerate(thetaValues),key=lambda x: x[1])
+            ttask = math.inf
+            for i, theta in reversed(list(enumerate(thetaValues))):
+                if abs(theta) > maxSwing:
+                    print(theta)
+                    ttask = max(simulated_data[names.index('time')][i - 1], simulated_data[names.index('time')][index - 1])
+                    break
+            cost = costFunction(thetaMax, ttask)
+            print(Kp, Kd, ttask, thetaMax, cost)
+            if cost < minCost:
+                minKp = Kp
+                minkd = Kd
+                minCost = cost
+                print("New minima!!!!", minCost)
+    print("minimame cost: ", minCost, minKp, minkd)
+    return minKp, minkd, minCost
 
 # You need scipy package to read MAT-files
 from scipy import io
@@ -141,10 +170,12 @@ if __name__ == "__main__":
     # print(dc_min)
     # print(dp_min)
 
-    testPID(1,1,1)
-    testPID(10,1,1)
-    testPID(1, 10, 1)
-    testPID(1, 1, 10)
+    # testPID(1,1,1)
+    # testPID(10,1,1)
+    # testPID(1, 10, 1)
+    # testPID(1, 1, 10)
+
+    costSimulation()
 
 
 

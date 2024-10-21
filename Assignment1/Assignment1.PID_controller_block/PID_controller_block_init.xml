@@ -9,11 +9,11 @@
 
   OPENMODELICAHOME                    = "/usr/bin/.."
 
-  guid                                = "{7bf26ec9-6753-4ec0-9e3f-f806aa0a8fdf}"
+  guid                                = "{b23101bd-f1fc-40a8-bca4-950916bded89}"
 
   description                         = ""
   generationTool                      = "OpenModelica Compiler OpenModelica 1.24.0"
-  generationDateAndTime               = "2024-10-21T22:52:59Z"
+  generationDateAndTime               = "2024-10-22T00:26:37Z"
 
   variableNamingConvention            = "structured"
 
@@ -47,7 +47,7 @@
   <!-- startTime, stopTime, tolerance are FMI specific, all others are OMC specific -->
   <DefaultExperiment
     startTime      = "0"
-    stopTime       = "20"
+    stopTime       = "100"
     stepSize       = "0.004"
     tolerance      = "1e-06"
     solver        = "dassl"
@@ -66,7 +66,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "rSta"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "6" startColumn = "5" endLine = "6" endColumn = "108" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "6" startColumn = "5" endLine = "6" endColumn = "108" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="rad" displayUnit="deg" />
   </ScalarVariable>
   <ScalarVariable
@@ -78,7 +78,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "rSta"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "5" startColumn = "5" endLine = "5" endColumn = "81" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "5" startColumn = "5" endLine = "5" endColumn = "81" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="m/s" />
   </ScalarVariable>
   <ScalarVariable
@@ -90,7 +90,7 @@
     alias = "noAlias"
     classIndex = "2" classType = "rSta"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "7" startColumn = "5" endLine = "7" endColumn = "94" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "7" startColumn = "5" endLine = "7" endColumn = "94" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="rad/s" />
   </ScalarVariable>
   <ScalarVariable
@@ -102,7 +102,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "rSta"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "4" startColumn = "5" endLine = "4" endColumn = "81" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "4" startColumn = "5" endLine = "4" endColumn = "81" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="m" />
   </ScalarVariable>
   <ScalarVariable
@@ -114,7 +114,7 @@
     alias = "noAlias"
     classIndex = "4" classType = "rSta"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "282" startColumn = "5" endLine = "282" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "282" startColumn = "5" endLine = "282" endColumn = "50" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -126,7 +126,7 @@
     alias = "noAlias"
     classIndex = "5" classType = "rSta"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "329" startColumn = "5" endLine = "330" endColumn = "56" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "329" startColumn = "5" endLine = "330" endColumn = "56" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -138,7 +138,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "rDer"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "6" startColumn = "5" endLine = "6" endColumn = "108" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "6" startColumn = "5" endLine = "6" endColumn = "108" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="Hz" />
   </ScalarVariable>
   <ScalarVariable
@@ -150,7 +150,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "rDer"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "5" startColumn = "5" endLine = "5" endColumn = "81" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "5" startColumn = "5" endLine = "5" endColumn = "81" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="m.s-2" />
   </ScalarVariable>
   <ScalarVariable
@@ -162,7 +162,7 @@
     alias = "noAlias"
     classIndex = "2" classType = "rDer"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "7" startColumn = "5" endLine = "7" endColumn = "94" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "7" startColumn = "5" endLine = "7" endColumn = "94" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="s-2" />
   </ScalarVariable>
   <ScalarVariable
@@ -174,7 +174,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "rDer"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "4" startColumn = "5" endLine = "4" endColumn = "81" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "4" startColumn = "5" endLine = "4" endColumn = "81" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="m.s-1" />
   </ScalarVariable>
   <ScalarVariable
@@ -186,7 +186,7 @@
     alias = "noAlias"
     classIndex = "4" classType = "rDer"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "282" startColumn = "5" endLine = "282" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "282" startColumn = "5" endLine = "282" endColumn = "50" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -198,7 +198,7 @@
     alias = "noAlias"
     classIndex = "5" classType = "rDer"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "329" startColumn = "5" endLine = "330" endColumn = "56" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "329" startColumn = "5" endLine = "330" endColumn = "56" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -232,7 +232,7 @@
     alias = "noAlias"
     classIndex = "2" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "346" startColumn = "5" endLine = "347" endColumn = "56" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "346" startColumn = "5" endLine = "347" endColumn = "56" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -244,7 +244,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "8" startColumn = "5" endLine = "8" endColumn = "60" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "8" startColumn = "5" endLine = "8" endColumn = "60" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -256,7 +256,7 @@
     alias = "noAlias"
     classIndex = "4" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "329" startColumn = "5" endLine = "330" endColumn = "56" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "329" startColumn = "5" endLine = "330" endColumn = "56" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -267,7 +267,7 @@
     alias = "noAlias"
     classIndex = "5" classType = "rAlg"
     isProtected = "true" hideResult = "true" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "37" startColumn = "5" endLine = "37" endColumn = "80" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "37" startColumn = "5" endLine = "37" endColumn = "80" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -279,7 +279,7 @@
     alias = "noAlias"
     classIndex = "6" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "548" startColumn = "5" endLine = "549" endColumn = "56" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "548" startColumn = "5" endLine = "549" endColumn = "56" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -290,7 +290,7 @@
     alias = "noAlias"
     classIndex = "7" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "83" startColumn = "3" endLine = "84" endColumn = "157" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "83" startColumn = "3" endLine = "84" endColumn = "157" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -302,7 +302,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "876" startColumn = "5" endLine = "876" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "876" startColumn = "5" endLine = "876" endColumn = "50" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -314,7 +314,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "877" startColumn = "5" endLine = "877" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "877" startColumn = "5" endLine = "877" endColumn = "50" fileWritable = "true">
     <Real start="-1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -326,7 +326,7 @@
     alias = "noAlias"
     classIndex = "2" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "342" startColumn = "5" endLine = "343" endColumn = "57" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "342" startColumn = "5" endLine = "343" endColumn = "57" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -338,7 +338,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "11" startColumn = "5" endLine = "11" endColumn = "83" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "11" startColumn = "5" endLine = "11" endColumn = "83" fileWritable = "true">
     <Real start="10.0" fixed="true" useNominal="false" min="0.0" unit="kg" />
   </ScalarVariable>
   <ScalarVariable
@@ -350,7 +350,7 @@
     alias = "noAlias"
     classIndex = "4" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "14" startColumn = "5" endLine = "14" endColumn = "105" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "14" startColumn = "5" endLine = "14" endColumn = "105" fileWritable = "true">
     <Real start="4.79" fixed="true" useNominal="false" unit="s-1" />
   </ScalarVariable>
   <ScalarVariable
@@ -362,7 +362,7 @@
     alias = "noAlias"
     classIndex = "5" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "13" startColumn = "5" endLine = "13" endColumn = "105" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "13" startColumn = "5" endLine = "13" endColumn = "105" fileWritable = "true">
     <Real start="0.12" fixed="true" useNominal="false" unit="s-1" />
   </ScalarVariable>
   <ScalarVariable
@@ -373,7 +373,7 @@
     alias = "noAlias"
     classIndex = "6" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "15" startColumn = "5" endLine = "15" endColumn = "72" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "15" startColumn = "5" endLine = "15" endColumn = "72" fileWritable = "true">
     <Real start="9.80665" fixed="true" useNominal="false" unit="m/s2" />
   </ScalarVariable>
   <ScalarVariable
@@ -385,7 +385,7 @@
     alias = "noAlias"
     classIndex = "7" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "10" startColumn = "5" endLine = "10" endColumn = "94" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "10" startColumn = "5" endLine = "10" endColumn = "94" fileWritable = "true">
     <Real start="0.2" fixed="true" useNominal="false" min="0.0" unit="kg" />
   </ScalarVariable>
   <ScalarVariable
@@ -397,7 +397,7 @@
     alias = "noAlias"
     classIndex = "8" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "12" startColumn = "5" endLine = "12" endColumn = "124" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "12" startColumn = "5" endLine = "12" endColumn = "124" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" unit="m" />
   </ScalarVariable>
   <ScalarVariable
@@ -409,7 +409,7 @@
     alias = "noAlias"
     classIndex = "9" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "921" startColumn = "5" endLine = "921" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "921" startColumn = "5" endLine = "921" endColumn = "50" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -421,7 +421,7 @@
     alias = "noAlias"
     classIndex = "10" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "922" startColumn = "5" endLine = "922" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "922" startColumn = "5" endLine = "922" endColumn = "50" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -433,7 +433,7 @@
     alias = "noAlias"
     classIndex = "11" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "923" startColumn = "5" endLine = "923" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "923" startColumn = "5" endLine = "923" endColumn = "50" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -445,7 +445,7 @@
     alias = "noAlias"
     classIndex = "12" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "269" startColumn = "5" endLine = "270" endColumn = "69" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "269" startColumn = "5" endLine = "270" endColumn = "69" fileWritable = "true">
     <Real start="0.01" fixed="true" useNominal="false" min="1e-60" unit="s" />
   </ScalarVariable>
   <ScalarVariable
@@ -457,7 +457,7 @@
     alias = "noAlias"
     classIndex = "13" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "268" startColumn = "5" endLine = "268" endColumn = "41" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "268" startColumn = "5" endLine = "268" endColumn = "41" fileWritable = "true">
     <Real fixed="true" useNominal="false" unit="1" />
   </ScalarVariable>
   <ScalarVariable
@@ -469,7 +469,7 @@
     alias = "noAlias"
     classIndex = "14" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "275" startColumn = "5" endLine = "276" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "275" startColumn = "5" endLine = "276" endColumn = "50" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -481,7 +481,7 @@
     alias = "noAlias"
     classIndex = "15" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "277" startColumn = "5" endLine = "279" endColumn = "31" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "277" startColumn = "5" endLine = "279" endColumn = "31" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -493,7 +493,7 @@
     alias = "noAlias"
     classIndex = "16" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "10" startColumn = "5" endLine = "10" endColumn = "51" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "10" startColumn = "5" endLine = "10" endColumn = "51" fileWritable = "true">
     <Real fixed="true" useNominal="false" unit="1" />
   </ScalarVariable>
   <ScalarVariable
@@ -505,7 +505,7 @@
     alias = "noAlias"
     classIndex = "17" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "22" startColumn = "5" endLine = "23" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "22" startColumn = "5" endLine = "23" endColumn = "50" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -516,8 +516,8 @@
     alias = "noAlias"
     classIndex = "18" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "105" startColumn = "5" endLine = "105" endColumn = "33" fileWritable = "true">
-    <Real start="1.0" fixed="true" useNominal="false" />
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "105" startColumn = "5" endLine = "105" endColumn = "35" fileWritable = "true">
+    <Real start="490.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.ki"
@@ -527,8 +527,8 @@
     alias = "noAlias"
     classIndex = "19" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "106" startColumn = "5" endLine = "106" endColumn = "34" fileWritable = "true">
-    <Real start="10.0" fixed="true" useNominal="false" />
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "106" startColumn = "5" endLine = "106" endColumn = "33" fileWritable = "true">
+    <Real start="1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.kp"
@@ -538,7 +538,7 @@
     alias = "noAlias"
     classIndex = "20" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "104" startColumn = "5" endLine = "104" endColumn = "33" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "104" startColumn = "5" endLine = "104" endColumn = "33" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -550,7 +550,7 @@
     alias = "noAlias"
     classIndex = "21" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "543" startColumn = "5" endLine = "544" endColumn = "48" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "543" startColumn = "5" endLine = "544" endColumn = "48" fileWritable = "true">
     <Real fixed="true" useNominal="false" unit="1" />
   </ScalarVariable>
   <ScalarVariable
@@ -562,7 +562,7 @@
     alias = "noAlias"
     classIndex = "22" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Sources.mo" startLine = "165" startColumn = "5" endLine = "166" endColumn = "102" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Sources.mo" startLine = "165" startColumn = "5" endLine = "166" endColumn = "102" fileWritable = "true">
     <Real start="20.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -574,7 +574,7 @@
     alias = "noAlias"
     classIndex = "23" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "300" startColumn = "5" endLine = "301" endColumn = "56" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "300" startColumn = "5" endLine = "301" endColumn = "56" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -586,7 +586,7 @@
     alias = "alias" aliasVariable="gantry_system_block.x" aliasVariableId="3"
     classIndex = "0" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "344" startColumn = "5" endLine = "345" endColumn = "59" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "344" startColumn = "5" endLine = "345" endColumn = "59" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -597,7 +597,7 @@
     alias = "alias" aliasVariable="gantry_system_block.u" aliasVariableId="15"
     classIndex = "1" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "66" startColumn = "5" endLine = "67" endColumn = "159" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "66" startColumn = "5" endLine = "67" endColumn = "159" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -608,7 +608,7 @@
     alias = "alias" aliasVariable="gantry_system_block.x" aliasVariableId="3"
     classIndex = "2" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "68" startColumn = "3" endLine = "69" endColumn = "157" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "68" startColumn = "3" endLine = "69" endColumn = "157" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -620,7 +620,7 @@
     alias = "alias" aliasVariable="pID_block.p.y" aliasVariableId="18"
     classIndex = "3" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "924" startColumn = "5" endLine = "925" endColumn = "66" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "924" startColumn = "5" endLine = "925" endColumn = "66" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -632,7 +632,7 @@
     alias = "alias" aliasVariable="pID_block.i.y" aliasVariableId="5"
     classIndex = "4" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "926" startColumn = "5" endLine = "927" endColumn = "66" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "926" startColumn = "5" endLine = "927" endColumn = "66" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -644,7 +644,7 @@
     alias = "alias" aliasVariable="pID_block.d.y" aliasVariableId="16"
     classIndex = "5" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "928" startColumn = "5" endLine = "929" endColumn = "68" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "928" startColumn = "5" endLine = "929" endColumn = "68" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -656,7 +656,7 @@
     alias = "alias" aliasVariable="gantry_system_block.u" aliasVariableId="15"
     classIndex = "6" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "930" startColumn = "5" endLine = "931" endColumn = "64" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "930" startColumn = "5" endLine = "931" endColumn = "64" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -668,7 +668,7 @@
     alias = "alias" aliasVariable="add.y" aliasVariableId="14"
     classIndex = "7" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "327" startColumn = "5" endLine = "328" endColumn = "58" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "327" startColumn = "5" endLine = "328" endColumn = "58" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -679,7 +679,7 @@
     alias = "alias" aliasVariable="add.y" aliasVariableId="14"
     classIndex = "8" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "107" startColumn = "5" endLine = "108" endColumn = "159" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "107" startColumn = "5" endLine = "108" endColumn = "159" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -691,7 +691,7 @@
     alias = "alias" aliasVariable="add.y" aliasVariableId="14"
     classIndex = "9" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "327" startColumn = "5" endLine = "328" endColumn = "58" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "327" startColumn = "5" endLine = "328" endColumn = "58" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -703,7 +703,7 @@
     alias = "alias" aliasVariable="add.y" aliasVariableId="14"
     classIndex = "10" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "546" startColumn = "5" endLine = "547" endColumn = "58" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "546" startColumn = "5" endLine = "547" endColumn = "58" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -714,7 +714,7 @@
     alias = "alias" aliasVariable="gantry_system_block.u" aliasVariableId="15"
     classIndex = "11" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "109" startColumn = "5" endLine = "110" endColumn = "157" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "109" startColumn = "5" endLine = "110" endColumn = "157" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -726,7 +726,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "iPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "271" startColumn = "5" endLine = "274" endColumn = "40" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "271" startColumn = "5" endLine = "274" endColumn = "40" fileWritable = "true">
     <Integer start="1" fixed="true" />
   </ScalarVariable>
   <ScalarVariable
@@ -738,7 +738,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "iPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "19" startColumn = "5" endLine = "21" endColumn = "40" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "19" startColumn = "5" endLine = "21" endColumn = "40" fileWritable = "true">
     <Integer start="3" fixed="true" />
   </ScalarVariable>
   <ScalarVariable
@@ -749,7 +749,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "bAlg"
     isProtected = "true" hideResult = "true" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "36" startColumn = "5" endLine = "36" endColumn = "85" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "36" startColumn = "5" endLine = "36" endColumn = "85" fileWritable = "true">
     <Boolean fixed="true" />
   </ScalarVariable>
   <ScalarVariable
@@ -760,7 +760,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "bPar"
     isProtected = "true" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "285" startColumn = "5" endLine = "285" endColumn = "65" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "285" startColumn = "5" endLine = "285" endColumn = "65" fileWritable = "true">
     <Boolean start="false" fixed="true" />
   </ScalarVariable>
   <ScalarVariable
@@ -772,7 +772,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "bPar"
     isProtected = "false" hideResult = "true" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "11" startColumn = "5" endLine = "12" endColumn = "73" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "11" startColumn = "5" endLine = "12" endColumn = "73" fileWritable = "true">
     <Boolean start="false" fixed="true" />
   </ScalarVariable>
   <ScalarVariable
@@ -784,7 +784,7 @@
     alias = "noAlias"
     classIndex = "2" classType = "bPar"
     isProtected = "false" hideResult = "true" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "13" startColumn = "5" endLine = "14" endColumn = "99" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "13" startColumn = "5" endLine = "14" endColumn = "99" fileWritable = "true">
     <Boolean start="false" fixed="true" />
   </ScalarVariable>
 
