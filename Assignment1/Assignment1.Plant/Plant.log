@@ -1,0 +1,26 @@
+/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.Plant/Plant -port=44725 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.004,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.Plant/Plant_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.Plant -outputPath=/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.Plant
+The initialization finished successfully without homotopy method.
+### STATISTICS ###
+timer
+  0.00259989s          reading init.xml
+ 0.000315616s          reading info.xml
+  0.00050649s [  0.6%] pre-initialization
+  0.00022875s [  0.3%] initialization
+  1.1558e-05s [  0.0%] steps
+  0.00686651s [  7.8%] solver (excl. callbacks)
+  0.00666957s [  7.5%] creating output-file
+ 0.000299068s [  0.3%] event-handling
+  0.00308189s [  3.5%] overhead
+   0.0708806s [ 80.1%] simulation
+   0.0885444s [100.0%] total
+events
+    0 state events
+    0 time events
+solver: dassl
+ 1225 steps taken
+ 1287 calls of functionODE
+   25 evaluations of jacobian
+    4 error test failures
+    0 convergence test failures
+0.00015014s time of jacobian evaluation
+The simulation finished successfully.
