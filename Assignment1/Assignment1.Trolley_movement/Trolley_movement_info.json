@@ -1,0 +1,22 @@
+{"format":"Transformational debugger info","version":1,
+"info":{"name":"Assignment1.Trolley_movement","description":""},
+"variables":{
+"v":{"comment":"velocity of the trolley/cart expressed in m/s","kind":"state","type":"Real","unit":"m/s","displayUnit":"","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":41,"lineEnd":41,"colStart":5,"colEnd":81}}},
+"x":{"comment":"displacement of the trolley/cart expressed in m","kind":"state","type":"Real","unit":"m","displayUnit":"","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":40,"lineEnd":40,"colStart":5,"colEnd":81}}},
+"der(v)":{"comment":"der(velocity of the trolley/cart expressed in m/s)","kind":"derivative","type":"Real","unit":"m.s-2","displayUnit":"","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":41,"lineEnd":41,"colStart":5,"colEnd":81}}},
+"der(x)":{"comment":"der(displacement of the trolley/cart expressed in m)","kind":"derivative","type":"Real","unit":"m.s-1","displayUnit":"","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":40,"lineEnd":40,"colStart":5,"colEnd":81}}},
+"M":{"comment":"Mass of trolley/cart expressed in kg","kind":"parameter","type":"Real","unit":"kg","displayUnit":"","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":44,"lineEnd":44,"colStart":5,"colEnd":83}}},
+"dc":{"comment":"Damping factor for motion of cart expressed in s-1","kind":"parameter","type":"Real","unit":"s-1","displayUnit":"","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":45,"lineEnd":45,"colStart":5,"colEnd":100}}}
+},
+"equations":[{"eqIndex":0,"tag":"dummy"},
+{"eqIndex":1,"section":"initial","tag":"assign","defines":["v"],"uses":[],"equation":["5.0"],"source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":50,"lineEnd":50,"colStart":5,"colEnd":10}}},
+{"eqIndex":2,"tag":"alias","equation":[5],"section":"initial"},
+{"eqIndex":3,"tag":"alias","equation":[6],"section":"initial"},
+{"eqIndex":4,"section":"initial","tag":"assign","defines":["x"],"uses":[],"equation":["0.0"],"source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":49,"lineEnd":49,"colStart":5,"colEnd":10}}},
+{"eqIndex":5,"section":"regular","tag":"assign","defines":["der(v)"],"uses":["M","v","dc"],"equation":["(-dc) * v / M"],"source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":53,"lineEnd":53,"colStart":5,"colEnd":25}}},
+{"eqIndex":6,"section":"regular","tag":"assign","defines":["der(x)"],"uses":["v"],"equation":["v"],"source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":52,"lineEnd":52,"colStart":5,"colEnd":15}}},
+{"eqIndex":7,"section":"parameter","tag":"algorithm","equation":["assert(M >= 0.0, \"Variable violating min constraint: 0.0 <= M, has value: \" + String(M, \"g\"));"],"source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":44,"lineEnd":44,"colStart":5,"colEnd":83}}}
+],
+"functions":[
+]
+}

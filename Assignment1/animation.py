@@ -176,4 +176,4 @@ if __name__ == '__main__':
 
     [values, data] = readMat("./Assignment1.Plant/Plant_res.mat")
     # Call the animation function with sample data
-    animate_gantry_system(data[4], data[1], 20)
+    animate_gantry_system(data[4], data[1], 20,5)

@@ -1,0 +1,26 @@
+/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Pendulum_swinging_motion/Pendulum_swinging_motion -port=44519 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.004,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Pendulum_swinging_motion/Pendulum_swinging_motion_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Pendulum_swinging_motion -outputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Pendulum_swinging_motion
+The initialization finished successfully without homotopy method.
+### STATISTICS ###
+timer
+ 0.000236967s          reading init.xml
+  3.6069e-05s          reading info.xml
+ 0.000106006s [  1.1%] pre-initialization
+  3.5419e-05s [  0.4%] initialization
+   1.457e-06s [  0.0%] steps
+ 0.000555755s [  5.8%] solver (excl. callbacks)
+ 0.000583058s [  6.1%] creating output-file
+           0s [  0.0%] event-handling
+  0.00032357s [  3.4%] overhead
+  0.00794192s [ 83.1%] simulation
+   0.0095695s [100.0%] total
+events
+    0 state events
+    0 time events
+solver: dassl
+  638 steps taken
+  666 calls of functionODE
+   25 evaluations of jacobian
+    5 error test failures
+    0 convergence test failures
+1.07681e-05s time of jacobian evaluation
+The simulation finished successfully.

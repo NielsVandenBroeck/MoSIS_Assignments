@@ -1,0 +1,26 @@
+{"format":"Transformational debugger info","version":1,
+"info":{"name":"Assignment1.Pendulum_swinging_motion","description":""},
+"variables":{
+"theta":{"comment":"Angular displacement of the pendulum w.r.t the trolley expressed in rad","kind":"state","type":"Real","unit":"rad","displayUnit":"deg","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":60,"lineEnd":60,"colStart":5,"colEnd":108}}},
+"w":{"comment":"Angular velocity of the pendulum expressed in rad/s","kind":"state","type":"Real","unit":"rad/s","displayUnit":"","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":61,"lineEnd":61,"colStart":5,"colEnd":94}}},
+"der(theta)":{"comment":"der(Angular displacement of the pendulum w.r.t the trolley expressed in rad)","kind":"derivative","type":"Real","unit":"Hz","displayUnit":"","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":60,"lineEnd":60,"colStart":5,"colEnd":108}}},
+"der(w)":{"comment":"der(Angular velocity of the pendulum expressed in rad/s)","kind":"derivative","type":"Real","unit":"s-2","displayUnit":"","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":61,"lineEnd":61,"colStart":5,"colEnd":94}}},
+"$cse1":{"comment":"","kind":"variable","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"","lineStart":0,"lineEnd":0,"colStart":0,"colEnd":0}}},
+"dp":{"comment":"Damping factor swinging of pendulum expressed in s-1","kind":"parameter","type":"Real","unit":"s-1","displayUnit":"","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":66,"lineEnd":66,"colStart":5,"colEnd":102}}},
+"g":{"comment":"","kind":"parameter","type":"Real","unit":"m/s2","displayUnit":"","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":67,"lineEnd":67,"colStart":5,"colEnd":72}}},
+"m":{"comment":"Mass of pendulum bob/container expressed in kg","kind":"parameter","type":"Real","unit":"kg","displayUnit":"","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":64,"lineEnd":64,"colStart":5,"colEnd":94}}},
+"r":{"comment":"Length of the rope connecting the pendulum bob to the trolley expressed in m","kind":"parameter","type":"Real","unit":"m","displayUnit":"","source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":65,"lineEnd":65,"colStart":5,"colEnd":124}}}
+},
+"equations":[{"eqIndex":0,"tag":"dummy"},
+{"eqIndex":1,"section":"initial","tag":"assign","defines":["theta"],"uses":[],"equation":["0.5235987755982988"],"source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":72,"lineEnd":72,"colStart":5,"colEnd":52}}},
+{"eqIndex":2,"section":"initial","tag":"assign","defines":["w"],"uses":[],"equation":["0.0"],"source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":71,"lineEnd":71,"colStart":5,"colEnd":10}}},
+{"eqIndex":3,"section":"initial","tag":"assign","defines":["der(w)"],"uses":["theta","r","w","g","dp","m"],"equation":["((-dp) * w - m * g * r * sin(theta)) / (r ^ 2.0 * m)"],"source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":75,"lineEnd":75,"colStart":5,"colEnd":50}}},
+{"eqIndex":4,"tag":"alias","equation":[7],"section":"initial"},
+{"eqIndex":5,"section":"regular","tag":"assign","defines":["$cse1"],"uses":["theta"],"equation":["sin(theta)"],"source":{"info":{"file":"","lineStart":0,"lineEnd":0,"colStart":0,"colEnd":0}}},
+{"eqIndex":6,"section":"regular","tag":"assign","defines":["der(w)"],"uses":["r","w","g","dp","$cse1","m"],"equation":["((-dp) * w - m * g * r * $cse1) / (r ^ 2.0 * m)"],"source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":75,"lineEnd":75,"colStart":5,"colEnd":50}}},
+{"eqIndex":7,"section":"regular","tag":"assign","defines":["der(theta)"],"uses":["w"],"equation":["w"],"source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":74,"lineEnd":74,"colStart":5,"colEnd":19}}},
+{"eqIndex":8,"section":"parameter","tag":"algorithm","equation":["assert(m >= 0.0, \"Variable violating min constraint: 0.0 <= m, has value: \" + String(m, \"g\"));"],"source":{"info":{"file":"/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo","lineStart":64,"lineEnd":64,"colStart":5,"colEnd":94}}}
+],
+"functions":[
+]
+}

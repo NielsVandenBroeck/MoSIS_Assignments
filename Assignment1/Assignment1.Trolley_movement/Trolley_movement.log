@@ -1,0 +1,26 @@
+/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Trolley_movement/Trolley_movement -port=38599 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.004,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Trolley_movement/Trolley_movement_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Trolley_movement -outputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Trolley_movement
+The initialization finished successfully without homotopy method.
+### STATISTICS ###
+timer
+ 0.000187824s          reading init.xml
+  3.3807e-05s          reading info.xml
+ 0.000104515s [  1.2%] pre-initialization
+  2.8553e-05s [  0.3%] initialization
+   1.381e-06s [  0.0%] steps
+ 0.000310437s [  3.5%] solver (excl. callbacks)
+ 0.000565857s [  6.4%] creating output-file
+           0s [  0.0%] event-handling
+ 0.000354922s [  4.0%] overhead
+   0.0074651s [ 84.4%] simulation
+  0.00884591s [100.0%] total
+events
+    0 state events
+    0 time events
+solver: dassl
+   28 steps taken
+   28 calls of functionODE
+   27 evaluations of jacobian
+    0 error test failures
+    0 convergence test failures
+6.03804e-06s time of jacobian evaluation
+The simulation finished successfully.

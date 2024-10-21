@@ -1,26 +1,26 @@
-/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Plant/Plant -port=40501 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.004,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Plant/Plant_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Plant -outputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Plant
+/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Plant/Plant -port=36747 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.004,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Plant/Plant_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Plant -outputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Plant
 The initialization finished successfully without homotopy method.
 ### STATISTICS ###
 timer
- 0.000302561s          reading init.xml
-  4.3998e-05s          reading info.xml
- 0.000129328s [  1.1%] pre-initialization
-  3.5966e-05s [  0.3%] initialization
-   1.775e-06s [  0.0%] steps
-   0.0012079s [ 10.2%] solver (excl. callbacks)
- 0.000754532s [  6.4%] creating output-file
-  0.00036949s [  3.1%] event-handling
- 0.000347658s [  2.9%] overhead
-  0.00900231s [ 76.0%] simulation
-    0.011849s [100.0%] total
+ 0.000302272s          reading init.xml
+  4.3794e-05s          reading info.xml
+ 0.000135613s [  1.2%] pre-initialization
+  3.5895e-05s [  0.3%] initialization
+    1.62e-06s [  0.0%] steps
+  0.00109849s [  9.8%] solver (excl. callbacks)
+ 0.000744569s [  6.7%] creating output-file
+ 0.000318578s [  2.9%] event-handling
+ 0.000369827s [  3.3%] overhead
+  0.00845823s [ 75.8%] simulation
+   0.0111628s [100.0%] total
 events
     1 state events
     0 time events
 solver: dassl
-  906 steps taken
- 1086 calls of functionODE
-   56 evaluations of jacobian
-   10 error test failures
+  759 steps taken
+  953 calls of functionODE
+   40 evaluations of jacobian
+   13 error test failures
     0 convergence test failures
-4.3051e-05s time of jacobian evaluation
+3.0315e-05s time of jacobian evaluation
 The simulation finished successfully.
