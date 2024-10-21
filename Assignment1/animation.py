@@ -176,4 +176,4 @@ if __name__ == '__main__':
 
     [values, data] = readMat("./Assignment1.PID_controller_block/PID_controller_block_res.mat")
     # Call the animation function with sample data
-    animate_gantry_system(data[4], data[1], 20,5)
+    animate_gantry_system(data[4], data[1], 1,5)

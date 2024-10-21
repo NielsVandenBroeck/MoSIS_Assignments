@@ -5,7 +5,7 @@ package Assignment1
     Modelica.Units.SI.Velocity v "velocity of the trolley/cart expressed in m/s";
     Modelica.Units.SI.Angle theta "Angular displacement of the pendulum w.r.t the trolley expressed in rad";
     Modelica.Units.SI.AngularVelocity w "Angular velocity of the pendulum expressed in rad/s";
-    Real u "Control signal to move the trolley and pendulum";
+    Real u"Control signal to move the trolley and pendulum";
     // Parameters
     parameter Modelica.Units.SI.Mass m = 0.2 "Mass of pendulum bob/container expressed in kg";
     parameter Modelica.Units.SI.Mass M = 10 "Mass of trolley/cart expressed in kg";
@@ -20,11 +20,6 @@ package Assignment1
     theta = 0;
     w = 0;
   equation
-    if time < 0.5 then
-      u = 1000;
-    else
-      u = 0;
-    end if;
     der(x) = v;
     der(theta) = w;
     der(v) = (r*(dc*v - m*(g*sin(theta)*cos(theta) + r*sin(theta)*w^2) - u) - (dp*cos(theta)*w))/(-r*(M + m*(sin(theta))^2));
@@ -90,7 +85,7 @@ package Assignment1
   Modelica.Blocks.Math.Add add(k1 = +1, k2 = -1)  annotation(
       Placement(transformation(origin = {-50, 0}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.Constant setPoint(k = 20)  annotation(
-      Placement(transformation(origin = {-90, 6}, extent = {{-10, -10}, {10, 10}})));
+      Placement(transformation(origin = {-84, 6}, extent = {{-10, -10}, {10, 10}})));
   equation
     connect(x, add.u2) annotation(
       Line(points = {{100, 0}, {68, 0}, {68, -20}, {-68, -20}, {-68, -6}, {-62, -6}}, color = {0, 0, 127}));
@@ -101,25 +96,22 @@ package Assignment1
     connect(gantry_system_block.output_con, x) annotation(
       Line(points = {{62, 0}, {100, 0}}, color = {0, 0, 127}));
   connect(setPoint.y, add.u1) annotation(
-      Line(points = {{-79, 6}, {-62, 6}}, color = {0, 0, 127}));
+      Line(points = {{-72, 6}, {-62, 6}}, color = {0, 0, 127}));
   end PID_controller_block;
 
   block PID_block
     extends Modelica.Blocks.Icons.Block;
-    parameter Real kp(start = 1);
-    parameter Real ki(start = 100);
-    parameter Real kd(start = 1);
     Modelica.Blocks.Interfaces.RealInput e annotation(
       Placement(transformation(origin = {-100, 0}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-120, 0}, extent = {{-20, -20}, {20, 20}})));
     Modelica.Blocks.Interfaces.RealOutput u annotation(
       Placement(transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {110, 0}, extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Math.Add3 add3 annotation(
       Placement(transformation(origin = {60, 0}, extent = {{-10, -10}, {10, 10}})));
-  Modelica.Blocks.Continuous.Integrator i(k = ki)  annotation(
+  Modelica.Blocks.Continuous.Integrator i(k = 1)  annotation(
       Placement(transformation(extent = {{-10, -10}, {10, 10}})));
-  Modelica.Blocks.Continuous.Derivative d(k = kd)  annotation(
+  Modelica.Blocks.Continuous.Derivative d(k = 1)  annotation(
       Placement(transformation(origin = {0, -32}, extent = {{-10, -10}, {10, 10}})));
-  Modelica.Blocks.Math.Gain p(k = kp)  annotation(
+  Modelica.Blocks.Math.Gain p(k = 1)  annotation(
       Placement(transformation(origin = {0, 30}, extent = {{-10, -10}, {10, 10}})));
   equation
     connect(add3.y, u) annotation(
@@ -128,17 +120,17 @@ package Assignment1
       Line(points = {{11, 0}, {48, 0}}, color = {0, 0, 127}));
     connect(d.y, add3.u3) annotation(
       Line(points = {{11, -32}, {20, -32}, {20, -8}, {48, -8}}, color = {0, 0, 127}));
-    connect(e, d.u) annotation(
-      Line(points = {{-100, 0}, {-20, 0}, {-20, -32}, {-12, -32}}, color = {0, 0, 127}));
   connect(e, p.u) annotation(
       Line(points = {{-100, 0}, {-20, 0}, {-20, 30}, {-12, 30}}, color = {0, 0, 127}));
   connect(p.y, add3.u1) annotation(
       Line(points = {{12, 30}, {20, 30}, {20, 8}, {48, 8}}, color = {0, 0, 127}));
   connect(e, i.u) annotation(
       Line(points = {{-100, 0}, {-12, 0}}, color = {0, 0, 127}));
+  connect(e, d.u) annotation(
+      Line(points = {{-100, 0}, {-20, 0}, {-20, -32}, {-12, -32}}, color = {0, 0, 127}));
   annotation(
       Icon(graphics = {Text(origin = {-2, 4}, extent = {{67, -37}, {-67, 37}}, textString = "PID")}));
-end PID_block;
+  end PID_block;
   annotation(
     uses(Modelica(version = "4.0.0")));
 end Assignment1;
