@@ -1,6 +1,5 @@
 import math
 import os
-import pandas as pd
 from pandas import read_csv
 
 
@@ -8,7 +7,7 @@ def testDc(dc, position_values):
     # Override variable
     simulationCommand='./Trolley_movement -override dc='+str(dc)
 
-    os.chdir('/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Trolley_movement')
+    os.chdir('Assignment1.Trolley_movement')
 
     os.system(simulationCommand)
 
@@ -27,7 +26,7 @@ def testDp(dp, position_values):
     # Override variable
     simulationCommand='./Pendulum_swinging_motion -override dp='+str(dp)
 
-    os.chdir('/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Pendulum_swinging_motion')
+    os.chdir('Assignment1.Pendulum_swinging_motion')
 
     os.system(simulationCommand)
 
@@ -38,7 +37,13 @@ def testDp(dp, position_values):
     for x_simulated, x_real in zip(simulated_data[1], position_values):
         squared_error += math.pow(float(x_simulated) - x_real,2)
 
+    os.chdir('../')
+
     return squared_error
+
+
+def testPID(Kp, Ki, Kd):
+    simulationCommand = './Pendulum_swinging_motion -override dp=' + str(dp)
 
 
 # You need scipy package to read MAT-files
@@ -114,7 +119,6 @@ if __name__ == "__main__":
         if test_result < result_min:
             result_min = test_result
             dp_min = dp
-
 
     print(dc_min)
     print(dp_min)
