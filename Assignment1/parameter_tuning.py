@@ -1,6 +1,7 @@
 import math
 import os
 from pandas import read_csv
+from scipy.cluster.hierarchy import maxdists
 
 
 def testDc(dc, position_values):
@@ -68,6 +69,7 @@ def costFunction(thetaMax, ttask):
     return cost
 
 maxSwing = 10
+maxDist = 19.9
 def costSimulation():
     minKp = math.inf
     minkd = math.inf
@@ -76,15 +78,21 @@ def costSimulation():
         for Kd in range(10, 500, 10):
             [names, simulated_data] = testPID(Kp,0 , Kd, False)
             thetaValues = simulated_data[names.index('gantry_system_block.theta')]
-            index, thetaMax = max(enumerate(thetaValues),key=lambda x: x[1])
-            ttask = math.inf
+            distanceValues = simulated_data[names.index('x')]
+            thetaMax = max(map(abs, thetaValues))
+            worstAngleTime = math.inf
+            bestDistTime = math.inf
             for i, theta in reversed(list(enumerate(thetaValues))):
                 if abs(theta) > maxSwing:
-                    print(theta)
-                    ttask = max(simulated_data[names.index('time')][i - 1], simulated_data[names.index('time')][index - 1])
+                    worstAngleTime = simulated_data[names.index('time')][i - 1]
                     break
+            for i, dist in list(enumerate(distanceValues)):
+                if abs(dist) < maxDist:
+                    bestDistTime = simulated_data[names.index('time')][i - 1]
+                    break
+            ttask = max(worstAngleTime, bestDistTime)
             cost = costFunction(thetaMax, ttask)
-            print(Kp, Kd, ttask, thetaMax, cost)
+            print(Kp, Kd, ttask, thetaMax, cost, " | minimame cost: ", minCost, minKp, minkd)
             if cost < minCost:
                 minKp = Kp
                 minkd = Kd
