@@ -17,7 +17,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib.patches import Rectangle
-
+# You need scipy package to read MAT-files
+from scipy import io
 matplotlib.use('TkAgg')
 
 # This file contains example Python code to demonstrate the simulation of the newtonCooling Modelica model
@@ -41,8 +42,6 @@ def singleSimulation(T_inf=298.15, T0=363.15, h=0.7, A=1.0, m=0.1, c_p=1.2):
     # Create a plot of the Temperature over time in the simulation
     openDataPlot([data[0]],[data[1]],'time (seconds)','temperature (C)')
 
-# You need scipy package to read MAT-files
-from scipy import io
 # Reuse this exact function to read MAT-file data.
 # matFileName is the name of the MAT-file generated on execution of a Modelica executable
 # The output is [names, data] where names is an array of strings which are names of variables, data is an array of values of the associated variable in the same order
@@ -177,4 +176,4 @@ if __name__ == '__main__':
 
     [values, data] = readMat("./Assignment1.Plant/Plant_res.mat")
     # Call the animation function with sample data
-    animate_gantry_system(data[0], data[1], 20)
+    animate_gantry_system(data[4], data[1], 20)
