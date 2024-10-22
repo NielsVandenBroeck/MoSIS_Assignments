@@ -1,5 +1,7 @@
 import math
 import os
+from logging import warning
+
 from pandas import read_csv
 from scipy.cluster.hierarchy import maxdists
 
@@ -68,18 +70,18 @@ def costFunction(thetaMax, ttask):
     cost = 94 * thetaMax + 71 * ttask
     return cost
 
-maxSwing = 10
-maxDist = 19.9
+maxSwing = 0.174533
+setpointDistance = 10
 def costSimulation():
     minKp = math.inf
     minkd = math.inf
     minCost = math.inf
-    for Kp in range(1, 40):
-        for Kd in range(10, 500, 10):
+    for Kp in range(1, 41):
+        for Kd in range(10, 510, 10):
             [names, simulated_data] = testPID(Kp,0 , Kd, False)
             thetaValues = simulated_data[names.index('gantry_system_block.theta')]
             distanceValues = simulated_data[names.index('x')]
-            thetaMax = max(map(abs, thetaValues))
+            thetaMax = max(map(abs, thetaValues)) * 180.0 / math.pi # in degrees
             worstAngleTime = math.inf
             bestDistTime = math.inf
             for i, theta in reversed(list(enumerate(thetaValues))):
@@ -87,11 +89,15 @@ def costSimulation():
                     worstAngleTime = simulated_data[names.index('time')][i - 1]
                     break
             for i, dist in list(enumerate(distanceValues)):
-                if abs(dist) < maxDist:
+                if abs(setpointDistance - dist) < 0.1:
                     bestDistTime = simulated_data[names.index('time')][i - 1]
                     break
             ttask = max(worstAngleTime, bestDistTime)
+            print(worstAngleTime, ttask)
             cost = costFunction(thetaMax, ttask)
+            if cost == math.inf:
+                warning("simulation duration is not high enough for the trolley to reach the set-point")
+                return
             print(Kp, Kd, ttask, thetaMax, cost, " | minimame cost: ", minCost, minKp, minkd)
             if cost < minCost:
                 minKp = Kp
