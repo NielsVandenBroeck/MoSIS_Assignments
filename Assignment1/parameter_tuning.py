@@ -44,6 +44,19 @@ def testDp(dp, position_values):
 
     return squared_error
 
+def plotDistanceAndAngle(time, distance, angle):
+        figure, (axis1, axis2) = pyplot.subplots(1, 2, figsize=(12, 6))
+        axis1.plot(time, distance)
+        axis1.plot(time, [10] * len(time))
+        axis1.set_xlabel('time (seconds)')
+        axis1.set_ylabel('x (meters)')
+        axis1.set_title('Plot of distance')
+
+        axis2.plot(time, angle)
+        axis2.set_xlabel('time (seconds)')
+        axis2.set_ylabel('theta (rad)')
+        axis2.set_title('Plot of angle')
+        pyplot.show()
 
 def testPID(kp, ki, kd, plot=True):
     simulationCommand = './PID_controller_block -override pID_block.kp=' + str(kp) + ',pID_block.ki=' + str(ki) + ',pID_block.kd=' + str(kd)
@@ -52,15 +65,8 @@ def testPID(kp, ki, kd, plot=True):
     # Obtain the variable values by reading the MAT-file
     [names, simulated_data] = readMat('PID_controller_block_res.mat')
 
-    dataLength = len(simulated_data[names.index('time')])
-
     if plot:
-        figure, axis = pyplot.subplots()
-        axis.plot(simulated_data[names.index('time')], simulated_data[names.index('x')])
-        axis.plot(simulated_data[names.index('time')], [20]*dataLength)
-        pyplot.xlabel('time (seconds)')
-        pyplot.ylabel('distance (meters)')
-        pyplot.show()
+        plotDistanceAndAngle(simulated_data[names.index('time')], simulated_data[names.index('x')], simulated_data[names.index('gantry_system_block.theta')])
 
     os.chdir('../')
 
@@ -98,13 +104,14 @@ def costSimulation():
             if cost == math.inf:
                 warning("simulation duration is not high enough for the trolley to reach the set-point")
                 return
-            print(Kp, Kd, ttask, thetaMax, cost, " | minimame cost: ", minCost, minKp, minkd)
             if cost < minCost:
                 minKp = Kp
                 minkd = Kd
                 minCost = cost
                 print("New minima!!!!", minCost)
     print("minimame cost: ", minCost, minKp, minkd)
+
+    testPID(minKp, 0, minkd, True)
     return minKp, minkd, minCost
 
 # You need scipy package to read MAT-files
