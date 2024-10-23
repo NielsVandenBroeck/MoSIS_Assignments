@@ -9,11 +9,11 @@
 
   OPENMODELICAHOME                    = "/usr/bin/.."
 
-  guid                                = "{43ad2271-7fe1-4ddc-9bd3-38735a430438}"
+  guid                                = "{ed9e61ff-064d-40b5-9e93-a8c6572182a3}"
 
   description                         = ""
   generationTool                      = "OpenModelica Compiler OpenModelica 1.24.0"
-  generationDateAndTime               = "2024-10-21T16:03:27Z"
+  generationDateAndTime               = "2024-10-22T22:09:24Z"
 
   variableNamingConvention            = "structured"
 
@@ -66,7 +66,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "rSta"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "60" startColumn = "5" endLine = "60" endColumn = "108" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "55" startColumn = "5" endLine = "55" endColumn = "108" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="rad" displayUnit="deg" />
   </ScalarVariable>
   <ScalarVariable
@@ -78,7 +78,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "rSta"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "61" startColumn = "5" endLine = "61" endColumn = "94" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "56" startColumn = "5" endLine = "56" endColumn = "94" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="rad/s" />
   </ScalarVariable>
   <ScalarVariable
@@ -90,7 +90,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "rDer"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "60" startColumn = "5" endLine = "60" endColumn = "108" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "55" startColumn = "5" endLine = "55" endColumn = "108" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="Hz" />
   </ScalarVariable>
   <ScalarVariable
@@ -102,7 +102,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "rDer"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "61" startColumn = "5" endLine = "61" endColumn = "94" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "56" startColumn = "5" endLine = "56" endColumn = "94" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="s-2" />
   </ScalarVariable>
   <ScalarVariable
@@ -125,7 +125,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "66" startColumn = "5" endLine = "66" endColumn = "102" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "60" startColumn = "5" endLine = "60" endColumn = "102" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" unit="s-1" />
   </ScalarVariable>
   <ScalarVariable
@@ -136,7 +136,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "67" startColumn = "5" endLine = "67" endColumn = "72" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "61" startColumn = "5" endLine = "61" endColumn = "72" fileWritable = "true">
     <Real start="9.80665" fixed="true" useNominal="false" unit="m/s2" />
   </ScalarVariable>
   <ScalarVariable
@@ -148,7 +148,7 @@
     alias = "noAlias"
     classIndex = "2" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "64" startColumn = "5" endLine = "64" endColumn = "94" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "58" startColumn = "5" endLine = "58" endColumn = "94" fileWritable = "true">
     <Real start="0.2" fixed="true" useNominal="false" min="0.0" unit="kg" />
   </ScalarVariable>
   <ScalarVariable
@@ -160,7 +160,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "65" startColumn = "5" endLine = "65" endColumn = "124" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "59" startColumn = "5" endLine = "59" endColumn = "124" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" unit="m" />
   </ScalarVariable>
 

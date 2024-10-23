@@ -9,11 +9,11 @@
 
   OPENMODELICAHOME                    = "/usr/bin/.."
 
-  guid                                = "{d8206411-634c-4459-8639-d0b7e169b820}"
+  guid                                = "{2d4e482a-ea44-4026-a4c6-5ff8712493b8}"
 
   description                         = ""
   generationTool                      = "OpenModelica Compiler OpenModelica 1.24.0"
-  generationDateAndTime               = "2024-10-22T12:02:42Z"
+  generationDateAndTime               = "2024-10-23T13:55:31Z"
 
   variableNamingConvention            = "structured"
 
@@ -47,8 +47,8 @@
   <!-- startTime, stopTime, tolerance are FMI specific, all others are OMC specific -->
   <DefaultExperiment
     startTime      = "0"
-    stopTime       = "100"
-    stepSize       = "0.002"
+    stopTime       = "20"
+    stepSize       = "0.004"
     tolerance      = "1e-06"
     solver        = "dassl"
     outputFormat      = "mat"
@@ -244,7 +244,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "8" startColumn = "5" endLine = "8" endColumn = "60" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "8" startColumn = "5" endLine = "8" endColumn = "61" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -290,7 +290,7 @@
     alias = "noAlias"
     classIndex = "7" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "83" startColumn = "3" endLine = "84" endColumn = "157" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "86" startColumn = "3" endLine = "87" endColumn = "156" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -338,7 +338,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "11" startColumn = "5" endLine = "11" endColumn = "83" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "12" startColumn = "5" endLine = "12" endColumn = "83" fileWritable = "true">
     <Real start="10.0" fixed="true" useNominal="false" min="0.0" unit="kg" />
   </ScalarVariable>
   <ScalarVariable
@@ -350,8 +350,8 @@
     alias = "noAlias"
     classIndex = "4" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "14" startColumn = "5" endLine = "14" endColumn = "105" fileWritable = "true">
-    <Real start="4.79" fixed="true" useNominal="false" unit="s-1" />
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "15" startColumn = "5" endLine = "15" endColumn = "102" fileWritable = "true">
+    <Real start="2.0" fixed="true" useNominal="false" unit="s-1" />
   </ScalarVariable>
   <ScalarVariable
     name = "gantry_system_block.dp"
@@ -362,8 +362,8 @@
     alias = "noAlias"
     classIndex = "5" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "13" startColumn = "5" endLine = "13" endColumn = "105" fileWritable = "true">
-    <Real start="0.12" fixed="true" useNominal="false" unit="s-1" />
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "14" startColumn = "5" endLine = "14" endColumn = "104" fileWritable = "true">
+    <Real start="0.5" fixed="true" useNominal="false" unit="s-1" />
   </ScalarVariable>
   <ScalarVariable
     name = "gantry_system_block.g"
@@ -373,7 +373,7 @@
     alias = "noAlias"
     classIndex = "6" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "15" startColumn = "5" endLine = "15" endColumn = "72" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "16" startColumn = "5" endLine = "16" endColumn = "72" fileWritable = "true">
     <Real start="9.80665" fixed="true" useNominal="false" unit="m/s2" />
   </ScalarVariable>
   <ScalarVariable
@@ -385,7 +385,7 @@
     alias = "noAlias"
     classIndex = "7" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "10" startColumn = "5" endLine = "10" endColumn = "94" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "11" startColumn = "5" endLine = "11" endColumn = "94" fileWritable = "true">
     <Real start="0.2" fixed="true" useNominal="false" min="0.0" unit="kg" />
   </ScalarVariable>
   <ScalarVariable
@@ -397,7 +397,7 @@
     alias = "noAlias"
     classIndex = "8" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "12" startColumn = "5" endLine = "12" endColumn = "124" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "13" startColumn = "5" endLine = "13" endColumn = "124" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" unit="m" />
   </ScalarVariable>
   <ScalarVariable
@@ -516,7 +516,7 @@
     alias = "noAlias"
     classIndex = "18" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "105" startColumn = "3" endLine = "105" endColumn = "32" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "108" startColumn = "3" endLine = "108" endColumn = "32" fileWritable = "true">
     <Real start="10.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -527,7 +527,7 @@
     alias = "noAlias"
     classIndex = "19" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "106" startColumn = "3" endLine = "106" endColumn = "31" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "109" startColumn = "3" endLine = "109" endColumn = "31" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -538,7 +538,7 @@
     alias = "noAlias"
     classIndex = "20" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "104" startColumn = "3" endLine = "104" endColumn = "32" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "107" startColumn = "3" endLine = "107" endColumn = "32" fileWritable = "true">
     <Real start="26.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -563,7 +563,7 @@
     classIndex = "22" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
     fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Sources.mo" startLine = "165" startColumn = "5" endLine = "166" endColumn = "102" fileWritable = "true">
-    <Real start="10.0" fixed="true" useNominal="false" />
+    <Real start="20.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "setPoint.y"
@@ -597,7 +597,7 @@
     alias = "alias" aliasVariable="gantry_system_block.u" aliasVariableId="15"
     classIndex = "1" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "66" startColumn = "5" endLine = "67" endColumn = "159" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "69" startColumn = "5" endLine = "70" endColumn = "159" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -608,7 +608,7 @@
     alias = "alias" aliasVariable="gantry_system_block.x" aliasVariableId="3"
     classIndex = "2" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "68" startColumn = "3" endLine = "69" endColumn = "157" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "71" startColumn = "3" endLine = "72" endColumn = "157" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -679,7 +679,7 @@
     alias = "alias" aliasVariable="add.y" aliasVariableId="14"
     classIndex = "8" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "107" startColumn = "3" endLine = "108" endColumn = "157" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "110" startColumn = "3" endLine = "111" endColumn = "156" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -714,7 +714,7 @@
     alias = "alias" aliasVariable="gantry_system_block.u" aliasVariableId="15"
     classIndex = "11" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "109" startColumn = "3" endLine = "110" endColumn = "155" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "112" startColumn = "3" endLine = "113" endColumn = "154" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable

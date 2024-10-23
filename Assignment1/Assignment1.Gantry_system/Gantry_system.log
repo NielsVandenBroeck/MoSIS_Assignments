@@ -1,0 +1,26 @@
+/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Gantry_system/Gantry_system -port=34795 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.004,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Gantry_system/Gantry_system_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Gantry_system -outputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Gantry_system
+The initialization finished successfully without homotopy method.
+### STATISTICS ###
+timer
+ 0.000303275s          reading init.xml
+  4.3249e-05s          reading info.xml
+ 0.000137092s [  1.2%] pre-initialization
+  3.6374e-05s [  0.3%] initialization
+   1.705e-06s [  0.0%] steps
+  0.00095948s [  8.7%] solver (excl. callbacks)
+ 0.000729954s [  6.6%] creating output-file
+ 0.000305755s [  2.8%] event-handling
+ 0.000337568s [  3.1%] overhead
+  0.00851924s [ 77.3%] simulation
+   0.0110272s [100.0%] total
+events
+    1 state events
+    0 time events
+solver: dassl
+  358 steps taken
+  399 calls of functionODE
+   41 evaluations of jacobian
+    1 error test failures
+    0 convergence test failures
+3.0883e-05s time of jacobian evaluation
+The simulation finished successfully.

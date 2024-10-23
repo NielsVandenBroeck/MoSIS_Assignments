@@ -239,12 +239,12 @@ if __name__ == "__main__":
     # print(dc_min)
     # print(dp_min)
 
-    testPID(1,0,0, True)
+    testPID(1,10,1, True)
     # testPID(10,1,1)
     # testPID(1, 10, 1)
     # testPID(1, 1, 10)
 
-    costSimulation()
+    #costSimulation()
 
 
 

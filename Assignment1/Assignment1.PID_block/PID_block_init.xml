@@ -9,11 +9,11 @@
 
   OPENMODELICAHOME                    = "/usr/bin/.."
 
-  guid                                = "{65d25699-7478-414b-bde0-33268d059961}"
+  guid                                = "{4f81dc5e-d28a-4a13-ada6-34c071fe7fe8}"
 
   description                         = ""
   generationTool                      = "OpenModelica Compiler OpenModelica 1.24.0"
-  generationDateAndTime               = "2024-10-22T11:37:16Z"
+  generationDateAndTime               = "2024-10-23T13:56:19Z"
 
   variableNamingConvention            = "structured"
 
@@ -47,8 +47,8 @@
   <!-- startTime, stopTime, tolerance are FMI specific, all others are OMC specific -->
   <DefaultExperiment
     startTime      = "0"
-    stopTime       = "100"
-    stepSize       = "0.002"
+    stopTime       = "20"
+    stepSize       = "0.004"
     tolerance      = "1e-06"
     solver        = "dassl"
     outputFormat      = "mat"
@@ -126,7 +126,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "107" startColumn = "3" endLine = "108" endColumn = "157" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "110" startColumn = "3" endLine = "111" endColumn = "156" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -160,7 +160,7 @@
     alias = "noAlias"
     classIndex = "4" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "109" startColumn = "3" endLine = "110" endColumn = "155" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "112" startColumn = "3" endLine = "113" endColumn = "154" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -279,7 +279,7 @@
     alias = "noAlias"
     classIndex = "9" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "105" startColumn = "3" endLine = "105" endColumn = "32" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "108" startColumn = "3" endLine = "108" endColumn = "32" fileWritable = "true">
     <Real start="10.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -290,7 +290,7 @@
     alias = "noAlias"
     classIndex = "10" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "106" startColumn = "3" endLine = "106" endColumn = "31" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "109" startColumn = "3" endLine = "109" endColumn = "31" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -301,7 +301,7 @@
     alias = "noAlias"
     classIndex = "11" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "104" startColumn = "3" endLine = "104" endColumn = "32" fileWritable = "true">
+    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "107" startColumn = "3" endLine = "107" endColumn = "32" fileWritable = "true">
     <Real start="26.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
