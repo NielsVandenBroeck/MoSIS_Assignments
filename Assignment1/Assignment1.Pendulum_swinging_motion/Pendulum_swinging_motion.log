@@ -1,18 +1,18 @@
-/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Pendulum_swinging_motion/Pendulum_swinging_motion -port=44519 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.004,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Pendulum_swinging_motion/Pendulum_swinging_motion_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Pendulum_swinging_motion -outputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Pendulum_swinging_motion
+/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Pendulum_swinging_motion/Pendulum_swinging_motion -port=44241 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.004,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Pendulum_swinging_motion/Pendulum_swinging_motion_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Pendulum_swinging_motion -outputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.Pendulum_swinging_motion
 The initialization finished successfully without homotopy method.
 ### STATISTICS ###
 timer
- 0.000236967s          reading init.xml
-  3.6069e-05s          reading info.xml
- 0.000106006s [  1.1%] pre-initialization
-  3.5419e-05s [  0.4%] initialization
-   1.457e-06s [  0.0%] steps
- 0.000555755s [  5.8%] solver (excl. callbacks)
- 0.000583058s [  6.1%] creating output-file
-           0s [  0.0%] event-handling
-  0.00032357s [  3.4%] overhead
-  0.00794192s [ 83.1%] simulation
-   0.0095695s [100.0%] total
+ 0.000351114s          reading init.xml
+  5.9349e-05s          reading info.xml
+ 0.000123835s [  0.9%] pre-initialization
+  4.4429e-05s [  0.3%] initialization
+   1.422e-06s [  0.0%] steps
+ 0.000749595s [  5.7%] solver (excl. callbacks)
+  0.00091566s [  6.9%] creating output-file
+   4.559e-06s [  0.0%] event-handling
+ 0.000457409s [  3.5%] overhead
+   0.0108955s [ 82.6%] simulation
+   0.0131924s [100.0%] total
 events
     0 state events
     0 time events
@@ -22,5 +22,5 @@ solver: dassl
    25 evaluations of jacobian
     5 error test failures
     0 convergence test failures
-1.07681e-05s time of jacobian evaluation
+1.14e-05s time of jacobian evaluation
 The simulation finished successfully.

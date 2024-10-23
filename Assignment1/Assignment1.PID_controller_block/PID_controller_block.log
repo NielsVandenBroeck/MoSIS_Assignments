@@ -1,26 +1,26 @@
-/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block/PID_controller_block -port=38399 -logFormat=xmltcp -override=startTime=0,stopTime=500,stepSize=0.004,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block/PID_controller_block_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block -outputPath=/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block
+/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block/PID_controller_block -port=40685 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.004,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block/PID_controller_block_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block -outputPath=/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block
 The initialization finished successfully without homotopy method.
 ### STATISTICS ###
 timer
- 0.000508222s          reading init.xml
-  5.3343e-05s          reading info.xml
- 0.000524083s [  0.3%] pre-initialization
-  3.7819e-05s [  0.0%] initialization
-   1.013e-06s [  0.0%] steps
-  0.00569482s [  3.5%] solver (excl. callbacks)
-   0.0175762s [ 10.7%] creating output-file
-           0s [  0.0%] event-handling
-  0.00683759s [  4.2%] overhead
-    0.133634s [ 81.1%] simulation
-    0.164947s [100.0%] total
+ 0.000730814s          reading init.xml
+  7.5886e-05s          reading info.xml
+ 0.000182214s [  1.7%] pre-initialization
+  4.5751e-05s [  0.4%] initialization
+   1.496e-06s [  0.0%] steps
+  0.00077133s [  7.3%] solver (excl. callbacks)
+  0.00125793s [ 11.9%] creating output-file
+-1.35525e-20s [ -0.0%] event-handling
+ 0.000337331s [  3.2%] overhead
+  0.00790969s [ 75.1%] simulation
+   0.0105378s [100.0%] total
 events
     0 state events
     0 time events
 solver: dassl
- 1188 steps taken
- 1533 calls of functionODE
-   63 evaluations of jacobian
-   26 error test failures
+  491 steps taken
+  576 calls of functionODE
+   29 evaluations of jacobian
+    6 error test failures
     0 convergence test failures
-7.37238e-05s time of jacobian evaluation
+4.76612e-05s time of jacobian evaluation
 The simulation finished successfully.

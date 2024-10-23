@@ -6,7 +6,7 @@ from pandas import read_csv
 from scipy.cluster.hierarchy import maxdists
 
 
-def testDc(dc, position_values):
+def CalibrateDc(dc, position_values):
     # Override variable
     simulationCommand='./Trolley_movement -override dc='+str(dc)
 
@@ -25,7 +25,46 @@ def testDc(dc, position_values):
 
     return squared_error
 
+def testDc(dc, position_values):
+    # Override variable
+    simulationCommand = './Trolley_movement -override dc=' + str(dc)
+
+    os.chdir('Assignment1.Trolley_movement')
+
+    os.system(simulationCommand)
+
+    # Obtain the variable values by reading the MAT-file
+    [names, simulated_data] = readMat('Trolley_movement_res.mat')
+
+    pyplot.plot(simulated_data[0], position_values, label="real")
+    pyplot.plot(simulated_data[0], simulated_data[2], label="simulated")
+    pyplot.xlabel('time')
+    pyplot.ylabel('displacement')
+    pyplot.legend()
+    pyplot.savefig('dc_displacement_error')
+
+    os.chdir('../')
+
 def testDp(dp, position_values):
+    # Override variable
+    simulationCommand = './Pendulum_swinging_motion -override dp=' + str(dp)
+
+    os.chdir('Assignment1.Pendulum_swinging_motion')
+
+    os.system(simulationCommand)
+
+    # Obtain the variable values by reading the MAT-file
+    [names, simulated_data] = readMat('Pendulum_swinging_motion_res.mat')
+    pyplot.plot(simulated_data[0], position_values, label="real")
+    pyplot.plot(simulated_data[0], simulated_data[1], label="simulated")
+    pyplot.xlabel('time')
+    pyplot.ylabel('angular displacement')
+    pyplot.legend()
+    pyplot.savefig('dp_displacement_error')
+
+    os.chdir('../')
+
+def CalibrateDp(dp, position_values):
     # Override variable
     simulationCommand='./Pendulum_swinging_motion -override dp='+str(dp)
 
@@ -134,6 +173,7 @@ def costSimulation():
                     bestDistTime = simulated_data[names.index('time')][i - 1]
                     break
             ttask = max(worstAngleTime, bestDistTime)
+
             print(worstAngleTime, ttask)
             cost = costFunction(thetaMax, ttask)
             if cost == math.inf:
@@ -203,25 +243,40 @@ def openDataPlot(xdata, ydata, xLabel, yLabel):
 
 # "function" that calls the single simulation function from shell. In your code, this function call should be in a loop ove the combinations of parameters.
 if __name__ == "__main__":
-    # real_positions = read_csv('calibration_data_d_c.csv', usecols=['index', 'value'])
+    real_positions_dc = read_csv('calibration_data_d_c.csv', usecols=['index', 'value'])['value'].values
+    real_positions_dp = read_csv('calibration_data_d_p.csv', usecols=['index', 'value'])['value'].values
+    #
+    # testDc(4.79, real_positions_dc)
+    # testDp(0.12, real_positions_dp)
+    #
     # dc_min = 0
     # result_min = math.inf
+    # dc_values = []
+    # error_values = []
     # for x in range(0,500):
     #     dc = x/100
-    #     test_result = testDc(dc, real_positions['value'].values)
+    #     test_result = CalibrateDc(dc, real_positions_dc)
+    #     dc_values.append(dc)
+    #     error_values.append(test_result)
     #     if test_result < result_min:
     #         result_min = test_result
     #         dc_min = dc
+    # openDataPlot(dc_values, error_values, 'damping factor for motion of cart', 'Sum of squared errors')
     #
-    # real_positions = read_csv('calibration_data_d_p.csv', usecols=['index', 'value'])
+    #
     # dp_min = 0
     # result_min = math.inf
+    # dp_values = []
+    # error_values = []
     # for x in range(0,500):
     #     dp = x/100
-    #     test_result = testDp(dp, real_positions['value'].values)
+    #     test_result = CalibrateDp(dp, real_positions_dp)
+    #     dp_values.append(dp)
+    #     error_values.append(test_result)
     #     if test_result < result_min:
     #         result_min = test_result
     #         dp_min = dp
+    # openDataPlot(dp_values, error_values, 'Damping factor swinging of pendulum', 'Sum of squared errors')
     #
     # print(dc_min)
     # print(dp_min)
@@ -261,6 +316,10 @@ if __name__ == "__main__":
                                     simulated_data2[names2.index('x')],
                                     simulated_data2[names2.index('gantry_system_block.theta')],
                                     simulated_data2[names2.index('gantry_system_block.v')])
+
+    # testPID(10,1,1)
+    # testPID(1, 10, 1)
+    # testPID(1, 1, 10)
 
     #costSimulation()
 

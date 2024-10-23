@@ -174,6 +174,6 @@ if __name__ == '__main__':
     #x = 2 * np.sin(0.5 * t)  # Example cart positions
     #theta = 0.2 * np.sin(2 * t)  # Example pendulum angles (in radians)
 
-    [values, data] = readMat("./Assignment1.PID_controller_block/PID_controller_block_res.mat")
+    [values, data] = readMat("./Assignment1.Gantry_system/Gantry_system_res.mat")
     # Call the animation function with sample data
-    animate_gantry_system(data[4], data[1], 1)
+    animate_gantry_system(data[4], data[1], 20)
