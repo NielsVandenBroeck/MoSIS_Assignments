@@ -44,8 +44,8 @@ def testDp(dp, position_values):
 
     return squared_error
 
-def plotDistanceAndAngle(time, distance, angle):
-        figure, (axis1, axis2) = pyplot.subplots(1, 2, figsize=(12, 6))
+def plotDistanceAndAngle(time, distance, angle, acceleration):
+        figure, (axis1, axis2, axis3) = pyplot.subplots(1, 3, figsize=(18, 6))
         axis1.plot(time, distance)
         axis1.plot(time, [10] * len(time))
         axis1.set_xlabel('time (seconds)')
@@ -56,9 +56,44 @@ def plotDistanceAndAngle(time, distance, angle):
         axis2.set_xlabel('time (seconds)')
         axis2.set_ylabel('theta (rad)')
         axis2.set_title('Plot of angle')
+
+        axis3.plot(time, acceleration)
+        axis3.set_xlabel('time (seconds)')
+        axis3.set_ylabel('acceleration (rad)')
+        axis3.set_title('Plot of acceleration')
         pyplot.show()
 
+
+def plotDistanceAndAngleComperision(time, distance0, angle0, acceleration0,distance1, angle1, acceleration1,distance2, angle2, acceleration2):
+    figure, (axis1, axis2, axis3) = pyplot.subplots(1, 3, figsize=(18, 6))
+    axis1.plot(time, distance0, label="value: 1")
+    axis1.plot(time, distance1, label="value: 2")
+    axis1.plot(time, distance2, label="value: 3")
+    axis1.plot(time, [20] * len(time))
+    axis1.set_xlabel('time (seconds)')
+    axis1.set_ylabel('x (meters)')
+    axis1.set_title('Plot of distance')
+    axis1.legend(loc="upper left")
+
+    axis2.plot(time, angle0, label="value: 1")
+    axis2.plot(time, angle1, label="value: 2")
+    axis2.plot(time, angle2, label="value: 3")
+    axis2.set_xlabel('time (seconds)')
+    axis2.set_ylabel('set point (rad)')
+    axis2.set_title('Plot of angle')
+    axis2.legend(loc="upper left")
+
+    axis3.plot(time, acceleration0, label="value: 1")
+    axis3.plot(time, acceleration1, label="value: 2")
+    axis3.plot(time, acceleration2, label="value: 3")
+    axis3.set_xlabel('time (seconds)')
+    axis3.set_ylabel('acceleration (rad)')
+    axis3.set_title('Plot of acceleration')
+    axis3.legend(loc="upper left")
+    pyplot.show()
+
 def testPID(kp, ki, kd, plot=True):
+    print(kp, ki, kd)
     simulationCommand = './PID_controller_block -override pID_block.kp=' + str(kp) + ',pID_block.ki=' + str(ki) + ',pID_block.kd=' + str(kd)
     os.chdir('Assignment1.PID_controller_block')
     os.system(simulationCommand)
@@ -66,7 +101,7 @@ def testPID(kp, ki, kd, plot=True):
     [names, simulated_data] = readMat('PID_controller_block_res.mat')
 
     if plot:
-        plotDistanceAndAngle(simulated_data[names.index('time')], simulated_data[names.index('x')], simulated_data[names.index('gantry_system_block.theta')])
+        plotDistanceAndAngle(simulated_data[names.index('time')], simulated_data[names.index('x')], simulated_data[names.index('gantry_system_block.theta')], simulated_data[names.index('gantry_system_block.v')])
 
     os.chdir('../')
 
@@ -190,13 +225,44 @@ if __name__ == "__main__":
     #
     # print(dc_min)
     # print(dp_min)
+    names0, simulated_data0 = testPID(1, 0, 0, False)
+    names1, simulated_data1 = testPID(2, 0, 0, False)
+    names2, simulated_data2 = testPID(3, 0, 0, False)
+    plotDistanceAndAngleComperision(simulated_data0[names0.index('time')], simulated_data0[names0.index('x')],
+                                    simulated_data0[names0.index('gantry_system_block.theta')],
+                                    simulated_data0[names0.index('gantry_system_block.v')],
+                                    simulated_data1[names1.index('x')],
+                                    simulated_data1[names1.index('gantry_system_block.theta')],
+                                    simulated_data1[names1.index('gantry_system_block.v')],
+                                    simulated_data2[names2.index('x')],
+                                    simulated_data2[names2.index('gantry_system_block.theta')],
+                                    simulated_data2[names2.index('gantry_system_block.v')])
+    names0, simulated_data0 = testPID(0, 1, 0, False)
+    names1, simulated_data1 = testPID(0, 2, 0, False)
+    names2, simulated_data2 = testPID(0, 3, 0, False)
+    plotDistanceAndAngleComperision(simulated_data0[names0.index('time')], simulated_data0[names0.index('x')],
+                                    simulated_data0[names0.index('gantry_system_block.theta')],
+                                    simulated_data0[names0.index('gantry_system_block.v')],
+                                    simulated_data1[names1.index('x')],
+                                    simulated_data1[names1.index('gantry_system_block.theta')],
+                                    simulated_data1[names1.index('gantry_system_block.v')],
+                                    simulated_data2[names2.index('x')],
+                                    simulated_data2[names2.index('gantry_system_block.theta')],
+                                    simulated_data2[names2.index('gantry_system_block.v')])
+    names0, simulated_data0 = testPID(0, 0, 1, False)
+    names1, simulated_data1 = testPID(0, 0, 2, False)
+    names2, simulated_data2 = testPID(0, 0, 3, False)
+    plotDistanceAndAngleComperision(simulated_data0[names0.index('time')], simulated_data0[names0.index('x')],
+                                    simulated_data0[names0.index('gantry_system_block.theta')],
+                                    simulated_data0[names0.index('gantry_system_block.v')],
+                                    simulated_data1[names1.index('x')],
+                                    simulated_data1[names1.index('gantry_system_block.theta')],
+                                    simulated_data1[names1.index('gantry_system_block.v')],
+                                    simulated_data2[names2.index('x')],
+                                    simulated_data2[names2.index('gantry_system_block.theta')],
+                                    simulated_data2[names2.index('gantry_system_block.v')])
 
-    # testPID(1,1,1)
-    # testPID(10,1,1)
-    # testPID(1, 10, 1)
-    # testPID(1, 1, 10)
-
-    costSimulation()
+    #costSimulation()
 
 
 

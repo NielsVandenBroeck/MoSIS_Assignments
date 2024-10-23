@@ -9,11 +9,11 @@
 
   OPENMODELICAHOME                    = "/usr/bin/.."
 
-  guid                                = "{2d3555e1-dc49-4ef0-bb3f-f039ae6ebb32}"
+  guid                                = "{0b331491-ce77-4b42-8aa9-fef9c472398d}"
 
   description                         = ""
   generationTool                      = "OpenModelica Compiler OpenModelica 1.24.0"
-  generationDateAndTime               = "2024-10-22T13:38:04Z"
+  generationDateAndTime               = "2024-10-23T21:45:44Z"
 
   variableNamingConvention            = "structured"
 
@@ -47,7 +47,7 @@
   <!-- startTime, stopTime, tolerance are FMI specific, all others are OMC specific -->
   <DefaultExperiment
     startTime      = "0"
-    stopTime       = "200"
+    stopTime       = "500"
     stepSize       = "0.004"
     tolerance      = "1e-06"
     solver        = "dassl"
@@ -563,7 +563,7 @@
     classIndex = "22" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
     fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Sources.mo" startLine = "165" startColumn = "5" endLine = "166" endColumn = "102" fileWritable = "true">
-    <Real start="10.0" fixed="true" useNominal="false" />
+    <Real start="20.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "setPoint.y"

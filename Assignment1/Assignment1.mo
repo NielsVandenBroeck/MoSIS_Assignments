@@ -84,7 +84,7 @@ package Assignment1
       Placement(transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {110, 0}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Math.Add add(k1 = +1, k2 = -1)  annotation(
       Placement(transformation(origin = {-50, 0}, extent = {{-10, -10}, {10, 10}})));
-  Modelica.Blocks.Sources.Constant setPoint(k = 10)  annotation(
+  Modelica.Blocks.Sources.Constant setPoint(k = 20)  annotation(
       Placement(transformation(origin = {-84, 6}, extent = {{-10, -10}, {10, 10}})));
   equation
     connect(x, add.u2) annotation(
