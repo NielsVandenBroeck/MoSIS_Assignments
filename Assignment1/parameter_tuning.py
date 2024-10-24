@@ -103,30 +103,30 @@ def plotDistanceAndAngle(time, distance, angle, acceleration):
         pyplot.show()
 
 
-def plotDistanceAndAngleComperision(time, distance0, angle0, acceleration0,distance1, angle1, acceleration1,distance2, angle2, acceleration2):
+def plotDistanceAndAngleComperision(k, time, distance0, angle0, acceleration0,distance1, angle1, acceleration1,distance2, angle2, acceleration2):
     figure, (axis1, axis2, axis3) = pyplot.subplots(1, 3, figsize=(18, 6))
-    axis1.plot(time, distance0, label="value: 1")
-    axis1.plot(time, distance1, label="value: 2")
-    axis1.plot(time, distance2, label="value: 3")
+    axis1.plot(time, distance0, label=f"{k} value: 1")
+    axis1.plot(time, distance1, label=f"{k} value: 10")
+    axis1.plot(time, distance2, label=f"{k} value: 50")
     axis1.plot(time, [20] * len(time))
     axis1.set_xlabel('time (seconds)')
     axis1.set_ylabel('x (meters)')
     axis1.set_title('Plot of distance')
     axis1.legend(loc="upper left")
 
-    axis2.plot(time, angle0, label="value: 1")
-    axis2.plot(time, angle1, label="value: 2")
-    axis2.plot(time, angle2, label="value: 3")
+    axis2.plot(time, angle0, label=f"{k} value: 1")
+    axis2.plot(time, angle1, label=f"{k} value: 10")
+    axis2.plot(time, angle2, label=f"{k} value: 50")
     axis2.set_xlabel('time (seconds)')
-    axis2.set_ylabel('set point (rad)')
+    axis2.set_ylabel('pendelum angle (graden)')
     axis2.set_title('Plot of angle')
     axis2.legend(loc="upper left")
 
-    axis3.plot(time, acceleration0, label="value: 1")
-    axis3.plot(time, acceleration1, label="value: 2")
-    axis3.plot(time, acceleration2, label="value: 3")
+    axis3.plot(time, acceleration0, label=f"{k} value: 1")
+    axis3.plot(time, acceleration1, label=f"{k} value: 10")
+    axis3.plot(time, acceleration2, label=f"{k} value: 50")
     axis3.set_xlabel('time (seconds)')
-    axis3.set_ylabel('acceleration (rad)')
+    axis3.set_ylabel('acceleration (m/s)')
     axis3.set_title('Plot of acceleration')
     axis3.legend(loc="upper left")
     pyplot.show()
@@ -241,6 +241,7 @@ def openDataPlot(xdata, ydata, xLabel, yLabel):
     pyplot.ylabel(yLabel)
     pyplot.show()
 
+
 # "function" that calls the single simulation function from shell. In your code, this function call should be in a loop ove the combinations of parameters.
 if __name__ == "__main__":
     real_positions_dc = read_csv('calibration_data_d_c.csv', usecols=['index', 'value'])['value'].values
@@ -280,44 +281,50 @@ if __name__ == "__main__":
     #
     # print(dc_min)
     # print(dp_min)
-    names0, simulated_data0 = testPID(1, 0, 0, False)
-    names1, simulated_data1 = testPID(2, 0, 0, False)
-    names2, simulated_data2 = testPID(3, 0, 0, False)
-    plotDistanceAndAngleComperision(simulated_data0[names0.index('time')], simulated_data0[names0.index('x')],
-                                    simulated_data0[names0.index('gantry_system_block.theta')],
-                                    simulated_data0[names0.index('gantry_system_block.v')],
-                                    simulated_data1[names1.index('x')],
-                                    simulated_data1[names1.index('gantry_system_block.theta')],
-                                    simulated_data1[names1.index('gantry_system_block.v')],
-                                    simulated_data2[names2.index('x')],
-                                    simulated_data2[names2.index('gantry_system_block.theta')],
-                                    simulated_data2[names2.index('gantry_system_block.v')])
-    names0, simulated_data0 = testPID(0, 1, 0, False)
-    names1, simulated_data1 = testPID(0, 2, 0, False)
-    names2, simulated_data2 = testPID(0, 3, 0, False)
-    plotDistanceAndAngleComperision(simulated_data0[names0.index('time')], simulated_data0[names0.index('x')],
-                                    simulated_data0[names0.index('gantry_system_block.theta')],
-                                    simulated_data0[names0.index('gantry_system_block.v')],
-                                    simulated_data1[names1.index('x')],
-                                    simulated_data1[names1.index('gantry_system_block.theta')],
-                                    simulated_data1[names1.index('gantry_system_block.v')],
-                                    simulated_data2[names2.index('x')],
-                                    simulated_data2[names2.index('gantry_system_block.theta')],
-                                    simulated_data2[names2.index('gantry_system_block.v')])
-    names0, simulated_data0 = testPID(0, 0, 1, False)
-    names1, simulated_data1 = testPID(0, 0, 2, False)
-    names2, simulated_data2 = testPID(0, 0, 3, False)
-    plotDistanceAndAngleComperision(simulated_data0[names0.index('time')], simulated_data0[names0.index('x')],
-                                    simulated_data0[names0.index('gantry_system_block.theta')],
-                                    simulated_data0[names0.index('gantry_system_block.v')],
-                                    simulated_data1[names1.index('x')],
-                                    simulated_data1[names1.index('gantry_system_block.theta')],
-                                    simulated_data1[names1.index('gantry_system_block.v')],
-                                    simulated_data2[names2.index('x')],
-                                    simulated_data2[names2.index('gantry_system_block.theta')],
-                                    simulated_data2[names2.index('gantry_system_block.v')])
-
-    # testPID(10,1,1)
+    # names0, simulated_data0 = testPID(1, 0, 0, False)
+    # names1, simulated_data1 = testPID(10, 0, 0, False)
+    # names2, simulated_data2 = testPID(50, 0, 0, False)
+    # plotDistanceAndAngleComperision("Kp", simulated_data0[names0.index('time')], simulated_data0[names0.index('x')],
+    #                                 [i * 180.0 / math.pi for i in simulated_data0[names0.index('gantry_system_block.theta')]],
+    #                                 simulated_data0[names0.index('gantry_system_block.v')],
+    #                                 simulated_data1[names1.index('x')],
+    #                                 [i * 180.0 / math.pi for i in simulated_data1[names1.index('gantry_system_block.theta')]],
+    #                                 simulated_data1[names1.index('gantry_system_block.v')],
+    #                                 simulated_data2[names2.index('x')],
+    #                                 [i * 180.0 / math.pi for i in simulated_data2[names2.index('gantry_system_block.theta')]],
+    #                                 simulated_data2[names2.index('gantry_system_block.v')])
+    # names0, simulated_data0 = testPID(0, 1, 0, False)
+    # names1, simulated_data1 = testPID(0, 10, 0, False)
+    # names2, simulated_data2 = testPID(0, 50, 0, False)
+    # plotDistanceAndAngleComperision("Ki", simulated_data0[names0.index('time')], simulated_data0[names0.index('x')],
+    #                                 [i * 180.0 / math.pi for i in
+    #                                  simulated_data0[names0.index('gantry_system_block.theta')]],
+    #                                 simulated_data0[names0.index('gantry_system_block.v')],
+    #                                 simulated_data1[names1.index('x')],
+    #                                 [i * 180.0 / math.pi for i in
+    #                                  simulated_data1[names1.index('gantry_system_block.theta')]],
+    #                                 simulated_data1[names1.index('gantry_system_block.v')],
+    #                                 simulated_data2[names2.index('x')],
+    #                                 [i * 180.0 / math.pi for i in
+    #                                  simulated_data2[names2.index('gantry_system_block.theta')]],
+    #                                 simulated_data2[names2.index('gantry_system_block.v')])
+    # names0, simulated_data0 = testPID(0, 0, 1, False)
+    # names1, simulated_data1 = testPID(0, 0, 10, False)
+    # names2, simulated_data2 = testPID(0, 0, 50, False)
+    # plotDistanceAndAngleComperision("Kd", simulated_data0[names0.index('time')], simulated_data0[names0.index('x')],
+    #                                 [i * 180.0 / math.pi for i in
+    #                                  simulated_data0[names0.index('gantry_system_block.theta')]],
+    #                                 simulated_data0[names0.index('gantry_system_block.v')],
+    #                                 simulated_data1[names1.index('x')],
+    #                                 [i * 180.0 / math.pi for i in
+    #                                  simulated_data1[names1.index('gantry_system_block.theta')]],
+    #                                 simulated_data1[names1.index('gantry_system_block.v')],
+    #                                 simulated_data2[names2.index('x')],
+    #                                 [i * 180.0 / math.pi for i in
+    #                                  simulated_data2[names2.index('gantry_system_block.theta')]],
+    #                                 simulated_data2[names2.index('gantry_system_block.v')])
+    names2, simulated_data2 = testPID(10, 0, 0, True)
+    # testPID(10, 1, 1)
     # testPID(1, 10, 1)
     # testPID(1, 1, 10)
 

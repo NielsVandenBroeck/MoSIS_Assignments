@@ -23,11 +23,11 @@ package Assignment1
     w = 0;
     
   equation  
-    if time < 0.5 then
-     u = 1000;
-    else 
-     u = 0;
-    end if;
+    //if time < 0.5 then
+    // u = 1000;
+//else
+// u = 0;
+//end if;
     der(x) = v;
     der(theta) = w;
     der(v) = (r*(dc*v - m*(g*sin(theta)*cos(theta) + r*sin(theta)*w^2) - u) - (dp*cos(theta)*w))/(-r*(M + m*(sin(theta))^2));
