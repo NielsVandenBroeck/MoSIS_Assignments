@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription fmiVersion="2.0" modelName="{{ model.model_name }}"
+	guid="{{ '{' + model.guid + '}' }}"
+	description="{{ model.description }}" generationTool="CBD2FMU">
+
+	{% if model.mode in [0b01, 0b11] %}
+	<ModelExchange modelIdentifier="{{ model.model_name }}">
+		<SourceFiles>
+			<File name="all.c"/>
+			<File name="lsolve.c"/>
+		</SourceFiles>
+	</ModelExchange>
+	{% endif %}
+	{% if model.mode in [0b10, 0b11] %}
+	<CoSimulation modelIdentifier="{{ model.model_name }}" canHandleVariableCommunicationStepSize="true">
+		<SourceFiles>
+			<File name="all.c"/>
+			<File name="lsolve.c"/>
+		</SourceFiles>
+	</CoSimulation>
+	{% endif %}
+
+	<!-- Unit definitions: Not required/used in CBD -->
+	<!-- Log categories: Not required/used in CBD -->
+
+	<DefaultExperiment startTime="{{ model.experiment.start }}"
+		stopTime="{{ model.experiment.end }}"
+		stepSize="{{ model.experiment.delta }}"
+		tolerance="{{ model.experiment.tolerance }}" />
+
+	<!-- Vendor Annotations: Not required/used in CBD -->
+
+	<ModelVariables>
+		{% for var in variables %}
+			{% if var.visible %}
+		<ScalarVariable name="{{ var.path }}" valueReference="{{ loop.index0 }}" {% if var.causality != "input" %}initial="{{ var.initial }}"{% endif %} 
+			causality="{{ var.causality }}" variability="{{ var.variability }}">
+			<Real {% if var.start is not none %}start="{{ var.start }}"{% endif %}{% if var.derivative %}derivative="{{ var.derivative }}"{% endif %}/>
+		</ScalarVariable>
+			{% endif %}
+		{% endfor %}
+	</ModelVariables>
+
+	<ModelStructure>
+		{% if outputs|length > 0 %}
+		<Outputs>
+			{% for var in outputs %}
+			<Unknown index="{{ var.index }}"/>
+			{% endfor %}
+		</Outputs>
+		{% endif %}
+		{% if derivatives|length > 0 %}
+		<Derivatives>
+			{% for var in derivatives %}
+			<Unknown index="{{ var.index }}"/>
+			{% endfor %}
+		</Derivatives>
+		{% endif %}
+		{% if initials|length > 0 %}
+		<InitialUnknowns>
+			{% for var in initials %}
+			<Unknown index="{{ var.index }}"/>
+			{% endfor %}
+		</InitialUnknowns>
+		{% endif %}
+	</ModelStructure>
+</fmiModelDescription>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiBuildDescription fmiVersion="3.0-beta.3">
+    <BuildConfiguration modelIdentifier="{{ model.model_name }}">
+		<SourceFileSet language="C99">
+			<SourceFile name="all.c"/>
+			<SourceFile name="lsolve.c"/>
+		</SourceFileSet>
+	</BuildConfiguration>
+</fmiBuildDescription>
