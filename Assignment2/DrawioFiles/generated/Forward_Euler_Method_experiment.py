@@ -1,16 +1,17 @@
 #!/usr/bin/python3
 # This file was automatically generated from drawio2cbd with the command:
-#   __main__.py -F CBD -e Clock_item -sSrgv -f UntitledDiagram2.drawio -E delta=0.1
+#   DrawioConvert/__main__.py -F CBD -e forward_euler_method -sSrgv ./DrawioFiles/Forward_Euler_Method.drawio -E delta=1 -d ./DrawioFiles/generated/ -f
 
-from UntitledDiagram2 import *
+from Forward_Euler_Method import *
 from pyCBD.simulator import Simulator
 
-DELTA_T = 0.1
+DELTA_T = 1
 
-cbd = Clock_item("Clock_item")
+cbd = forward_euler_method("forward_euler_method")
 
 # Run the Simulation
 sim = Simulator(cbd)
 sim.setDeltaT(DELTA_T)
 sim.run(10)
+
 # TODO: Process Your Simulation Results
