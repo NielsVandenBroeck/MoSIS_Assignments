@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 # This file was automatically generated from drawio2cbd with the command:
-#   DrawioConvert/__main__.py -F CBD -e g_function_2 -sSrgv ./DrawioFiles/g_Function_2.drawio -E delta=1 -d ./DrawioFiles/generated/ -f
+#   DrawioConvert/__main__.py -F CBD -e g_function -sSrgv ./DrawioFiles/PID_controller.drawio -E delta=1 -d ./DrawioFiles/generated/ -f
 
-from g_Function_2 import *
+from PID_controller import *
 from pyCBD.simulator import Simulator
 
 DELTA_T = 1
 
-cbd = g_function_2("g_function_2")
+cbd = g_function("g_function")
 
 # Run the Simulation
 sim = Simulator(cbd)

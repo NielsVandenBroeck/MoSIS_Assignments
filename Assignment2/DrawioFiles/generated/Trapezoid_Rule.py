@@ -9,7 +9,7 @@ DELTA_T = 1
 
 class trapezoid_rule(CBD):
     def __init__(self, block_name):
-        super().__init__(block_name, input_ports=['IC', 'IN1'], output_ports=['OUT1'])
+        super().__init__(block_name, input_ports=['IN1', 'IC'], output_ports=['OUT1'])
 
         # Create the Blocks
         self.addBlock(DeltaTBlock("RprQI59_ezlDkIdyMx8F-110"))
@@ -39,5 +39,6 @@ class trapezoid_rule(CBD):
         self.addConnection("RprQI59_ezlDkIdyMx8F-140", "RprQI59_ezlDkIdyMx8F-145", output_port_name='OUT1', input_port_name='IN1')
         self.addConnection("RprQI59_ezlDkIdyMx8F-145", "RprQI59_ezlDkIdyMx8F-140", output_port_name='OUT1', input_port_name='IN1')
         self.addConnection("R3X5Nj63ZyGEFfn1W_XN-1", "R3X5Nj63ZyGEFfn1W_XN-4", output_port_name='OUT1', input_port_name='IN1')
+        self.addConnection("R3X5Nj63ZyGEFfn1W_XN-4", "RprQI59_ezlDkIdyMx8F-145", output_port_name='OUT1', input_port_name='IC')
 
 

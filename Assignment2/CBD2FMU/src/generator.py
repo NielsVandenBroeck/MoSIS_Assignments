@@ -672,6 +672,7 @@ class Generator:
 if __name__ == '__main__':
 	from pyCBD.Core import *
 	from pyCBD.lib.std import *
+	from DrawioFiles.generated.PID_controller import *
 
 	class BouncingBall(CBD):
 		def __init__(self):
@@ -752,11 +753,11 @@ if __name__ == '__main__':
 			self.addConnection("mult", "double")
 
 
-	model = SinGen()
+	model = PID_controller("PID_controller")
 	model.flatten(psep="_")
 	# model = AddOneBlock("A1")
 
-	# gen = Generator(model, experiment=ExperimentSetup(end=4, delta=1e-3), hide=["*"], keep=["neg.OUT*"])
-	gen = Generator(model, experiment=ExperimentSetup(end=40, delta=0.001), fmu_version=2, hide=None)
+	gen = Generator(model, experiment=ExperimentSetup(end=4, delta=1e-3), hide=["*"], fmu_version=2)
+	#gen = Generator(model, experiment=ExperimentSetup(end=40, delta=0.001), fmu_version=2, hide=None, keep=["neg.OUT*"])
 	gen.generate_fmu()
 	gen.compile_fmu()
