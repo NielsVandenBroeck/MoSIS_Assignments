@@ -1,18 +1,18 @@
-/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block/PID_controller_block -port=34659 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.001,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block/PID_controller_block_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block -outputPath=/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block
+/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block/PID_controller_block -port=40523 -logFormat=xmltcp -override=startTime=0,stopTime=20,stepSize=0.001,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block/PID_controller_block_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block -outputPath=/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.PID_controller_block
 The initialization finished successfully without homotopy method.
 ### STATISTICS ###
 timer
- 0.000499751s          reading init.xml
-  5.5259e-05s          reading info.xml
- 0.000275153s [  1.0%] pre-initialization
-  3.5067e-05s [  0.1%] initialization
-   1.003e-06s [  0.0%] steps
-  0.00121332s [  4.6%] solver (excl. callbacks)
-  0.00311731s [ 11.7%] creating output-file
+  0.00049859s          reading init.xml
+  5.4751e-05s          reading info.xml
+ 0.000280828s [  1.1%] pre-initialization
+  3.3387e-05s [  0.1%] initialization
+   1.001e-06s [  0.0%] steps
+  0.00120795s [  4.5%] solver (excl. callbacks)
+  0.00307948s [ 11.6%] creating output-file
            0s [  0.0%] event-handling
-  0.00110578s [  4.2%] overhead
-   0.0207906s [ 78.1%] simulation
-   0.0266407s [100.0%] total
+  0.00106208s [  4.0%] overhead
+   0.0208933s [ 78.5%] simulation
+   0.0266496s [100.0%] total
 events
     0 state events
     0 time events
@@ -22,5 +22,5 @@ solver: dassl
    26 evaluations of jacobian
     8 error test failures
     0 convergence test failures
-3.02426e-05s time of jacobian evaluation
+3.0025e-05s time of jacobian evaluation
 The simulation finished successfully.
