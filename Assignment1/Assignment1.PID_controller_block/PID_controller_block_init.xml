@@ -9,11 +9,11 @@
 
   OPENMODELICAHOME                    = "/usr/bin/.."
 
-  guid                                = "{24c963fc-db28-4bfb-89d2-34fa9fd4f569}"
+  guid                                = "{d51e7f80-f2b3-4b6b-af90-481a80c92886}"
 
   description                         = ""
   generationTool                      = "OpenModelica Compiler OpenModelica 1.24.0"
-  generationDateAndTime               = "2024-10-24T11:50:43Z"
+  generationDateAndTime               = "2024-11-11T16:07:00Z"
 
   variableNamingConvention            = "structured"
 
@@ -28,7 +28,7 @@
 
   numberOfContinuousStates            = "6"  cmt_numberOfContinuousStates            = "NX:       number of states,                                   FMI"
   numberOfRealAlgebraicVariables      = "8"  cmt_numberOfRealAlgebraicVariables      = "NY:       number of real variables,                           OMC"
-  numberOfRealAlgebraicAliasVariables = "12"  cmt_numberOfRealAlgebraicAliasVariables = "NA:       number of alias variables,                          OMC"
+  numberOfRealAlgebraicAliasVariables = "13"  cmt_numberOfRealAlgebraicAliasVariables = "NA:       number of alias variables,                          OMC"
   numberOfRealParameters              = "24"  cmt_numberOfRealParameters              = "NP:       number of parameters,                               OMC"
 
   numberOfIntegerAlgebraicVariables   = "0"  cmt_numberOfIntegerAlgebraicVariables   = "NYINT:    number of alg. int variables,                       OMC"
@@ -47,8 +47,8 @@
   <!-- startTime, stopTime, tolerance are FMI specific, all others are OMC specific -->
   <DefaultExperiment
     startTime      = "0"
-    stopTime       = "10"
-    stepSize       = "4e-05"
+    stopTime       = "20"
+    stepSize       = "0.001"
     tolerance      = "1e-06"
     solver        = "dassl"
     outputFormat      = "mat"
@@ -66,7 +66,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "rSta"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "6" startColumn = "5" endLine = "6" endColumn = "108" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "6" startColumn = "5" endLine = "6" endColumn = "108" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="rad" displayUnit="deg" />
   </ScalarVariable>
   <ScalarVariable
@@ -78,7 +78,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "rSta"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "5" startColumn = "5" endLine = "5" endColumn = "81" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "5" startColumn = "5" endLine = "5" endColumn = "81" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="m/s" />
   </ScalarVariable>
   <ScalarVariable
@@ -90,7 +90,7 @@
     alias = "noAlias"
     classIndex = "2" classType = "rSta"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "7" startColumn = "5" endLine = "7" endColumn = "94" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "7" startColumn = "5" endLine = "7" endColumn = "94" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="rad/s" />
   </ScalarVariable>
   <ScalarVariable
@@ -102,7 +102,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "rSta"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "4" startColumn = "5" endLine = "4" endColumn = "81" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "4" startColumn = "5" endLine = "4" endColumn = "81" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="m" />
   </ScalarVariable>
   <ScalarVariable
@@ -138,7 +138,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "rDer"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "6" startColumn = "5" endLine = "6" endColumn = "108" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "6" startColumn = "5" endLine = "6" endColumn = "108" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="Hz" />
   </ScalarVariable>
   <ScalarVariable
@@ -150,7 +150,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "rDer"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "5" startColumn = "5" endLine = "5" endColumn = "81" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "5" startColumn = "5" endLine = "5" endColumn = "81" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="m.s-2" />
   </ScalarVariable>
   <ScalarVariable
@@ -162,7 +162,7 @@
     alias = "noAlias"
     classIndex = "2" classType = "rDer"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "7" startColumn = "5" endLine = "7" endColumn = "94" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "7" startColumn = "5" endLine = "7" endColumn = "94" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="s-2" />
   </ScalarVariable>
   <ScalarVariable
@@ -174,7 +174,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "rDer"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "4" startColumn = "5" endLine = "4" endColumn = "81" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "4" startColumn = "5" endLine = "4" endColumn = "81" fileWritable = "true">
     <Real fixed="false" useNominal="false" unit="m.s-1" />
   </ScalarVariable>
   <ScalarVariable
@@ -244,7 +244,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "8" startColumn = "5" endLine = "8" endColumn = "61" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "8" startColumn = "5" endLine = "8" endColumn = "61" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -290,7 +290,7 @@
     alias = "noAlias"
     classIndex = "7" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "91" startColumn = "3" endLine = "92" endColumn = "156" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "89" startColumn = "3" endLine = "90" endColumn = "156" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -338,7 +338,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "12" startColumn = "5" endLine = "12" endColumn = "83" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "11" startColumn = "5" endLine = "11" endColumn = "83" fileWritable = "true">
     <Real start="10.0" fixed="true" useNominal="false" min="0.0" unit="kg" />
   </ScalarVariable>
   <ScalarVariable
@@ -350,7 +350,7 @@
     alias = "noAlias"
     classIndex = "4" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "15" startColumn = "5" endLine = "15" endColumn = "102" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "14" startColumn = "5" endLine = "14" endColumn = "102" fileWritable = "true">
     <Real start="2.0" fixed="true" useNominal="false" unit="s-1" />
   </ScalarVariable>
   <ScalarVariable
@@ -362,7 +362,7 @@
     alias = "noAlias"
     classIndex = "5" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "14" startColumn = "5" endLine = "14" endColumn = "104" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "13" startColumn = "5" endLine = "13" endColumn = "104" fileWritable = "true">
     <Real start="0.5" fixed="true" useNominal="false" unit="s-1" />
   </ScalarVariable>
   <ScalarVariable
@@ -373,7 +373,7 @@
     alias = "noAlias"
     classIndex = "6" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "16" startColumn = "5" endLine = "16" endColumn = "72" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "15" startColumn = "5" endLine = "15" endColumn = "72" fileWritable = "true">
     <Real start="9.80665" fixed="true" useNominal="false" unit="m/s2" />
   </ScalarVariable>
   <ScalarVariable
@@ -385,7 +385,7 @@
     alias = "noAlias"
     classIndex = "7" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "11" startColumn = "5" endLine = "11" endColumn = "94" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "10" startColumn = "5" endLine = "10" endColumn = "94" fileWritable = "true">
     <Real start="0.2" fixed="true" useNominal="false" min="0.0" unit="kg" />
   </ScalarVariable>
   <ScalarVariable
@@ -397,7 +397,7 @@
     alias = "noAlias"
     classIndex = "8" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "13" startColumn = "5" endLine = "13" endColumn = "124" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "12" startColumn = "5" endLine = "12" endColumn = "124" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" unit="m" />
   </ScalarVariable>
   <ScalarVariable
@@ -516,7 +516,7 @@
     alias = "noAlias"
     classIndex = "18" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "113" startColumn = "3" endLine = "113" endColumn = "32" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "113" startColumn = "5" endLine = "113" endColumn = "34" fileWritable = "true">
     <Real start="10.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -527,8 +527,8 @@
     alias = "noAlias"
     classIndex = "19" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "114" startColumn = "3" endLine = "114" endColumn = "31" fileWritable = "true">
-    <Real start="0.0" fixed="true" useNominal="false" />
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "114" startColumn = "5" endLine = "114" endColumn = "33" fileWritable = "true">
+    <Real start="1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.kp"
@@ -538,7 +538,7 @@
     alias = "noAlias"
     classIndex = "20" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "112" startColumn = "3" endLine = "112" endColumn = "32" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "112" startColumn = "5" endLine = "112" endColumn = "34" fileWritable = "true">
     <Real start="26.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -563,7 +563,7 @@
     classIndex = "22" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
     fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Sources.mo" startLine = "165" startColumn = "5" endLine = "166" endColumn = "102" fileWritable = "true">
-    <Real start="20.0" fixed="true" useNominal="false" />
+    <Real start="10.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "setPoint.y"
@@ -597,129 +597,140 @@
     alias = "alias" aliasVariable="gantry_system_block.u" aliasVariableId="15"
     classIndex = "1" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "74" startColumn = "5" endLine = "75" endColumn = "159" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "71" startColumn = "5" endLine = "72" endColumn = "159" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "gantry_system_block.out_angular_disp"
+    valueReference = "1046"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="gantry_system_block.theta" aliasVariableId="0"
+    classIndex = "2" classType = "rAli"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "75" startColumn = "5" endLine = "76" endColumn = "158" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "gantry_system_block.output_con"
-    valueReference = "1046"
+    valueReference = "1047"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "alias" aliasVariable="gantry_system_block.x" aliasVariableId="3"
-    classIndex = "2" classType = "rAli"
+    classIndex = "3" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "76" startColumn = "3" endLine = "77" endColumn = "157" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "73" startColumn = "5" endLine = "74" endColumn = "159" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.add3.u1"
-    valueReference = "1047"
+    valueReference = "1048"
     description = "Connector of Real input signal 1"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "alias" aliasVariable="pID_block.p.y" aliasVariableId="18"
-    classIndex = "3" classType = "rAli"
+    classIndex = "4" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
     fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "924" startColumn = "5" endLine = "925" endColumn = "66" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.add3.u2"
-    valueReference = "1048"
+    valueReference = "1049"
     description = "Connector of Real input signal 2"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "alias" aliasVariable="pID_block.i.y" aliasVariableId="5"
-    classIndex = "4" classType = "rAli"
+    classIndex = "5" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
     fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "926" startColumn = "5" endLine = "927" endColumn = "66" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.add3.u3"
-    valueReference = "1049"
+    valueReference = "1050"
     description = "Connector of Real input signal 3"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "alias" aliasVariable="pID_block.d.y" aliasVariableId="16"
-    classIndex = "5" classType = "rAli"
+    classIndex = "6" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
     fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "928" startColumn = "5" endLine = "929" endColumn = "68" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.add3.y"
-    valueReference = "1050"
+    valueReference = "1051"
     description = "Connector of Real output signal"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "alias" aliasVariable="gantry_system_block.u" aliasVariableId="15"
-    classIndex = "6" classType = "rAli"
+    classIndex = "7" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
     fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "930" startColumn = "5" endLine = "931" endColumn = "64" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.d.u"
-    valueReference = "1051"
+    valueReference = "1052"
     description = "Connector of Real input signal"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "alias" aliasVariable="add.y" aliasVariableId="14"
-    classIndex = "7" classType = "rAli"
+    classIndex = "8" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
     fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "327" startColumn = "5" endLine = "328" endColumn = "58" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.e"
-    valueReference = "1052"
-    variability = "continuous" isDiscrete = "false"
-    causality = "local" isValueChangeable = "false"
-    alias = "alias" aliasVariable="add.y" aliasVariableId="14"
-    classIndex = "8" classType = "rAli"
-    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "115" startColumn = "3" endLine = "116" endColumn = "156" fileWritable = "true">
-    <Real fixed="false" useNominal="false" />
-  </ScalarVariable>
-  <ScalarVariable
-    name = "pID_block.i.u"
     valueReference = "1053"
-    description = "Connector of Real input signal"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "alias" aliasVariable="add.y" aliasVariableId="14"
     classIndex = "9" classType = "rAli"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "115" startColumn = "5" endLine = "116" endColumn = "158" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pID_block.i.u"
+    valueReference = "1054"
+    description = "Connector of Real input signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="add.y" aliasVariableId="14"
+    classIndex = "10" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
     fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "327" startColumn = "5" endLine = "328" endColumn = "58" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.p.u"
-    valueReference = "1054"
+    valueReference = "1055"
     description = "Input signal connector"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "alias" aliasVariable="add.y" aliasVariableId="14"
-    classIndex = "10" classType = "rAli"
+    classIndex = "11" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
     fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "546" startColumn = "5" endLine = "547" endColumn = "58" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.u"
-    valueReference = "1055"
+    valueReference = "1056"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "alias" aliasVariable="gantry_system_block.u" aliasVariableId="15"
-    classIndex = "11" classType = "rAli"
+    classIndex = "12" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "117" startColumn = "3" endLine = "118" endColumn = "154" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "117" startColumn = "5" endLine = "118" endColumn = "156" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.d.initType"
-    valueReference = "1056"
+    valueReference = "1057"
     description = "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)"
     variability = "parameter" isDiscrete = "true"
     causality = "calculatedParameter" isValueChangeable = "false"
@@ -731,7 +742,7 @@
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.i.initType"
-    valueReference = "1057"
+    valueReference = "1058"
     description = "Type of initialization (1: no init, 2: steady state, 3,4: initial output)"
     variability = "parameter" isDiscrete = "true"
     causality = "calculatedParameter" isValueChangeable = "false"
@@ -743,7 +754,7 @@
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.i.local_reset"
-    valueReference = "1058"
+    valueReference = "1059"
     variability = "discrete" isDiscrete = "true"
     causality = "local" isValueChangeable = "false"
     alias = "noAlias"
@@ -754,7 +765,7 @@
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.d.zeroGain"
-    valueReference = "1059"
+    valueReference = "1060"
     variability = "parameter" isDiscrete = "true"
     causality = "calculatedParameter" isValueChangeable = "false"
     alias = "noAlias"
@@ -765,7 +776,7 @@
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.i.use_reset"
-    valueReference = "1060"
+    valueReference = "1061"
     description = "= true, if reset port enabled"
     variability = "parameter" isDiscrete = "true"
     causality = "calculatedParameter" isValueChangeable = "false"
@@ -777,7 +788,7 @@
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.i.use_set"
-    valueReference = "1061"
+    valueReference = "1062"
     description = "= true, if set port enabled and used as reinitialization value when reset"
     variability = "parameter" isDiscrete = "true"
     causality = "calculatedParameter" isValueChangeable = "false"

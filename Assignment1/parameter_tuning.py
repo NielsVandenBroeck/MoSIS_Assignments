@@ -1,7 +1,11 @@
 import math
 import os
 from logging import warning
-
+from fmpy import simulate_fmu
+from fmpy.fmucontainer import create_fmu_container, Connection, Configuration, Component, Variable
+from fmpy.validation import validate_fmu
+from fmpy.util import compile_platform_binary
+from fmpy.model_description import DefaultExperiment
 from pandas import read_csv
 from scipy.cluster.hierarchy import maxdists
 
@@ -83,10 +87,72 @@ def CalibrateDp(dp, position_values):
 
     return squared_error
 
+def assignment2():
+    configuration = Configuration(
+		fmiVersion='2.0',
+		defaultExperiment=DefaultExperiment(
+			startTime='0',
+			stopTime='20',
+			tolerance='1e-7',
+			stepSize='0.001'
+		),
+		parallelDoStep=False,
+		variables = [
+			Variable(
+				type='Real',
+				initial='calculated',
+				variability='continuous',
+				causality='output',
+				name='x',
+				mapping=[('plant', 'output_con')]
+			),
+			Variable(
+				type='Real',
+				initial='calculated',
+				variability='continuous',
+				causality='output',
+				name='theta',
+				mapping=[('plant', 'out_angular_disp')]
+			)
+		],
+		components=[
+			Component(
+				filename='../../Assignment2/Co-simulation/Plant.fmu',
+				name='plant'
+			),
+			Component(
+				filename='../../Assignment2/Co-simulation/Controller.fmu',
+				name='pid'
+			)
+		],
+		connections=[
+			Connection('pid', 'PID_controller.OUT', 'plant', 'input_con'),
+			Connection('plant', 'output_con', 'pid', 'PID_controller.IN')
+		]
+	)
+
+    create_fmu_container(configuration, "Container.fmu")
+    problems = validate_fmu("Container.fmu")
+    if problems:
+        print("PROBLEMS ENCOUNTERED WITH COMBINED FMU:")
+        print(problems)
+        exit()
+
+    result = simulate_fmu("Container.fmu",
+						  #debug_logging=True,
+						  #fmi_call_logger=print,
+						  stop_time=20,
+						  output_interval=0.001)
+    return result
+
 def plotDistanceAndAngle(time, distance, angle, acceleration):
+        assignment2Results = assignment2()
+
+
         figure, (axis1, axis2, axis3) = pyplot.subplots(1, 3, figsize=(18, 6))
         axis1.plot(time, distance)
         axis1.plot(time, [10] * len(time))
+        axis1.plot([r[0] for r in assignment2Results], [r[1] for r in assignment2Results], label="x_err")
         axis1.set_xlabel('time (seconds)')
         axis1.set_ylabel('x (meters)')
         axis1.set_title('Plot of distance')
@@ -244,8 +310,8 @@ def openDataPlot(xdata, ydata, xLabel, yLabel):
 
 # "function" that calls the single simulation function from shell. In your code, this function call should be in a loop ove the combinations of parameters.
 if __name__ == "__main__":
-    real_positions_dc = read_csv('calibration_data_d_c.csv', usecols=['index', 'value'])['value'].values
-    real_positions_dp = read_csv('calibration_data_d_p.csv', usecols=['index', 'value'])['value'].values
+    #real_positions_dc = read_csv('calibration_data_d_c.csv', usecols=['index', 'value'])['value'].values
+    #real_positions_dp = read_csv('calibration_data_d_p.csv', usecols=['index', 'value'])['value'].values
     #
     # testDc(4.79, real_positions_dc)
     # testDp(0.12, real_positions_dp)
@@ -323,7 +389,7 @@ if __name__ == "__main__":
     #                                 [i * 180.0 / math.pi for i in
     #                                  simulated_data2[names2.index('gantry_system_block.theta')]],
     #                                 simulated_data2[names2.index('gantry_system_block.v')])
-    names2, simulated_data2 = testPID(10, 0, 0, True)
+    names2, simulated_data2 = testPID(26, 0, 10, True)
     # testPID(10, 1, 1)
     # testPID(1, 10, 1)
     # testPID(1, 1, 10)
