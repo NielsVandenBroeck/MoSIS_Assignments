@@ -9,7 +9,7 @@ DELTA_T = 1
 
 class backwards_euler_method(CBD):
     def __init__(self, block_name):
-        super().__init__(block_name, input_ports=['IN1', 'IC'], output_ports=['OUT1'])
+        super().__init__(block_name, input_ports=['IC', 'IN1'], output_ports=['OUT1'])
 
         # Create the Blocks
         self.addBlock(DelayBlock("VrSbkfLm2oYFl8fiRDUs-7"))
