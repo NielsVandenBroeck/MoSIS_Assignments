@@ -86,24 +86,24 @@ package Assignment1
     extends Modelica.Blocks.Icons.Block;
   Modelica.Blocks.Interfaces.RealOutput x annotation(
       Placement(transformation(origin = {90, 0}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {110, 0}, extent = {{-10, -10}, {10, 10}})));
-    Modelica.Blocks.Math.Add add(k1 = +1, k2 = -1) annotation(
-      Placement(transformation(origin = {-50, 0}, extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Sources.Constant setPoint(k = 10) annotation(
       Placement(transformation(origin = {-84, 6}, extent = {{-10, -10}, {10, 10}})));
   Gantry_system_block gantry_system_block annotation(
       Placement(transformation(origin = {50, 0}, extent = {{-10, -10}, {10, 10}})));
-  PID_block pID_block annotation(
+  PID_block pID_block(kp = 26, kd = 10, ki = 1)  annotation(
       Placement(transformation(extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Math.Add add(k1 = +1, k2 = -1) annotation(
+      Placement(transformation(origin = {-50, 0}, extent = {{-10, -10}, {10, 10}})));
   equation
-  connect( x, add.u2) annotation(
+    connect(pID_block.u, gantry_system_block.input_con) annotation(
+      Line(points = {{12, 0}, {38, 0}}, color = {0, 0, 127}));
+    connect(gantry_system_block.output_con, x) annotation(
+      Line(points = {{62, 0}, {90, 0}}, color = {0, 0, 127}));
+  connect(x, add.u2) annotation(
       Line(points = {{90, 0}, {68, 0}, {68, -20}, {-68, -20}, {-68, -6}, {-62, -6}}, color = {0, 0, 127}));
   connect(add.y, pID_block.e) annotation(
       Line(points = {{-38, 0}, {-9, 0}}, color = {0, 0, 127}));
-  connect(pID_block.u, gantry_system_block.input_con) annotation(
-      Line(points = {{12, 0}, {38, 0}}, color = {0, 0, 127}));
-  connect(gantry_system_block.output_con, x) annotation(
-      Line(points = {{62, 0}, {90, 0}}, color = {0, 0, 127}));
-    connect(setPoint.y, add.u1) annotation(
+  connect(setPoint.y, add.u1) annotation(
       Line(points = {{-72, 6}, {-62, 6}}, color = {0, 0, 127}));
   end PID_controller_block;
 
@@ -118,27 +118,43 @@ package Assignment1
       Placement(transformation(origin = {90, 0}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {110, 0}, extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Math.Add3 add3 annotation(
       Placement(transformation(origin = {60, 0}, extent = {{-10, -10}, {10, 10}})));
-    Modelica.Blocks.Continuous.Integrator i(k = ki) annotation(
-      Placement(transformation(extent = {{-10, -10}, {10, 10}})));
-    Modelica.Blocks.Continuous.Derivative d(k = kd) annotation(
-      Placement(transformation(origin = {0, -32}, extent = {{-10, -10}, {10, 10}})));
+    Modelica.Blocks.Continuous.Integrator i annotation(
+      Placement(transformation(origin = {-30, 4}, extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Math.Gain p(k = kp) annotation(
-      Placement(transformation(origin = {0, 30}, extent = {{-10, -10}, {10, 10}})));
+      Placement(transformation(origin = {-30, 34}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Sources.Constant const11(k = kd) annotation(
+      Placement(transformation(origin = {-30, -88}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Math.Product product1 annotation(
+      Placement(transformation(origin = {10, -12}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Sources.Constant const111(k = ki) annotation(
+      Placement(transformation(origin = {-30, -26}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Math.Product product11 annotation(
+      Placement(transformation(origin = {10, -72}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Continuous.Der der1 annotation(
+      Placement(transformation(origin = {-30, -58}, extent = {{-10, -10}, {10, 10}})));
   equation
     connect(add3.y, u) annotation(
       Line(points = {{71, 0}, {90, 0}}, color = {0, 0, 127}));
-    connect(i.y, add3.u2) annotation(
-      Line(points = {{11, 0}, {48, 0}}, color = {0, 0, 127}));
-    connect(d.y, add3.u3) annotation(
-      Line(points = {{11, -32}, {20, -32}, {20, -8}, {48, -8}}, color = {0, 0, 127}));
     connect(e, p.u) annotation(
-      Line(points = {{-90, 0}, {-20, 0}, {-20, 30}, {-12, 30}}, color = {0, 0, 127}));
-    connect(p.y, add3.u1) annotation(
-      Line(points = {{12, 30}, {20, 30}, {20, 8}, {48, 8}}, color = {0, 0, 127}));
+      Line(points = {{-90, 0}, {-66, 0}, {-66, 33.5}, {-42, 33.5}, {-42, 34}}, color = {0, 0, 127}));
     connect(e, i.u) annotation(
-      Line(points = {{-90, 0}, {-12, 0}}, color = {0, 0, 127}));
-    connect(e, d.u) annotation(
-      Line(points = {{-90, 0}, {-20, 0}, {-20, -32}, {-12, -32}}, color = {0, 0, 127}));
+      Line(points = {{-90, 0}, {-66, 0}, {-66, 4}, {-42, 4}}, color = {0, 0, 127}));
+    connect(product1.y, add3.u2) annotation(
+      Line(points = {{22, -12}, {33, -12}, {33, 0}, {48, 0}, {48, 0}}, color = {0, 0, 127}));
+    connect(p.y, add3.u1) annotation(
+      Line(points = {{-18, 34}, {48, 34}, {48, 8}}, color = {0, 0, 127}));
+    connect(i.y, product1.u1) annotation(
+      Line(points = {{-19, 4}, {-2, 4}, {-2, -6}}, color = {0, 0, 127}));
+    connect(const111.y, product1.u2) annotation(
+      Line(points = {{-19, -26}, {-2, -26}, {-2, -18}}, color = {0, 0, 127}));
+    connect(product11.y, add3.u3) annotation(
+      Line(points = {{22, -72}, {48, -72}, {48, -8}}, color = {0, 0, 127}));
+    connect(const11.y, product11.u2) annotation(
+      Line(points = {{-18, -88}, {-2, -88}, {-2, -78}}, color = {0, 0, 127}));
+  connect(der1.u, e) annotation(
+      Line(points = {{-42, -58}, {-90, -58}, {-90, 0}}, color = {0, 0, 127}));
+  connect(der1.y, product11.u1) annotation(
+      Line(points = {{-18, -58}, {-2, -58}, {-2, -66}}, color = {0, 0, 127}));
     annotation(
       Icon(graphics = {Text(origin = {-2, 4}, extent = {{67, -37}, {-67, 37}}, textString = "PID")}));
   end PID_block;

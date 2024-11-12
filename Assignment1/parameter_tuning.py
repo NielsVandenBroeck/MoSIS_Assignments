@@ -113,7 +113,15 @@ def assignment2():
 				causality='output',
 				name='theta',
 				mapping=[('plant', 'out_angular_disp')]
-			)
+			),
+            Variable(
+                type='Real',
+                initial='calculated',
+                variability='continuous',
+                causality='output',
+                name='pidoutval',
+                mapping=[('pid', 'PID_controller.OUT')]
+            )
 		],
 		components=[
 			Component(
@@ -145,13 +153,12 @@ def assignment2():
 						  output_interval=0.001)
     return result
 
-def plotDistanceAndAngle(time, distance, angle, acceleration):
+def plotDistanceAndAngle(time, distance, angle, pidvalue):
         assignment2Results = assignment2()
 
 
         figure, (axis1, axis2, axis3) = pyplot.subplots(1, 3, figsize=(18, 6))
         axis1.plot(time, distance)
-        axis1.plot(time, [10] * len(time))
         axis1.plot([r[0] for r in assignment2Results], [r[1] for r in assignment2Results], label="x_err")
         axis1.set_xlabel('time (seconds)')
         axis1.set_ylabel('x (meters)')
@@ -163,10 +170,9 @@ def plotDistanceAndAngle(time, distance, angle, acceleration):
         axis2.set_ylabel('theta (rad)')
         axis2.set_title('Plot of angle')
 
-        axis3.plot(time, acceleration)
-        axis3.set_xlabel('time (seconds)')
-        axis3.set_ylabel('acceleration (rad)')
-        axis3.set_title('Plot of acceleration')
+        axis3.plot(time, pidvalue)
+        axis3.plot([r[0] for r in assignment2Results], [r[3] for r in assignment2Results])
+        axis3.set_title('PID value')
         pyplot.show()
 
 
@@ -207,7 +213,8 @@ def testPID(kp, ki, kd, plot=True):
     [names, simulated_data] = readMat('PID_controller_block_res.mat')
 
     if plot:
-        plotDistanceAndAngle(simulated_data[names.index('time')], simulated_data[names.index('x')], simulated_data[names.index('gantry_system_block.theta')], simulated_data[names.index('gantry_system_block.v')])
+        print(names)
+        plotDistanceAndAngle(simulated_data[names.index('time')], simulated_data[names.index('x')], simulated_data[names.index('gantry_system_block.theta')], simulated_data[names.index('pID_block.u')])
 
     os.chdir('../')
 
@@ -390,7 +397,7 @@ if __name__ == "__main__":
     #                                 [i * 180.0 / math.pi for i in
     #                                  simulated_data2[names2.index('gantry_system_block.theta')]],
     #                                 simulated_data2[names2.index('gantry_system_block.v')])
-    names2, simulated_data2 = testPID(10, 0, 0, True)
+    names2, simulated_data2 = testPID(26, 1, 10, True)
     # testPID(10, 1, 1)
     # testPID(1, 10, 1)
     # testPID(1, 1, 10)

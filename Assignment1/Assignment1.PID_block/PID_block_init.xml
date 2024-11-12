@@ -9,11 +9,11 @@
 
   OPENMODELICAHOME                    = "/usr/bin/.."
 
-  guid                                = "{4f81dc5e-d28a-4a13-ada6-34c071fe7fe8}"
+  guid                                = "{9da42237-54c1-4d38-8fbc-c9321592ae53}"
 
   description                         = ""
   generationTool                      = "OpenModelica Compiler OpenModelica 1.24.0"
-  generationDateAndTime               = "2024-10-23T13:56:19Z"
+  generationDateAndTime               = "2024-11-12T15:06:34Z"
 
   variableNamingConvention            = "structured"
 
@@ -26,14 +26,14 @@
   numberOfExternalObjects             = "0"  cmt_numberOfExternalObjects             = "NEXT:     number of external objects,                         OMC"
   numberOfFunctions                   = "0"  cmt_numberOfFunctions                   = "NFUNC:    number of functions used by the simulation,         OMC"
 
-  numberOfContinuousStates            = "2"  cmt_numberOfContinuousStates            = "NX:       number of states,                                   FMI"
-  numberOfRealAlgebraicVariables      = "5"  cmt_numberOfRealAlgebraicVariables      = "NY:       number of real variables,                           OMC"
-  numberOfRealAlgebraicAliasVariables = "7"  cmt_numberOfRealAlgebraicAliasVariables = "NA:       number of alias variables,                          OMC"
-  numberOfRealParameters              = "13"  cmt_numberOfRealParameters              = "NP:       number of parameters,                               OMC"
+  numberOfContinuousStates            = "1"  cmt_numberOfContinuousStates            = "NX:       number of states,                                   FMI"
+  numberOfRealAlgebraicVariables      = "7"  cmt_numberOfRealAlgebraicVariables      = "NY:       number of real variables,                           OMC"
+  numberOfRealAlgebraicAliasVariables = "9"  cmt_numberOfRealAlgebraicAliasVariables = "NA:       number of alias variables,                          OMC"
+  numberOfRealParameters              = "15"  cmt_numberOfRealParameters              = "NP:       number of parameters,                               OMC"
 
   numberOfIntegerAlgebraicVariables   = "0"  cmt_numberOfIntegerAlgebraicVariables   = "NYINT:    number of alg. int variables,                       OMC"
   numberOfIntegerAliasVariables       = "0"  cmt_numberOfIntegerAliasVariables       = "NAINT:    number of alias int variables,                      OMC"
-  numberOfIntegerParameters           = "2"  cmt_numberOfIntegerParameters           = "NPINT:    number of int parameters,                           OMC"
+  numberOfIntegerParameters           = "1"  cmt_numberOfIntegerParameters           = "NPINT:    number of int parameters,                           OMC"
 
   numberOfStringAlgebraicVariables    = "0"  cmt_numberOfStringAlgebraicVariables    = "NYSTR:    number of alg. string variables,                    OMC"
   numberOfStringAliasVariables        = "0"  cmt_numberOfStringAliasVariables        = "NASTR:    number of alias string variables,                   OMC"
@@ -41,14 +41,14 @@
 
   numberOfBooleanAlgebraicVariables   = "1"  cmt_numberOfBooleanAlgebraicVariables   = "NYBOOL:   number of alg. bool variables,                      OMC"
   numberOfBooleanAliasVariables       = "0"  cmt_numberOfBooleanAliasVariables       = "NABOOL:   number of alias bool variables,                     OMC"
-  numberOfBooleanParameters           = "3"  cmt_numberOfBooleanParameters           = "NPBOOL:   number of bool parameters,                          OMC" >
+  numberOfBooleanParameters           = "2"  cmt_numberOfBooleanParameters           = "NPBOOL:   number of bool parameters,                          OMC" >
 
 
   <!-- startTime, stopTime, tolerance are FMI specific, all others are OMC specific -->
   <DefaultExperiment
     startTime      = "0"
     stopTime       = "20"
-    stepSize       = "0.004"
+    stepSize       = "0.002"
     tolerance      = "1e-06"
     solver        = "dassl"
     outputFormat      = "mat"
@@ -58,99 +58,99 @@
   <ModelVariables>
 
   <ScalarVariable
-    name = "d.x"
+    name = "i.y"
     valueReference = "1000"
-    description = "State of block"
+    description = "Connector of Real output signal"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "noAlias"
     classIndex = "0" classType = "rSta"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "282" startColumn = "5" endLine = "282" endColumn = "50" fileWritable = "true">
-    <Real fixed="true" useNominal="false" />
-  </ScalarVariable>
-  <ScalarVariable
-    name = "i.y"
-    valueReference = "1001"
-    description = "Connector of Real output signal"
-    variability = "continuous" isDiscrete = "false"
-    causality = "local" isValueChangeable = "false"
-    alias = "noAlias"
-    classIndex = "1" classType = "rSta"
-    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "329" startColumn = "5" endLine = "330" endColumn = "56" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "329" startColumn = "5" endLine = "330" endColumn = "56" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
-    name = "der(d.x)"
-    valueReference = "1002"
-    description = "der(State of block)"
+    name = "der(i.y)"
+    valueReference = "1001"
+    description = "der(Connector of Real output signal)"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "noAlias"
     classIndex = "0" classType = "rDer"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "282" startColumn = "5" endLine = "282" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "329" startColumn = "5" endLine = "330" endColumn = "56" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
-    name = "der(i.y)"
-    valueReference = "1003"
-    description = "der(Connector of Real output signal)"
-    variability = "continuous" isDiscrete = "false"
-    causality = "local" isValueChangeable = "false"
-    alias = "noAlias"
-    classIndex = "1" classType = "rDer"
-    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "329" startColumn = "5" endLine = "330" endColumn = "56" fileWritable = "true">
-    <Real fixed="false" useNominal="false" />
-  </ScalarVariable>
-  <ScalarVariable
-    name = "d.y"
-    valueReference = "1004"
+    name = "der1.y"
+    valueReference = "1002"
     description = "Connector of Real output signal"
     variability = "continuous" isDiscrete = "false"
-    causality = "local" isValueChangeable = "false"
+    causality = "local" isValueChangeable = "true"
     alias = "noAlias"
     classIndex = "0" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "329" startColumn = "5" endLine = "330" endColumn = "56" fileWritable = "true">
-    <Real fixed="false" useNominal="false" />
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "329" startColumn = "5" endLine = "330" endColumn = "56" fileWritable = "true">
+    <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "e"
-    valueReference = "1005"
+    valueReference = "1003"
     variability = "continuous" isDiscrete = "false"
     causality = "input" isValueChangeable = "true"
     inputIndex = "0"
     alias = "noAlias"
     classIndex = "1" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "110" startColumn = "3" endLine = "111" endColumn = "156" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "115" startColumn = "5" endLine = "116" endColumn = "158" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "i.local_set"
-    valueReference = "1006"
+    valueReference = "1004"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "noAlias"
     classIndex = "2" classType = "rAlg"
     isProtected = "true" hideResult = "true" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "37" startColumn = "5" endLine = "37" endColumn = "80" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "37" startColumn = "5" endLine = "37" endColumn = "80" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "p.y"
-    valueReference = "1007"
+    valueReference = "1005"
     description = "Output signal connector"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "noAlias"
     classIndex = "3" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "548" startColumn = "5" endLine = "549" endColumn = "56" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "548" startColumn = "5" endLine = "549" endColumn = "56" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "product1.y"
+    valueReference = "1006"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "4" classType = "rAlg"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "346" startColumn = "5" endLine = "347" endColumn = "56" fileWritable = "true">
+    <Real start="0.0" fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "product11.y"
+    valueReference = "1007"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "5" classType = "rAlg"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "346" startColumn = "5" endLine = "347" endColumn = "56" fileWritable = "true">
+    <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "u"
@@ -158,9 +158,9 @@
     variability = "continuous" isDiscrete = "false"
     causality = "output" isValueChangeable = "false"
     alias = "noAlias"
-    classIndex = "4" classType = "rAlg"
+    classIndex = "6" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "112" startColumn = "3" endLine = "113" endColumn = "154" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "117" startColumn = "5" endLine = "118" endColumn = "156" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -172,7 +172,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "921" startColumn = "5" endLine = "921" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "921" startColumn = "5" endLine = "921" endColumn = "50" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -184,7 +184,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "922" startColumn = "5" endLine = "922" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "922" startColumn = "5" endLine = "922" endColumn = "50" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -196,68 +196,68 @@
     alias = "noAlias"
     classIndex = "2" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "923" startColumn = "5" endLine = "923" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "923" startColumn = "5" endLine = "923" endColumn = "50" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
-    name = "d.T"
+    name = "const11.k"
     valueReference = "1012"
-    description = "Time constants (T&gt;0 required; T=0 is ideal derivative block)"
+    description = "Constant output value"
     variability = "parameter" isDiscrete = "true"
-    causality = "parameter" isValueChangeable = "true"
+    causality = "calculatedParameter" isValueChangeable = "false"
     alias = "noAlias"
     classIndex = "3" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "269" startColumn = "5" endLine = "270" endColumn = "69" fileWritable = "true">
-    <Real start="0.01" fixed="true" useNominal="false" min="1e-60" unit="s" />
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Sources.mo" startLine = "165" startColumn = "5" endLine = "166" endColumn = "102" fileWritable = "true">
+    <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
-    name = "d.k"
+    name = "const11.y"
     valueReference = "1013"
-    description = "Gains"
+    description = "Connector of Real output signal"
     variability = "parameter" isDiscrete = "true"
     causality = "calculatedParameter" isValueChangeable = "false"
     alias = "noAlias"
     classIndex = "4" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "268" startColumn = "5" endLine = "268" endColumn = "41" fileWritable = "true">
-    <Real fixed="true" useNominal="false" unit="1" />
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "300" startColumn = "5" endLine = "301" endColumn = "56" fileWritable = "true">
+    <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
-    name = "d.x_start"
+    name = "const111.k"
     valueReference = "1014"
-    description = "Initial or guess value of state"
+    description = "Constant output value"
     variability = "parameter" isDiscrete = "true"
-    causality = "parameter" isValueChangeable = "true"
+    causality = "calculatedParameter" isValueChangeable = "false"
     alias = "noAlias"
     classIndex = "5" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "275" startColumn = "5" endLine = "276" endColumn = "50" fileWritable = "true">
-    <Real start="0.0" fixed="true" useNominal="false" />
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Sources.mo" startLine = "165" startColumn = "5" endLine = "166" endColumn = "102" fileWritable = "true">
+    <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
-    name = "d.y_start"
+    name = "const111.y"
     valueReference = "1015"
-    description = "Initial value of output (= state)"
+    description = "Connector of Real output signal"
     variability = "parameter" isDiscrete = "true"
-    causality = "parameter" isValueChangeable = "true"
+    causality = "calculatedParameter" isValueChangeable = "false"
     alias = "noAlias"
     classIndex = "6" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "277" startColumn = "5" endLine = "279" endColumn = "31" fileWritable = "true">
-    <Real start="0.0" fixed="true" useNominal="false" />
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "300" startColumn = "5" endLine = "301" endColumn = "56" fileWritable = "true">
+    <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "i.k"
     valueReference = "1016"
     description = "Integrator gain"
     variability = "parameter" isDiscrete = "true"
-    causality = "calculatedParameter" isValueChangeable = "false"
+    causality = "parameter" isValueChangeable = "true"
     alias = "noAlias"
     classIndex = "7" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "10" startColumn = "5" endLine = "10" endColumn = "51" fileWritable = "true">
-    <Real fixed="true" useNominal="false" unit="1" />
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "10" startColumn = "5" endLine = "10" endColumn = "51" fileWritable = "true">
+    <Real start="1.0" fixed="true" useNominal="false" unit="1" />
   </ScalarVariable>
   <ScalarVariable
     name = "i.y_start"
@@ -268,7 +268,7 @@
     alias = "noAlias"
     classIndex = "8" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "22" startColumn = "5" endLine = "23" endColumn = "50" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "22" startColumn = "5" endLine = "23" endColumn = "50" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -279,7 +279,7 @@
     alias = "noAlias"
     classIndex = "9" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "108" startColumn = "3" endLine = "108" endColumn = "32" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "113" startColumn = "5" endLine = "113" endColumn = "34" fileWritable = "true">
     <Real start="10.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -290,7 +290,7 @@
     alias = "noAlias"
     classIndex = "10" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "109" startColumn = "3" endLine = "109" endColumn = "31" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "114" startColumn = "5" endLine = "114" endColumn = "33" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -301,7 +301,7 @@
     alias = "noAlias"
     classIndex = "11" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/School/MoSIS/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "107" startColumn = "3" endLine = "107" endColumn = "32" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "112" startColumn = "5" endLine = "112" endColumn = "34" fileWritable = "true">
     <Real start="26.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -313,161 +313,186 @@
     alias = "noAlias"
     classIndex = "12" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "543" startColumn = "5" endLine = "544" endColumn = "48" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "543" startColumn = "5" endLine = "544" endColumn = "48" fileWritable = "true">
     <Real fixed="true" useNominal="false" unit="1" />
   </ScalarVariable>
   <ScalarVariable
-    name = "add3.u1"
+    name = "product1.u2"
     valueReference = "1022"
+    description = "Connector of Real input signal 2"
+    variability = "parameter" isDiscrete = "true"
+    causality = "calculatedParameter" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "13" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "344" startColumn = "5" endLine = "345" endColumn = "59" fileWritable = "true">
+    <Real fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "product11.u2"
+    valueReference = "1023"
+    description = "Connector of Real input signal 2"
+    variability = "parameter" isDiscrete = "true"
+    causality = "calculatedParameter" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "14" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "344" startColumn = "5" endLine = "345" endColumn = "59" fileWritable = "true">
+    <Real fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add3.u1"
+    valueReference = "1024"
     description = "Connector of Real input signal 1"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
-    alias = "alias" aliasVariable="p.y" aliasVariableId="7"
+    alias = "alias" aliasVariable="p.y" aliasVariableId="5"
     classIndex = "0" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "924" startColumn = "5" endLine = "925" endColumn = "66" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "924" startColumn = "5" endLine = "925" endColumn = "66" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "add3.u2"
-    valueReference = "1023"
+    valueReference = "1025"
     description = "Connector of Real input signal 2"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
-    alias = "alias" aliasVariable="i.y" aliasVariableId="1"
+    alias = "alias" aliasVariable="product1.y" aliasVariableId="6"
     classIndex = "1" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "926" startColumn = "5" endLine = "927" endColumn = "66" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "926" startColumn = "5" endLine = "927" endColumn = "66" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "add3.u3"
-    valueReference = "1024"
+    valueReference = "1026"
     description = "Connector of Real input signal 3"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
-    alias = "alias" aliasVariable="d.y" aliasVariableId="4"
+    alias = "alias" aliasVariable="product11.y" aliasVariableId="7"
     classIndex = "2" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "928" startColumn = "5" endLine = "929" endColumn = "68" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "928" startColumn = "5" endLine = "929" endColumn = "68" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "add3.y"
-    valueReference = "1025"
+    valueReference = "1027"
     description = "Connector of Real output signal"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
     alias = "alias" aliasVariable="u" aliasVariableId="8"
     classIndex = "3" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "930" startColumn = "5" endLine = "931" endColumn = "64" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "930" startColumn = "5" endLine = "931" endColumn = "64" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
-    name = "d.u"
-    valueReference = "1026"
+    name = "der1.u"
+    valueReference = "1028"
     description = "Connector of Real input signal"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
-    alias = "alias" aliasVariable="e" aliasVariableId="5"
+    alias = "alias" aliasVariable="e" aliasVariableId="3"
     classIndex = "4" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "327" startColumn = "5" endLine = "328" endColumn = "58" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "327" startColumn = "5" endLine = "328" endColumn = "58" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "i.u"
-    valueReference = "1027"
+    valueReference = "1029"
     description = "Connector of Real input signal"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
-    alias = "alias" aliasVariable="e" aliasVariableId="5"
+    alias = "alias" aliasVariable="e" aliasVariableId="3"
     classIndex = "5" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "327" startColumn = "5" endLine = "328" endColumn = "58" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "327" startColumn = "5" endLine = "328" endColumn = "58" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "p.u"
-    valueReference = "1028"
+    valueReference = "1030"
     description = "Input signal connector"
     variability = "continuous" isDiscrete = "false"
     causality = "local" isValueChangeable = "false"
-    alias = "alias" aliasVariable="e" aliasVariableId="5"
+    alias = "alias" aliasVariable="e" aliasVariableId="3"
     classIndex = "6" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "546" startColumn = "5" endLine = "547" endColumn = "58" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "546" startColumn = "5" endLine = "547" endColumn = "58" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
-    name = "d.initType"
-    valueReference = "1029"
-    description = "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)"
+    name = "product1.u1"
+    valueReference = "1031"
+    description = "Connector of Real input signal 1"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="i.y" aliasVariableId="0"
+    classIndex = "7" classType = "rAli"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "342" startColumn = "5" endLine = "343" endColumn = "57" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "product11.u1"
+    valueReference = "1032"
+    description = "Connector of Real input signal 1"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="der1.y" aliasVariableId="2"
+    classIndex = "8" classType = "rAli"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "342" startColumn = "5" endLine = "343" endColumn = "57" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "i.initType"
+    valueReference = "1033"
+    description = "Type of initialization (1: no init, 2: steady state, 3,4: initial output)"
     variability = "parameter" isDiscrete = "true"
     causality = "calculatedParameter" isValueChangeable = "false"
     alias = "noAlias"
     classIndex = "0" classType = "iPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "271" startColumn = "5" endLine = "274" endColumn = "40" fileWritable = "true">
-    <Integer start="1" fixed="true" />
-  </ScalarVariable>
-  <ScalarVariable
-    name = "i.initType"
-    valueReference = "1030"
-    description = "Type of initialization (1: no init, 2: steady state, 3,4: initial output)"
-    variability = "parameter" isDiscrete = "true"
-    causality = "calculatedParameter" isValueChangeable = "false"
-    alias = "noAlias"
-    classIndex = "1" classType = "iPar"
-    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "19" startColumn = "5" endLine = "21" endColumn = "40" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "19" startColumn = "5" endLine = "21" endColumn = "40" fileWritable = "true">
     <Integer start="3" fixed="true" />
   </ScalarVariable>
   <ScalarVariable
     name = "i.local_reset"
-    valueReference = "1031"
+    valueReference = "1034"
     variability = "discrete" isDiscrete = "true"
     causality = "local" isValueChangeable = "false"
     alias = "noAlias"
     classIndex = "0" classType = "bAlg"
     isProtected = "true" hideResult = "true" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "36" startColumn = "5" endLine = "36" endColumn = "85" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "36" startColumn = "5" endLine = "36" endColumn = "85" fileWritable = "true">
     <Boolean fixed="true" />
   </ScalarVariable>
   <ScalarVariable
-    name = "d.zeroGain"
-    valueReference = "1032"
+    name = "i.use_reset"
+    valueReference = "1035"
+    description = "= true, if reset port enabled"
     variability = "parameter" isDiscrete = "true"
     causality = "calculatedParameter" isValueChangeable = "false"
     alias = "noAlias"
     classIndex = "0" classType = "bPar"
-    isProtected = "true" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "285" startColumn = "5" endLine = "285" endColumn = "65" fileWritable = "true">
+    isProtected = "false" hideResult = "true" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "11" startColumn = "5" endLine = "12" endColumn = "73" fileWritable = "true">
     <Boolean start="false" fixed="true" />
   </ScalarVariable>
   <ScalarVariable
-    name = "i.use_reset"
-    valueReference = "1033"
-    description = "= true, if reset port enabled"
+    name = "i.use_set"
+    valueReference = "1036"
+    description = "= true, if set port enabled and used as reinitialization value when reset"
     variability = "parameter" isDiscrete = "true"
     causality = "calculatedParameter" isValueChangeable = "false"
     alias = "noAlias"
     classIndex = "1" classType = "bPar"
     isProtected = "false" hideResult = "true" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "11" startColumn = "5" endLine = "12" endColumn = "73" fileWritable = "true">
-    <Boolean start="false" fixed="true" />
-  </ScalarVariable>
-  <ScalarVariable
-    name = "i.use_set"
-    valueReference = "1034"
-    description = "= true, if set port enabled and used as reinitialization value when reset"
-    variability = "parameter" isDiscrete = "true"
-    causality = "calculatedParameter" isValueChangeable = "false"
-    alias = "noAlias"
-    classIndex = "2" classType = "bPar"
-    isProtected = "false" hideResult = "true" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/nielsvandenbroeck/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "13" startColumn = "5" endLine = "14" endColumn = "99" fileWritable = "true">
+    fileName = "/home/steen/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Continuous.mo" startLine = "13" startColumn = "5" endLine = "14" endColumn = "99" fileWritable = "true">
     <Boolean start="false" fixed="true" />
   </ScalarVariable>
 
