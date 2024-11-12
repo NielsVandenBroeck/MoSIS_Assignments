@@ -84,8 +84,6 @@ package Assignment1
 
   block PID_controller_block
     extends Modelica.Blocks.Icons.Block;
-    PID_block pID_block(kp = 26, kd = 10, ki = 1)  annotation(
-      Placement(transformation(extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Interfaces.RealOutput x annotation(
       Placement(transformation(origin = {90, 0}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {110, 0}, extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Math.Add add(k1 = +1, k2 = -1) annotation(
@@ -94,10 +92,12 @@ package Assignment1
       Placement(transformation(origin = {-84, 6}, extent = {{-10, -10}, {10, 10}})));
   Gantry_system_block gantry_system_block annotation(
       Placement(transformation(origin = {50, 0}, extent = {{-10, -10}, {10, 10}})));
+  PID_block pID_block annotation(
+      Placement(transformation(extent = {{-10, -10}, {10, 10}})));
   equation
   connect( x, add.u2) annotation(
       Line(points = {{90, 0}, {68, 0}, {68, -20}, {-68, -20}, {-68, -6}, {-62, -6}}, color = {0, 0, 127}));
-    connect(add.y, pID_block.e) annotation(
+  connect(add.y, pID_block.e) annotation(
       Line(points = {{-38, 0}, {-9, 0}}, color = {0, 0, 127}));
   connect(pID_block.u, gantry_system_block.input_con) annotation(
       Line(points = {{12, 0}, {38, 0}}, color = {0, 0, 127}));

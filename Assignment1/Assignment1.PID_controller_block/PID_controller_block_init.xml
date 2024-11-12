@@ -9,11 +9,11 @@
 
   OPENMODELICAHOME                    = "/usr/bin/.."
 
-  guid                                = "{defca114-ab0c-4ddc-b8af-dca3cfb23a52}"
+  guid                                = "{71052e27-5f51-4bb4-ba64-d70e45d6c6fc}"
 
   description                         = ""
   generationTool                      = "OpenModelica Compiler OpenModelica 1.24.0"
-  generationDateAndTime               = "2024-11-11T16:35:34Z"
+  generationDateAndTime               = "2024-11-12T13:54:56Z"
 
   variableNamingConvention            = "structured"
 
@@ -290,7 +290,7 @@
     alias = "noAlias"
     classIndex = "7" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "89" startColumn = "3" endLine = "90" endColumn = "156" fileWritable = "true">
+    fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "87" startColumn = "3" endLine = "88" endColumn = "156" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -528,7 +528,7 @@
     classIndex = "19" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
     fileName = "/home/steen/Documents/Local projects/MoSIS_Assignments/Assignment1/Assignment1.mo" startLine = "114" startColumn = "5" endLine = "114" endColumn = "33" fileWritable = "true">
-    <Real start="1.0" fixed="true" useNominal="false" />
+    <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
     name = "pID_block.kp"

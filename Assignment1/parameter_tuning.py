@@ -158,6 +158,7 @@ def plotDistanceAndAngle(time, distance, angle, acceleration):
         axis1.set_title('Plot of distance')
 
         axis2.plot(time, angle)
+        axis2.plot([r[0] for r in assignment2Results], [r[2] for r in assignment2Results], label="x_err")
         axis2.set_xlabel('time (seconds)')
         axis2.set_ylabel('theta (rad)')
         axis2.set_title('Plot of angle')
@@ -389,7 +390,7 @@ if __name__ == "__main__":
     #                                 [i * 180.0 / math.pi for i in
     #                                  simulated_data2[names2.index('gantry_system_block.theta')]],
     #                                 simulated_data2[names2.index('gantry_system_block.v')])
-    names2, simulated_data2 = testPID(26, 1, 10, True)
+    names2, simulated_data2 = testPID(10, 0, 0, True)
     # testPID(10, 1, 1)
     # testPID(1, 10, 1)
     # testPID(1, 1, 10)

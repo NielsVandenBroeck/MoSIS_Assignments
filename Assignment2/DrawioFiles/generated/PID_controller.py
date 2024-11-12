@@ -12,9 +12,9 @@ class PID_controller(CBD):
         super().__init__(block_name, input_ports=['IN'], output_ports=['OUT'])
 
         # Create the Blocks
-        self.addBlock(ConstantBlock("xFvxAx3d5TRpq_XM0aEQ-93", value=(26)))
-        self.addBlock(ConstantBlock("xFvxAx3d5TRpq_XM0aEQ-95", value=(1)))
-        self.addBlock(ConstantBlock("xFvxAx3d5TRpq_XM0aEQ-97", value=(10)))
+        self.addBlock(ConstantBlock("xFvxAx3d5TRpq_XM0aEQ-93", value=(10)))
+        self.addBlock(ConstantBlock("xFvxAx3d5TRpq_XM0aEQ-95", value=(0)))
+        self.addBlock(ConstantBlock("xFvxAx3d5TRpq_XM0aEQ-97", value=(0)))
         self.addBlock(ConstantBlock("xFvxAx3d5TRpq_XM0aEQ-105", value=(10)))
         self.addBlock(NegatorBlock("xFvxAx3d5TRpq_XM0aEQ-108"))
         self.addBlock(AdderBlock("xFvxAx3d5TRpq_XM0aEQ-111", numberOfInputs=(2)))
