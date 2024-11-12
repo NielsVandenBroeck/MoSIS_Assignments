@@ -1,0 +1,190 @@
+#include "lsolve.h"
+#include "version.h"
+#include "model.h"
+#include <stdio.h>
+#include <math.h>
+
+void initialEquations(CBD* cbd) {
+	Real delta = 0.0001;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_93_OUT1 = 26;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_95_OUT1 = 1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_97_OUT1 = 10;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_105_OUT1 = 10;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_108_IN1 = _PID_controller_IN;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_108_OUT1 = (-_PID_controller_xFvxAx3d5TRpq_XM0aEQ_108_IN1);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_105_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_108_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_IN1 + _PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_129_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_129_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_93_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_129_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_129_IN1 * _PID_controller_xFvxAx3d5TRpq_XM0aEQ_129_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_zero_OUT1 = 0;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayIn_IC = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_zero_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayIn_OUT1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayIn_IC;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayIn_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delta_t_OUT1 = delta;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_multDelta_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delta_t_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_multDelta_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayIn_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_multDelta_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_multDelta_IN1 * _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_multDelta_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_158_OUT1 = 0;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayState_IC = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_158_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayState_OUT1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayState_IC;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayState_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayState_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_multDelta_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_IN1 + _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_135_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_135_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_95_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_135_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_135_IN1 * _PID_controller_xFvxAx3d5TRpq_XM0aEQ_135_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_121_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_135_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_121_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_129_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_121_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_121_IN1 + _PID_controller_xFvxAx3d5TRpq_XM0aEQ_121_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delta_t_OUT1 = delta;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_multIc_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delta_t_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_multIc_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_158_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_multIc_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_multIc_IN1 * _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_multIc_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg1_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_multIc_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg1_OUT1 = (-_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg1_IN1);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum1_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum1_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg1_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum1_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum1_IN1 + _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum1_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delay_IC = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum1_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delay_OUT1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delay_IC;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delay_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg2_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delay_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg2_OUT1 = (-_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg2_IN1);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum2_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum2_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg2_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum2_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum2_IN1 + _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum2_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_inv_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delta_t_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_inv_OUT1 = 1.0/_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_inv_IN1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_mult_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_inv_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_mult_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum2_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_mult_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_mult_IN1 * _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_mult_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_145_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_mult_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_145_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_97_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_145_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_145_IN1 * _PID_controller_xFvxAx3d5TRpq_XM0aEQ_145_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_125_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_145_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_125_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_121_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_125_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_125_IN1 + _PID_controller_xFvxAx3d5TRpq_XM0aEQ_125_IN2);
+	_PID_controller_OUT = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_125_OUT1;
+
+	cbd->time_last = cbd->time;
+}
+
+void calculateEquations(CBD* cbd) {
+	Real delta = cbd->time - cbd->time_last;
+
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_93_OUT1 = 26;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_95_OUT1 = 1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_97_OUT1 = 10;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_105_OUT1 = 10;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_108_IN1 = _PID_controller_IN;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_108_OUT1 = (-_PID_controller_xFvxAx3d5TRpq_XM0aEQ_108_IN1);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_105_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_108_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_IN1 + _PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_129_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_129_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_93_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_129_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_129_IN1 * _PID_controller_xFvxAx3d5TRpq_XM0aEQ_129_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayIn_OUT1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayIn_IN1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delta_t_OUT1 = delta;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_multDelta_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delta_t_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_multDelta_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayIn_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_multDelta_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_multDelta_IN1 * _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_multDelta_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayState_OUT1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayState_IN1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayState_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_multDelta_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_IN1 + _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_135_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_135_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_95_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_135_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_135_IN1 * _PID_controller_xFvxAx3d5TRpq_XM0aEQ_135_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_121_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_135_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_121_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_129_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_121_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_121_IN1 + _PID_controller_xFvxAx3d5TRpq_XM0aEQ_121_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delay_OUT1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delay_IN1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg2_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delay_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg2_OUT1 = (-_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg2_IN1);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum2_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum2_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg2_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum2_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum2_IN1 + _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum2_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delta_t_OUT1 = delta;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_inv_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delta_t_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_inv_OUT1 = 1.0/_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_inv_IN1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_mult_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_inv_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_mult_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum2_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_mult_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_mult_IN1 * _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_mult_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_145_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_mult_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_145_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_97_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_145_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_145_IN1 * _PID_controller_xFvxAx3d5TRpq_XM0aEQ_145_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_125_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_145_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_125_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_121_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_125_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_125_IN1 + _PID_controller_xFvxAx3d5TRpq_XM0aEQ_125_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_158_OUT1 = 0;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_multIc_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delta_t_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_multIc_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_158_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_multIc_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_multIc_IN1 * _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_multIc_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg1_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_multIc_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg1_OUT1 = (-_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg1_IN1);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum1_IN2 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum1_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_neg1_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum1_OUT1 = (_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum1_IN1 + _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum1_IN2);
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_zero_OUT1 = 0;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delay_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_delay_IC = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_117_sum1_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayState_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_sumState_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayState_IC = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_158_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayIn_IN1 = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_111_OUT1;
+	_PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_delayIn_IC = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_140_zero_OUT1;
+	_PID_controller_OUT = _PID_controller_xFvxAx3d5TRpq_XM0aEQ_125_OUT1;
+
+	cbd->time_last = cbd->time;
+}
+
+void getContinuousStates(CBD* cbd, double x[], size_t nx) {
+}
+
+void setContinuousStates(CBD* cbd, const double x[], size_t nx) {
+//	calculateEquations(cbd);
+}
+
+void getDerivatives(CBD* cbd, double dx[], size_t nx) {
+//	calculateEquations(cbd);
+}
+
+void getStateEvents(CBD* cbd, double z[], size_t nz) {
+	// No state events found
+}
+
+void stateEvent(CBD* cbd) {
+	// No state events found
+	cbd->nominalsOfContinuousStatesChanged = False;
+	cbd->terminateSimulation = False;
+	cbd->nextEventTimeDefined = False;
+}
+
+Status doStep(CBD* cbd, double t, double tNext) {
+	// No state events found
+	Boolean timeEvent;
+
+
+	double h = tNext - t;
+	while(cbd->time + h < tNext + 0.01 * h) {
+
+		timeEvent = cbd->nextEventTimeDefined && cbd->time >= cbd->nextEventTime;
+
+		if(timeEvent) {
+			stateEvent(cbd);
+		}
+
+		if(cbd->terminateSimulation) {
+			// Force termination
+			return Discard;
+		}
+		cbd->time += h;
+		calculateEquations(cbd);
+	}
+
+	return OK;
+}
+

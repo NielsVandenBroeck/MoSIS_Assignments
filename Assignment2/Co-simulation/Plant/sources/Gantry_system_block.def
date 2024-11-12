@@ -1,0 +1,54 @@
+EXPORTS
+  ;***************************************************
+  ;Common Functions
+  ;****************************************************
+  Gantry_system_block_fmiGetTypesPlatform @1
+  Gantry_system_block_fmiGetVersion @2
+  Gantry_system_block_fmiSetDebugLogging @3
+  Gantry_system_block_fmiInstantiate @4
+  Gantry_system_block_fmiFreeInstance @5
+  Gantry_system_block_fmiSetupExperiment @6
+  Gantry_system_block_fmiEnterInitializationMode @7
+  Gantry_system_block_fmiExitInitializationMode @8
+  Gantry_system_block_fmiTerminate @9
+  Gantry_system_block_fmiReset @10
+  Gantry_system_block_fmiGetReal @11
+  Gantry_system_block_fmiGetInteger @12
+  Gantry_system_block_fmiGetBoolean @13
+  Gantry_system_block_fmiGetString @14
+  Gantry_system_block_fmiSetReal @15
+  Gantry_system_block_fmiSetInteger @16
+  Gantry_system_block_fmiSetBoolean @17
+  Gantry_system_block_fmiSetString @18
+  Gantry_system_block_fmiGetFMUstate @19
+  Gantry_system_block_fmiSetFMUstate @20
+  Gantry_system_block_fmiFreeFMUstate @21
+  Gantry_system_block_fmiSerializedFMUstateSize @22
+  Gantry_system_block_fmiSerializeFMUstate @23
+  Gantry_system_block_fmiDeSerializeFMUstate @24
+  Gantry_system_block_fmiGetDirectionalDerivative @25
+  ;***************************************************
+  ;Functions for FMI for Model Exchange
+  ;****************************************************
+  Gantry_system_block_fmiEnterEventMode @26
+  Gantry_system_block_fmiNewDiscreteStates @27
+  Gantry_system_block_fmiEnterContinuousTimeMode @28
+  Gantry_system_block_fmiCompletedIntegratorStep @29
+  Gantry_system_block_fmiSetTime @30
+  Gantry_system_block_fmiSetContinuousStates @31
+  Gantry_system_block_fmiGetDerivatives @32
+  Gantry_system_block_fmiGetEventIndicators @33
+  Gantry_system_block_fmiGetContinuousStates @34
+  Gantry_system_block_fmiGetNominalsOfContinuousStates @35
+  ;***************************************************
+  ;Functions for FMI for Co-Simulation
+  ;****************************************************
+  Gantry_system_block_fmiSetRealInputDerivatives @36
+  Gantry_system_block_fmiGetRealOutputDerivatives @37
+  Gantry_system_block_fmiDoStep @38
+  Gantry_system_block_fmiCancelStep @39
+  Gantry_system_block_fmiGetStatus @40
+  Gantry_system_block_fmiGetRealStatus @41
+  Gantry_system_block_fmiGetIntegerStatus @42
+  Gantry_system_block_fmiGetBooleanStatus @43
+  Gantry_system_block_fmiGetStringStatus @44

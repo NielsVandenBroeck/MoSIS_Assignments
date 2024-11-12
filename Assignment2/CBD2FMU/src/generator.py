@@ -757,7 +757,7 @@ if __name__ == '__main__':
 	model.flatten(psep="_")
 	# model = AddOneBlock("A1")
 
-	gen = Generator(model, experiment=ExperimentSetup(end=4, delta=1e-3), hide=["*"], fmu_version=2)
+	gen = Generator(model, experiment=ExperimentSetup(end=4, delta=1e-3), hide=None, fmu_version=2,)
 	#gen = Generator(model, experiment=ExperimentSetup(end=40, delta=0.001), fmu_version=2, hide=None, keep=["neg.OUT*"])
 	gen.generate_fmu()
 	gen.compile_fmu()

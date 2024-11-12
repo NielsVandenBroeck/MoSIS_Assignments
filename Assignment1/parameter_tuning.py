@@ -157,22 +157,29 @@ def plotDistanceAndAngle(time, distance, angle, pidvalue):
         assignment2Results = assignment2()
 
 
-        figure, (axis1, axis2, axis3) = pyplot.subplots(1, 3, figsize=(18, 6))
+        figure, (axis1, axis2 ) = pyplot.subplots(1, 2, figsize=(12, 6))
         axis1.plot(time, distance)
-        axis1.plot([r[0] for r in assignment2Results], [r[1] for r in assignment2Results], label="x_err")
         axis1.set_xlabel('time (seconds)')
         axis1.set_ylabel('x (meters)')
         axis1.set_title('Plot of distance')
 
         axis2.plot(time, angle)
-        axis2.plot([r[0] for r in assignment2Results], [r[2] for r in assignment2Results], label="x_err")
         axis2.set_xlabel('time (seconds)')
         axis2.set_ylabel('theta (rad)')
         axis2.set_title('Plot of angle')
 
-        axis3.plot(time, pidvalue)
-        axis3.plot([r[0] for r in assignment2Results], [r[3] for r in assignment2Results])
-        axis3.set_title('PID value')
+        pyplot.show()
+
+        figure, (axis1, axis2) = pyplot.subplots(1, 2, figsize=(12, 6))
+        axis1.plot([r[0] for r in assignment2Results], [r[1] for r in assignment2Results], "g")
+        axis1.set_xlabel('time (seconds)')
+        axis1.set_ylabel('x (meters)')
+        axis1.set_title('Plot of distance')
+
+        axis2.plot([r[0] for r in assignment2Results], [r[2] for r in assignment2Results], "g")
+        axis2.set_xlabel('time (seconds)')
+        axis2.set_ylabel('theta (rad)')
+        axis2.set_title('Plot of angle')
         pyplot.show()
 
 
