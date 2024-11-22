@@ -6,7 +6,7 @@
     <labels border="true" height="158" positionX="459" positionY="234" width="275">Common passage
 </labels>
     <labels border="true" height="325" positionX="226" positionY="765" width="1032">Berths</labels>
-    <place displayName="true" id="P_waiting" initialMarking="4" invariant="&lt; inf" name="P_waiting" nameOffsetX="4" nameOffsetY="6" positionX="315" positionY="270"/>
+    <place displayName="true" id="P_waiting" initialMarking="0" invariant="&lt; inf" name="P_waiting" nameOffsetX="4" nameOffsetY="6" positionX="315" positionY="270"/>
     <place displayName="true" id="P_passage_enter" initialMarking="0" invariant="&lt; inf" name="P_passage_enter" nameOffsetX="31" nameOffsetY="0" positionX="570" positionY="270"/>
     <place displayName="true" id="P_buffer_1" initialMarking="3" invariant="&lt; inf" name="P_buffer_1" nameOffsetX="0" nameOffsetY="0" positionX="511" positionY="345"/>
     <place displayName="true" id="P_departed" initialMarking="0" invariant="&lt; inf" name="P_departed" nameOffsetX="7" nameOffsetY="0" positionX="1253" positionY="250"/>
@@ -32,12 +32,12 @@
     <place displayName="true" id="P5" initialMarking="0" invariant="&lt; inf" name="P5" nameOffsetX="0" nameOffsetY="0" positionX="540" positionY="120"/>
     <place displayName="true" id="P7" initialMarking="0" invariant="&lt; inf" name="P7" nameOffsetX="0" nameOffsetY="0" positionX="660" positionY="120"/>
     <place displayName="true" id="P9" initialMarking="0" invariant="&lt; inf" name="P9" nameOffsetX="0" nameOffsetY="0" positionX="780" positionY="120"/>
-    <place displayName="true" id="P10" initialMarking="1" invariant="&lt; inf" name="P10" nameOffsetX="0" nameOffsetY="0" positionX="934" positionY="115"/>
+    <place displayName="true" id="P10" initialMarking="0" invariant="&lt; inf" name="P10" nameOffsetX="0" nameOffsetY="0" positionX="934" positionY="115"/>
     <place displayName="true" id="P12" initialMarking="0" invariant="&lt; inf" name="P12" nameOffsetX="0" nameOffsetY="0" positionX="1074" positionY="117"/>
     <place displayName="true" id="P14" initialMarking="0" invariant="&lt; inf" name="P14" nameOffsetX="0" nameOffsetY="0" positionX="1223" positionY="115"/>
-    <place displayName="true" id="P_counter" initialMarking="3" invariant="&lt; inf" name="P_counter" nameOffsetX="24" nameOffsetY="-2" positionX="32" positionY="120"/>
+    <place displayName="true" id="P_counter" initialMarking="7" invariant="&lt; inf" name="P_counter" nameOffsetX="24" nameOffsetY="-2" positionX="32" positionY="120"/>
     <place displayName="true" id="P_clock" initialMarking="0" invariant="&lt; inf" name="P_clock" nameOffsetX="9" nameOffsetY="0" positionX="41" positionY="53"/>
-    <place displayName="true" id="P15" initialMarking="0" invariant="&lt; inf" name="P15" nameOffsetX="0" nameOffsetY="0" positionX="169" positionY="118"/>
+    <place displayName="true" id="P15" initialMarking="1" invariant="&lt; inf" name="P15" nameOffsetX="0" nameOffsetY="0" positionX="169" positionY="118"/>
     <transition angle="0" displayName="true" id="T_enter" infiniteServer="false" name="T_enter" nameOffsetX="17" nameOffsetY="0" player="0" positionX="480" positionY="270" priority="0" urgent="false"/>
     <transition angle="0" displayName="true" id="T_leave" infiniteServer="false" name="T_leave" nameOffsetX="4" nameOffsetY="3" player="0" positionX="706" positionY="253" priority="0" urgent="false"/>
     <transition angle="0" displayName="true" id="T_berth1_ee_entry" infiniteServer="false" name="T_berth1_ee_entry" nameOffsetX="10" nameOffsetY="0" player="0" positionX="315" positionY="443" priority="0" urgent="false"/>
@@ -92,12 +92,6 @@
       <arcpath arcPointType="false" id="2" xCoord="168" yCoord="410"/>
       <arcpath arcPointType="false" id="3" xCoord="167" yCoord="652"/>
       <arcpath arcPointType="false" id="4" xCoord="324" yCoord="647"/>
-    </arc>
-    <arc id="A23" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T_berth1_ee_entry" target="P_buffer_1" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="330" yCoord="443"/>
-      <arcpath arcPointType="false" id="1" xCoord="343" yCoord="387"/>
-      <arcpath arcPointType="false" id="2" xCoord="508" yCoord="386"/>
-      <arcpath arcPointType="false" id="3" xCoord="517" yCoord="372"/>
     </arc>
     <arc id="A26" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T_berth1_ee_entry" target="P_b11" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="334" yCoord="463"/>
@@ -258,12 +252,6 @@
       <arcpath arcPointType="false" id="1" xCoord="558" yCoord="379"/>
       <arcpath arcPointType="false" id="2" xCoord="1132" yCoord="377"/>
       <arcpath arcPointType="false" id="3" xCoord="1120" yCoord="482"/>
-    </arc>
-    <arc id="A74" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T_berth2_ee_entry" target="P_buffer_1" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="324" yCoord="638"/>
-      <arcpath arcPointType="false" id="1" xCoord="186" yCoord="644"/>
-      <arcpath arcPointType="false" id="2" xCoord="187" yCoord="378"/>
-      <arcpath arcPointType="false" id="3" xCoord="511" yCoord="360"/>
     </arc>
     <arc id="A22" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="P_passage_enter" target="T_berth1_ee_entry" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="592" yCoord="298"/>
@@ -591,16 +579,28 @@
       <arcpath arcPointType="false" id="6" xCoord="359" yCoord="193"/>
       <arcpath arcPointType="false" id="7" xCoord="375" yCoord="150"/>
     </arc>
-    <arc id="I112" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="P_buffer_1" target="T0" type="tapnInhibitor" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="513" yCoord="351"/>
-      <arcpath arcPointType="false" id="1" xCoord="401" yCoord="273"/>
-      <arcpath arcPointType="false" id="2" xCoord="400" yCoord="207"/>
-      <arcpath arcPointType="false" id="3" xCoord="104" yCoord="195"/>
-      <arcpath arcPointType="false" id="4" xCoord="111" yCoord="142"/>
-    </arc>
     <arc id="A5" inscription="1" nameOffsetX="54" nameOffsetY="30" source="T_arrive" target="P_waiting" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="244" yCoord="285"/>
       <arcpath arcPointType="false" id="1" xCoord="315" yCoord="285"/>
+    </arc>
+    <arc id="A23" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T_berth1_ee_entry" target="P_buffer_1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="330" yCoord="443"/>
+      <arcpath arcPointType="false" id="1" xCoord="343" yCoord="387"/>
+      <arcpath arcPointType="false" id="2" xCoord="508" yCoord="386"/>
+      <arcpath arcPointType="false" id="3" xCoord="517" yCoord="372"/>
+    </arc>
+    <arc id="A74" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T_berth2_ee_entry" target="P_buffer_1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="324" yCoord="638"/>
+      <arcpath arcPointType="false" id="1" xCoord="186" yCoord="644"/>
+      <arcpath arcPointType="false" id="2" xCoord="187" yCoord="378"/>
+      <arcpath arcPointType="false" id="3" xCoord="511" yCoord="360"/>
+    </arc>
+    <arc id="I107" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="worked" target="T3" type="tapnInhibitor" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="674" yCoord="570"/>
+      <arcpath arcPointType="false" id="1" xCoord="776" yCoord="564"/>
+      <arcpath arcPointType="false" id="2" xCoord="766" yCoord="198"/>
+      <arcpath arcPointType="false" id="3" xCoord="521" yCoord="200"/>
+      <arcpath arcPointType="false" id="4" xCoord="495" yCoord="150"/>
     </arc>
   </net>
   <k-bound bound="3"/>
