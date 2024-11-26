@@ -1,417 +1,405 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <trace>
-  <transition id="Clock_T_ArrivedBoats">
-    <token age="0" place="Clock_P_C_ArrivedBoats"/>
+  <transition id="PassageBlockedFix_T_ArrivedBoats">
+    <token age="0" place="PassageBlockedFix_P_C_ArrivedBoats"/>
+    <token age="0" place="PassageBlockedFix_P2"/>
   </transition>
-  <transition id="Clock_T_TICK">
-    <token age="0" place="Clock_P_C_ArrivedBoats"/>
+  <transition id="PassageBlockedFix_T_TICK">
+    <token age="0" place="PassageBlockedFix_P_C_ArrivedBoats"/>
   </transition>
-  <transition id="Clock_T_C_CPExitEmpty">
-    <token age="0" place="Clock_P_C_ExitCP"/>
+  <transition id="PassageBlockedFix_T_C_CPExitEmpty">
+    <token age="0" place="PassageBlockedFix_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_QOUT_Empty">
-    <token age="0" place="Clock_P_C_QExit"/>
+  <transition id="PassageBlockedFix_T_C_QOUT_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QExit"/>
   </transition>
-  <transition id="Clock_T_C_Berth1_Empty">
-    <token age="0" place="Clock_P_C_B1Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth1_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B1Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berth2_Empty">
-    <token age="0" place="Clock_P_C_B2Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth2_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berths_Empty">
-    <token age="0" place="Clock_P_C_Serve"/>
+  <transition id="PassageBlockedFix_T_C_Berths_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_Serve"/>
   </transition>
-  <transition id="Clock_T_C_WorkersWorked_Empty">
-    <token age="0" place="Clock_P_C_SetAvailable"/>
+  <transition id="PassageBlockedFix_T_C_WorkersWorked_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_Q1IN_Empty">
-    <token age="0" place="Clock_P_C_B1Enter"/>
+  <transition id="PassageBlockedFix_T_C_Q1IN_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_Q2IN_Empty">
-    <token age="0" place="Clock_P_C_B2Enter"/>
+  <transition id="PassageBlockedFix_T_C_Q2IN_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_CP_Empty">
-    <token age="0" place="Clock_P_C_QEnter"/>
+  <transition id="PassageBlockedFix_T_C_CP_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_T_EnterCP">
-    <token age="0" place="Clock_P_WaitToDock"/>
-    <token age="0" place="Clock_P_CP_Capacity"/>
-    <token age="0" place="Clock_P_C_EnterCP"/>
+  <transition id="PassageBlockedFix_T_EnterCP">
+    <token age="0" place="PassageBlockedFix_P_WaitToDock"/>
+    <token age="0" place="PassageBlockedFix_P_CP_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_P_C_ArrivedBoats_Empty">
-    <token age="0" place="Clock_P_C_EnterCP"/>
+  <transition id="PassageBlockedFix_T_C_ArrivedBoats_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T_ArrivedBoats">
-    <token age="0" place="Clock_P_C_ArrivedBoats"/>
+  <transition id="PassageBlockedFix_T_ArrivedBoats">
+    <token age="0" place="PassageBlockedFix_P_C_ArrivedBoats"/>
+    <token age="0" place="PassageBlockedFix_P2"/>
   </transition>
-  <transition id="Clock_T_TICK">
-    <token age="0" place="Clock_P_C_ArrivedBoats"/>
+  <transition id="PassageBlockedFix_T_TICK">
+    <token age="0" place="PassageBlockedFix_P_C_ArrivedBoats"/>
   </transition>
-  <transition id="Clock_T_C_CPExitEmpty">
-    <token age="0" place="Clock_P_C_ExitCP"/>
+  <transition id="PassageBlockedFix_T_C_CPExitEmpty">
+    <token age="0" place="PassageBlockedFix_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_QOUT_Empty">
-    <token age="0" place="Clock_P_C_QExit"/>
+  <transition id="PassageBlockedFix_T_C_QOUT_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QExit"/>
   </transition>
-  <transition id="Clock_T_C_Berth1_Empty">
-    <token age="0" place="Clock_P_C_B1Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth1_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B1Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berth2_Empty">
-    <token age="0" place="Clock_P_C_B2Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth2_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berths_Empty">
-    <token age="0" place="Clock_P_C_Serve"/>
+  <transition id="PassageBlockedFix_T_C_Berths_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_Serve"/>
   </transition>
-  <transition id="Clock_T_C_WorkersWorked_Empty">
-    <token age="0" place="Clock_P_C_SetAvailable"/>
+  <transition id="PassageBlockedFix_T_C_WorkersWorked_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_Q1IN_Empty">
-    <token age="0" place="Clock_P_C_B1Enter"/>
+  <transition id="PassageBlockedFix_T_C_Q1IN_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_Q2IN_Empty">
-    <token age="0" place="Clock_P_C_B2Enter"/>
+  <transition id="PassageBlockedFix_T_C_Q2IN_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_T_Q1Enter">
-    <token age="0" place="Clock_P_Q1IN_Capacity"/>
-    <token age="0" place="Clock_P_CPEnter"/>
-    <token age="0" place="Clock_P_C_QEnter"/>
+  <transition id="PassageBlockedFix_T_Q1Enter">
+    <token age="0" place="PassageBlockedFix_P_Q1IN_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_CPEnter"/>
+    <token age="0" place="PassageBlockedFix_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_P_C_CP_Empty">
-    <token age="0" place="Clock_P_C_QEnter"/>
+  <transition id="PassageBlockedFix_T_C_CP_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_T_EnterCP">
-    <token age="0" place="Clock_P_WaitToDock"/>
-    <token age="0" place="Clock_P_CP_Capacity"/>
-    <token age="0" place="Clock_P_C_EnterCP"/>
+  <transition id="PassageBlockedFix_T_EnterCP">
+    <token age="0" place="PassageBlockedFix_P_WaitToDock"/>
+    <token age="0" place="PassageBlockedFix_P_CP_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_P_C_ArrivedBoats_Empty">
-    <token age="0" place="Clock_P_C_EnterCP"/>
+  <transition id="PassageBlockedFix_T_C_ArrivedBoats_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T_ArrivedBoats">
-    <token age="0" place="Clock_P_C_ArrivedBoats"/>
+  <transition id="PassageBlockedFix_T_ArrivedBoats">
+    <token age="0" place="PassageBlockedFix_P_C_ArrivedBoats"/>
+    <token age="0" place="PassageBlockedFix_P2"/>
   </transition>
-  <transition id="Clock_T_TICK">
-    <token age="0" place="Clock_P_C_ArrivedBoats"/>
+  <transition id="PassageBlockedFix_T_TICK">
+    <token age="0" place="PassageBlockedFix_P_C_ArrivedBoats"/>
   </transition>
-  <transition id="Clock_T_C_CPExitEmpty">
-    <token age="0" place="Clock_P_C_ExitCP"/>
+  <transition id="PassageBlockedFix_T_C_CPExitEmpty">
+    <token age="0" place="PassageBlockedFix_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_QOUT_Empty">
-    <token age="0" place="Clock_P_C_QExit"/>
+  <transition id="PassageBlockedFix_T_C_QOUT_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QExit"/>
   </transition>
-  <transition id="Clock_T_C_Berth1_Empty">
-    <token age="0" place="Clock_P_C_B1Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth1_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B1Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berth2_Empty">
-    <token age="0" place="Clock_P_C_B2Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth2_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berths_Empty">
-    <token age="0" place="Clock_P_C_Serve"/>
+  <transition id="PassageBlockedFix_T_C_Berths_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_Serve"/>
   </transition>
-  <transition id="Clock_T_C_WorkersWorked_Empty">
-    <token age="0" place="Clock_P_C_SetAvailable"/>
+  <transition id="PassageBlockedFix_T_C_WorkersWorked_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_T_Berth1Enter">
-    <token age="0" place="Clock_P_Q1IN"/>
-    <token age="0" place="Clock_P_Berth1_Capacity"/>
-    <token age="0" place="Clock_P_C_B1Enter"/>
+  <transition id="PassageBlockedFix_T_Berth1Enter">
+    <token age="0" place="PassageBlockedFix_P_Q1IN"/>
+    <token age="0" place="PassageBlockedFix_P_Berth1_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_B1_Full">
-    <token age="0" place="Clock_P_C_B1Enter"/>
+  <transition id="PassageBlockedFix_T_C_B1_Full">
+    <token age="0" place="PassageBlockedFix_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_Q2IN_Empty">
-    <token age="0" place="Clock_P_C_B2Enter"/>
+  <transition id="PassageBlockedFix_T_C_Q2IN_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_T_Q1Enter">
-    <token age="0" place="Clock_P_Q1IN_Capacity"/>
-    <token age="0" place="Clock_P_CPEnter"/>
-    <token age="0" place="Clock_P_C_QEnter"/>
+  <transition id="PassageBlockedFix_T_Q1Enter">
+    <token age="0" place="PassageBlockedFix_P_Q1IN_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_CPEnter"/>
+    <token age="0" place="PassageBlockedFix_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_P_C_CP_Empty">
-    <token age="0" place="Clock_P_C_QEnter"/>
+  <transition id="PassageBlockedFix_T_C_CP_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_T_EnterCP">
-    <token age="0" place="Clock_P_WaitToDock"/>
-    <token age="0" place="Clock_P_CP_Capacity"/>
-    <token age="0" place="Clock_P_C_EnterCP"/>
+  <transition id="PassageBlockedFix_T_EnterCP">
+    <token age="0" place="PassageBlockedFix_P_WaitToDock"/>
+    <token age="0" place="PassageBlockedFix_P_CP_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_P_C_ArrivedBoats_Empty">
-    <token age="0" place="Clock_P_C_EnterCP"/>
+  <transition id="PassageBlockedFix_T_C_ArrivedBoats_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T_TICK">
-    <token age="0" place="Clock_P_C_ArrivedBoats"/>
+  <transition id="PassageBlockedFix_T_TICK">
+    <token age="0" place="PassageBlockedFix_P_C_ArrivedBoats"/>
   </transition>
-  <transition id="Clock_T_C_CPExitEmpty">
-    <token age="0" place="Clock_P_C_ExitCP"/>
+  <transition id="PassageBlockedFix_T_C_CPExitEmpty">
+    <token age="0" place="PassageBlockedFix_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_QOUT_Empty">
-    <token age="0" place="Clock_P_C_QExit"/>
+  <transition id="PassageBlockedFix_T_C_QOUT_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QExit"/>
   </transition>
-  <transition id="Clock_T_C_Berth1_Empty">
-    <token age="0" place="Clock_P_C_B1Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth1_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B1Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berth2_Empty">
-    <token age="0" place="Clock_P_C_B2Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth2_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Exit"/>
   </transition>
-  <transition id="Clock_T_ServeBerth1">
-    <token age="0" place="Clock_P_Berth1"/>
-    <token age="0" place="Clock_P_Workers"/>
-    <token age="0" place="Clock_P_AlternateBerth1"/>
-    <token age="0" place="Clock_P_C_Serve"/>
+  <transition id="PassageBlockedFix_T_ServeBerth1">
+    <token age="0" place="PassageBlockedFix_P_Berth1"/>
+    <token age="0" place="PassageBlockedFix_P_Workers"/>
+    <token age="0" place="PassageBlockedFix_P_AlternateBerth1"/>
+    <token age="0" place="PassageBlockedFix_P_C_Serve"/>
   </transition>
-  <transition id="Clock_T_C_Berths_Empty">
-    <token age="0" place="Clock_P_C_Serve"/>
+  <transition id="PassageBlockedFix_T_C_Berths_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_Serve"/>
   </transition>
-  <transition id="Clock_T_SetWorkersAvailable">
-    <token age="0" place="Clock_P_WorkersWorked"/>
-    <token age="0" place="Clock_P_C_SetAvailable"/>
+  <transition id="PassageBlockedFix_T_SetWorkersAvailable">
+    <token age="0" place="PassageBlockedFix_P_WorkersWorked"/>
+    <token age="0" place="PassageBlockedFix_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_T_C_WorkersWorked_Empty">
-    <token age="0" place="Clock_P_C_SetAvailable"/>
+  <transition id="PassageBlockedFix_T_C_WorkersWorked_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_B1_Full">
-    <token age="0" place="Clock_P_C_B1Enter"/>
+  <transition id="PassageBlockedFix_T_C_B1_Full">
+    <token age="0" place="PassageBlockedFix_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_Q2IN_Empty">
-    <token age="0" place="Clock_P_C_B2Enter"/>
+  <transition id="PassageBlockedFix_T_C_Q2IN_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_T_Q2Enter">
-    <token age="0" place="Clock_P_Q2IN_Capacity"/>
-    <token age="0" place="Clock_P_CPEnter"/>
-    <token age="0" place="Clock_P_C_QEnter"/>
+  <transition id="PassageBlockedFix_T_Q2Enter">
+    <token age="0" place="PassageBlockedFix_P_Q2IN_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_CPEnter"/>
+    <token age="0" place="PassageBlockedFix_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_P_C_CP_Empty">
-    <token age="0" place="Clock_P_C_QEnter"/>
+  <transition id="PassageBlockedFix_T_C_CP_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_P_C_ArrivedBoats_Empty">
-    <token age="0" place="Clock_P_C_EnterCP"/>
+  <transition id="PassageBlockedFix_T_C_ArrivedBoats_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T_TICK">
-    <token age="0" place="Clock_P_C_ArrivedBoats"/>
+  <transition id="PassageBlockedFix_T_TICK">
+    <token age="0" place="PassageBlockedFix_P_C_ArrivedBoats"/>
   </transition>
-  <transition id="Clock_T_C_CPExitEmpty">
-    <token age="0" place="Clock_P_C_ExitCP"/>
+  <transition id="PassageBlockedFix_T_C_CPExitEmpty">
+    <token age="0" place="PassageBlockedFix_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_QOUT_Empty">
-    <token age="0" place="Clock_P_C_QExit"/>
+  <transition id="PassageBlockedFix_T_C_QOUT_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QExit"/>
   </transition>
-  <transition id="Clock_T_Berth1Exit">
-    <token age="0" place="Clock_P_Berth1Served"/>
-    <token age="0" place="Clock_P_Q1OUT_Capacity"/>
-    <token age="0" place="Clock_P_C_B1Exit"/>
+  <transition id="PassageBlockedFix_T_Berth1Exit">
+    <token age="0" place="PassageBlockedFix_P_Berth1Served"/>
+    <token age="0" place="PassageBlockedFix_P_Q1OUT_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_C_B1Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berth1_Empty">
-    <token age="0" place="Clock_P_C_B1Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth1_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B1Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berth2_Empty">
-    <token age="0" place="Clock_P_C_B2Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth2_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berths_Empty">
-    <token age="0" place="Clock_P_C_Serve"/>
+  <transition id="PassageBlockedFix_T_C_Berths_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_Serve"/>
   </transition>
-  <transition id="Clock_T_C_WorkersWorked_Empty">
-    <token age="0" place="Clock_P_C_SetAvailable"/>
+  <transition id="PassageBlockedFix_T_C_WorkersWorked_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_T_Berth1Enter">
-    <token age="0" place="Clock_P_Q1IN"/>
-    <token age="0" place="Clock_P_Berth1_Capacity"/>
-    <token age="0" place="Clock_P_C_B1Enter"/>
+  <transition id="PassageBlockedFix_T_Berth1Enter">
+    <token age="0" place="PassageBlockedFix_P_Q1IN"/>
+    <token age="0" place="PassageBlockedFix_P_Berth1_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_B1_Full">
-    <token age="0" place="Clock_P_C_B1Enter"/>
+  <transition id="PassageBlockedFix_T_C_B1_Full">
+    <token age="0" place="PassageBlockedFix_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_T_Berth2Enter">
-    <token age="0" place="Clock_P_Q2IN"/>
-    <token age="0" place="Clock_P_Berth2_Capacity"/>
-    <token age="0" place="Clock_P_C_B2Enter"/>
+  <transition id="PassageBlockedFix_T_Berth2Enter">
+    <token age="0" place="PassageBlockedFix_P_Q2IN"/>
+    <token age="0" place="PassageBlockedFix_P_Berth2_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_B2_Full">
-    <token age="0" place="Clock_P_C_B2Enter"/>
+  <transition id="PassageBlockedFix_T_C_B2_Full">
+    <token age="0" place="PassageBlockedFix_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_CP_Empty">
-    <token age="0" place="Clock_P_C_QEnter"/>
+  <transition id="PassageBlockedFix_T_C_CP_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_P_C_ArrivedBoats_Empty">
-    <token age="0" place="Clock_P_C_EnterCP"/>
+  <transition id="PassageBlockedFix_T_C_ArrivedBoats_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T_TICK">
-    <token age="0" place="Clock_P_C_ArrivedBoats"/>
+  <transition id="PassageBlockedFix_T_TICK">
+    <token age="0" place="PassageBlockedFix_P_C_ArrivedBoats"/>
   </transition>
-  <transition id="Clock_T_C_CPExitEmpty">
-    <token age="0" place="Clock_P_C_ExitCP"/>
+  <transition id="PassageBlockedFix_T_C_CPExitEmpty">
+    <token age="0" place="PassageBlockedFix_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_Q1Exit">
-    <token age="0" place="Clock_P_Q1OUT"/>
-    <token age="0" place="Clock_P_CP_Capacity"/>
-    <token age="0" place="Clock_P_C_QExit"/>
+  <transition id="PassageBlockedFix_T_Q1Exit">
+    <token age="0" place="PassageBlockedFix_P_Q1OUT"/>
+    <token age="0" place="PassageBlockedFix_P_CP_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_C_QExit"/>
   </transition>
-  <transition id="Clock_T_C_QOUT_Empty">
-    <token age="0" place="Clock_P_C_QExit"/>
+  <transition id="PassageBlockedFix_T_C_QOUT_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QExit"/>
   </transition>
-  <transition id="Clock_T_C_Berth1_Empty">
-    <token age="0" place="Clock_P_C_B1Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth1_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B1Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berth2_Empty">
-    <token age="0" place="Clock_P_C_B2Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth2_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Exit"/>
   </transition>
-  <transition id="Clock_T_ServeBerth2">
-    <token age="0" place="Clock_P_Workers"/>
-    <token age="0" place="Clock_P_Berth2"/>
-    <token age="0" place="Clock_P_AlternateBerth2"/>
-    <token age="0" place="Clock_P_C_Serve"/>
+  <transition id="PassageBlockedFix_T_ServeBerth2">
+    <token age="0" place="PassageBlockedFix_P_Workers"/>
+    <token age="0" place="PassageBlockedFix_P_Berth2"/>
+    <token age="0" place="PassageBlockedFix_P_AlternateBerth2"/>
+    <token age="0" place="PassageBlockedFix_P_C_Serve"/>
   </transition>
-  <transition id="Clock_T_ServeBerth1">
-    <token age="0" place="Clock_P_Berth1"/>
-    <token age="0" place="Clock_P_Workers"/>
-    <token age="0" place="Clock_P_AlternateBerth1"/>
-    <token age="0" place="Clock_P_C_Serve"/>
+  <transition id="PassageBlockedFix_T_ServeBerth1">
+    <token age="0" place="PassageBlockedFix_P_Berth1"/>
+    <token age="0" place="PassageBlockedFix_P_Workers"/>
+    <token age="0" place="PassageBlockedFix_P_AlternateBerth1"/>
+    <token age="0" place="PassageBlockedFix_P_C_Serve"/>
   </transition>
-  <transition id="Clock_T_C_Berths_Empty">
-    <token age="0" place="Clock_P_C_Serve"/>
+  <transition id="PassageBlockedFix_T_C_Berths_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_Serve"/>
   </transition>
-  <transition id="Clock_T_SetWorkersAvailable">
-    <token age="0" place="Clock_P_WorkersWorked"/>
-    <token age="0" place="Clock_P_C_SetAvailable"/>
+  <transition id="PassageBlockedFix_T_SetWorkersAvailable">
+    <token age="0" place="PassageBlockedFix_P_WorkersWorked"/>
+    <token age="0" place="PassageBlockedFix_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_T_SetWorkersAvailable">
-    <token age="0" place="Clock_P_WorkersWorked"/>
-    <token age="0" place="Clock_P_C_SetAvailable"/>
+  <transition id="PassageBlockedFix_T_SetWorkersAvailable">
+    <token age="0" place="PassageBlockedFix_P_WorkersWorked"/>
+    <token age="0" place="PassageBlockedFix_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_T_C_WorkersWorked_Empty">
-    <token age="0" place="Clock_P_C_SetAvailable"/>
+  <transition id="PassageBlockedFix_T_C_WorkersWorked_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_B1_Full">
-    <token age="0" place="Clock_P_C_B1Enter"/>
+  <transition id="PassageBlockedFix_T_C_B1_Full">
+    <token age="0" place="PassageBlockedFix_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_B2_Full">
-    <token age="0" place="Clock_P_C_B2Enter"/>
+  <transition id="PassageBlockedFix_T_C_B2_Full">
+    <token age="0" place="PassageBlockedFix_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_CP_Empty">
-    <token age="0" place="Clock_P_C_QEnter"/>
+  <transition id="PassageBlockedFix_T_C_CP_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_P_C_ArrivedBoats_Empty">
-    <token age="0" place="Clock_P_C_EnterCP"/>
+  <transition id="PassageBlockedFix_T_C_ArrivedBoats_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T_TICK">
-    <token age="0" place="Clock_P_C_ArrivedBoats"/>
+  <transition id="PassageBlockedFix_T_TICK">
+    <token age="0" place="PassageBlockedFix_P_C_ArrivedBoats"/>
   </transition>
-  <transition id="Clock_T_ExitCP">
-    <token age="0" place="Clock_P_CPExit"/>
-    <token age="0" place="Clock_P_C_ExitCP"/>
+  <transition id="PassageBlockedFix_T_ExitCP">
+    <token age="0" place="PassageBlockedFix_P_CPExit"/>
+    <token age="0" place="PassageBlockedFix_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_CPExitEmpty">
-    <token age="0" place="Clock_P_C_ExitCP"/>
+  <transition id="PassageBlockedFix_T_C_CPExitEmpty">
+    <token age="0" place="PassageBlockedFix_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_QOUT_Empty">
-    <token age="0" place="Clock_P_C_QExit"/>
+  <transition id="PassageBlockedFix_T_C_QOUT_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QExit"/>
   </transition>
-  <transition id="Clock_T_Berth1Exit">
-    <token age="0" place="Clock_P_Berth1Served"/>
-    <token age="0" place="Clock_P_Q1OUT_Capacity"/>
-    <token age="0" place="Clock_P_C_B1Exit"/>
+  <transition id="PassageBlockedFix_T_Berth1Exit">
+    <token age="0" place="PassageBlockedFix_P_Berth1Served"/>
+    <token age="0" place="PassageBlockedFix_P_Q1OUT_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_C_B1Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berth1_Empty">
-    <token age="0" place="Clock_P_C_B1Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth1_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B1Exit"/>
   </transition>
-  <transition id="Clock_T_Berth2Exit">
-    <token age="0" place="Clock_P_Berth2Served"/>
-    <token age="0" place="Clock_P_Q2OUT_Capacity"/>
-    <token age="0" place="Clock_P_C_B2Exit"/>
+  <transition id="PassageBlockedFix_T_Berth2Exit">
+    <token age="0" place="PassageBlockedFix_P_Berth2Served"/>
+    <token age="0" place="PassageBlockedFix_P_Q2OUT_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_C_B2Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berth2_Empty">
-    <token age="0" place="Clock_P_C_B2Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth2_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berths_Empty">
-    <token age="0" place="Clock_P_C_Serve"/>
+  <transition id="PassageBlockedFix_T_C_Berths_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_Serve"/>
   </transition>
-  <transition id="Clock_T_C_WorkersWorked_Empty">
-    <token age="0" place="Clock_P_C_SetAvailable"/>
+  <transition id="PassageBlockedFix_T_C_WorkersWorked_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_Q1IN_Empty">
-    <token age="0" place="Clock_P_C_B1Enter"/>
+  <transition id="PassageBlockedFix_T_C_Q1IN_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_Q2IN_Empty">
-    <token age="0" place="Clock_P_C_B2Enter"/>
+  <transition id="PassageBlockedFix_T_C_Q2IN_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_CP_Empty">
-    <token age="0" place="Clock_P_C_QEnter"/>
+  <transition id="PassageBlockedFix_T_C_CP_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_P_C_ArrivedBoats_Empty">
-    <token age="0" place="Clock_P_C_EnterCP"/>
+  <transition id="PassageBlockedFix_T_C_ArrivedBoats_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T_TICK">
-    <token age="0" place="Clock_P_C_ArrivedBoats"/>
+  <transition id="PassageBlockedFix_T_TICK">
+    <token age="0" place="PassageBlockedFix_P_C_ArrivedBoats"/>
   </transition>
-  <transition id="Clock_T_C_CPExitEmpty">
-    <token age="0" place="Clock_P_C_ExitCP"/>
+  <transition id="PassageBlockedFix_T_C_CPExitEmpty">
+    <token age="0" place="PassageBlockedFix_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_Q1Exit">
-    <token age="0" place="Clock_P_Q1OUT"/>
-    <token age="0" place="Clock_P_CP_Capacity"/>
-    <token age="0" place="Clock_P_C_QExit"/>
+  <transition id="PassageBlockedFix_T_Q1Exit">
+    <token age="0" place="PassageBlockedFix_P_Q1OUT"/>
+    <token age="0" place="PassageBlockedFix_P_CP_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_C_QExit"/>
   </transition>
-  <transition id="Clock_T_Q2Exit">
-    <token age="0" place="Clock_P_Q2OUT"/>
-    <token age="0" place="Clock_P_CP_Capacity"/>
-    <token age="0" place="Clock_P_C_QExit"/>
+  <transition id="PassageBlockedFix_T_Q2Exit">
+    <token age="0" place="PassageBlockedFix_P_Q2OUT"/>
+    <token age="0" place="PassageBlockedFix_P_CP_Capacity"/>
+    <token age="0" place="PassageBlockedFix_P_C_QExit"/>
   </transition>
-  <transition id="Clock_T_C_QOUT_Empty">
-    <token age="0" place="Clock_P_C_QExit"/>
+  <transition id="PassageBlockedFix_T_C_QOUT_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QExit"/>
   </transition>
-  <transition id="Clock_T_C_Berth1_Empty">
-    <token age="0" place="Clock_P_C_B1Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth1_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B1Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berth2_Empty">
-    <token age="0" place="Clock_P_C_B2Exit"/>
+  <transition id="PassageBlockedFix_T_C_Berth2_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Exit"/>
   </transition>
-  <transition id="Clock_T_C_Berths_Empty">
-    <token age="0" place="Clock_P_C_Serve"/>
+  <transition id="PassageBlockedFix_T_C_Berths_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_Serve"/>
   </transition>
-  <transition id="Clock_T_C_WorkersWorked_Empty">
-    <token age="0" place="Clock_P_C_SetAvailable"/>
+  <transition id="PassageBlockedFix_T_C_WorkersWorked_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_Q1IN_Empty">
-    <token age="0" place="Clock_P_C_B1Enter"/>
+  <transition id="PassageBlockedFix_T_C_Q1IN_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_Q2IN_Empty">
-    <token age="0" place="Clock_P_C_B2Enter"/>
+  <transition id="PassageBlockedFix_T_C_Q2IN_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_CP_Empty">
-    <token age="0" place="Clock_P_C_QEnter"/>
+  <transition id="PassageBlockedFix_T_C_CP_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_P_C_ArrivedBoats_Empty">
-    <token age="0" place="Clock_P_C_EnterCP"/>
+  <transition id="PassageBlockedFix_T_C_ArrivedBoats_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T_TICK">
-    <token age="0" place="Clock_P_C_ArrivedBoats"/>
+  <transition id="PassageBlockedFix_T_TICK">
+    <token age="0" place="PassageBlockedFix_P_C_ArrivedBoats"/>
   </transition>
-  <transition id="Clock_T_ExitCP">
-    <token age="0" place="Clock_P_CPExit"/>
-    <token age="0" place="Clock_P_C_ExitCP"/>
+  <transition id="PassageBlockedFix_T_ExitCP">
+    <token age="0" place="PassageBlockedFix_P_CPExit"/>
+    <token age="0" place="PassageBlockedFix_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_ExitCP">
-    <token age="0" place="Clock_P_CPExit"/>
-    <token age="0" place="Clock_P_C_ExitCP"/>
+  <transition id="PassageBlockedFix_T_ExitCP">
+    <token age="0" place="PassageBlockedFix_P_CPExit"/>
+    <token age="0" place="PassageBlockedFix_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_CPExitEmpty">
-    <token age="0" place="Clock_P_C_ExitCP"/>
+  <transition id="PassageBlockedFix_T_C_CPExitEmpty">
+    <token age="0" place="PassageBlockedFix_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_QOUT_Empty">
-    <token age="0" place="Clock_P_C_QExit"/>
-  </transition>
-  <transition id="Clock_T_C_Berth1_Empty">
-    <token age="0" place="Clock_P_C_B1Exit"/>
-  </transition>
-  <transition id="Clock_T_C_Berth2_Empty">
-    <token age="0" place="Clock_P_C_B2Exit"/>
-  </transition>
-  <transition id="Clock_T_C_Berths_Empty">
-    <token age="0" place="Clock_P_C_Serve"/>
-  </transition>
-  <transition id="Clock_T_C_WorkersWorked_Empty">
-    <token age="0" place="Clock_P_C_SetAvailable"/>
-  </transition>
-  <transition id="Clock_P_C_Q1IN_Empty">
-    <token age="0" place="Clock_P_C_B1Enter"/>
+  <transition id="PassageBlockedFix_T_C_QOUT_Empty">
+    <token age="0" place="PassageBlockedFix_P_C_QExit"/>
   </transition>
 </trace>

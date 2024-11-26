@@ -21,13 +21,13 @@
   <transition id="Clock_T_C_WorkersWorked_Empty">
     <token age="0" place="Clock_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_Q1IN_Empty">
+  <transition id="Clock_T_C_Q1IN_Empty">
     <token age="0" place="Clock_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_Q2IN_Empty">
+  <transition id="Clock_T_C_Q2IN_Empty">
     <token age="0" place="Clock_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_CP_Empty">
+  <transition id="Clock_T_C_CP_Empty">
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
   <transition id="Clock_T_EnterCP">
@@ -35,7 +35,7 @@
     <token age="0" place="Clock_P_CP_Capacity"/>
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T0">
+  <transition id="Clock_T_C_PCin_Full">
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
   <transition id="Clock_T_TICK">
@@ -44,7 +44,7 @@
   <transition id="Clock_T_C_CPExitEmpty">
     <token age="0" place="Clock_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_PC_Full">
+  <transition id="Clock_T_C_QOUT_Empty">
     <token age="0" place="Clock_P_C_QExit"/>
   </transition>
   <transition id="Clock_T_C_Berth1_Empty">
@@ -59,10 +59,10 @@
   <transition id="Clock_T_C_WorkersWorked_Empty">
     <token age="0" place="Clock_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_Q1IN_Empty">
+  <transition id="Clock_T_C_Q1IN_Empty">
     <token age="0" place="Clock_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_Q2IN_Empty">
+  <transition id="Clock_T_C_Q2IN_Empty">
     <token age="0" place="Clock_P_C_B2Enter"/>
   </transition>
   <transition id="Clock_T_Q1Enter">
@@ -70,7 +70,7 @@
     <token age="0" place="Clock_P_CPEnter"/>
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_P_C_CP_Empty">
+  <transition id="Clock_T_C_CP_Empty">
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
   <transition id="Clock_T_EnterCP">
@@ -78,7 +78,7 @@
     <token age="0" place="Clock_P_CP_Capacity"/>
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T0">
+  <transition id="Clock_T_C_PCin_Full">
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
   <transition id="Clock_T_TICK">
@@ -107,18 +107,18 @@
     <token age="0" place="Clock_P_Berth1_Capacity"/>
     <token age="0" place="Clock_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_Q1IN_Empty">
+  <transition id="Clock_T_C_Q1IN_Empty">
     <token age="0" place="Clock_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_Q2IN_Empty">
+  <transition id="Clock_T_C_Q2IN_Empty">
     <token age="0" place="Clock_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_T_Q1Enter">
-    <token age="0" place="Clock_P_Q1IN_Capacity"/>
+  <transition id="Clock_T_Q2Enter">
+    <token age="0" place="Clock_P_Q2IN_Capacity"/>
     <token age="0" place="Clock_P_CPEnter"/>
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_P_C_CP_Empty">
+  <transition id="Clock_T_C_CP_Empty">
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
   <transition id="Clock_T_EnterCP">
@@ -126,7 +126,7 @@
     <token age="0" place="Clock_P_CP_Capacity"/>
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T0">
+  <transition id="Clock_T_C_PCin_Full">
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
   <transition id="Clock_T_TICK">
@@ -150,7 +150,7 @@
     <token age="0" place="Clock_P_AlternateBerth1"/>
     <token age="0" place="Clock_P_C_Serve"/>
   </transition>
-  <transition id="Clock_T_C_Workers_Empty">
+  <transition id="Clock_T_C_Berths_Empty">
     <token age="0" place="Clock_P_C_Serve"/>
   </transition>
   <transition id="Clock_T_SetWorkersAvailable">
@@ -160,60 +160,7 @@
   <transition id="Clock_T_C_WorkersWorked_Empty">
     <token age="0" place="Clock_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_B1_Full">
-    <token age="0" place="Clock_P_C_B1Enter"/>
-  </transition>
-  <transition id="Clock_P_C_Q2IN_Empty">
-    <token age="0" place="Clock_P_C_B2Enter"/>
-  </transition>
-  <transition id="Clock_T_Q2Enter">
-    <token age="0" place="Clock_P_Q2IN_Capacity"/>
-    <token age="0" place="Clock_P_CPEnter"/>
-    <token age="0" place="Clock_P_C_QEnter"/>
-  </transition>
-  <transition id="Clock_P_C_CP_Empty">
-    <token age="0" place="Clock_P_C_QEnter"/>
-  </transition>
-  <transition id="Clock_T_EnterCP">
-    <token age="0" place="Clock_P_WaitToDock"/>
-    <token age="0" place="Clock_P_CP_Capacity"/>
-    <token age="0" place="Clock_P_C_EnterCP"/>
-  </transition>
-  <transition id="Clock_T0">
-    <token age="0" place="Clock_P_C_EnterCP"/>
-  </transition>
-  <transition id="Clock_T_TICK">
-    <token age="0" place="Clock_P_C_ArrivedBoats"/>
-  </transition>
-  <transition id="Clock_T_C_CPExitEmpty">
-    <token age="0" place="Clock_P_C_ExitCP"/>
-  </transition>
-  <transition id="Clock_T_C_QOUT_Empty">
-    <token age="0" place="Clock_P_C_QExit"/>
-  </transition>
-  <transition id="Clock_T_Berth1Exit">
-    <token age="0" place="Clock_P_Berth1Served"/>
-    <token age="0" place="Clock_P_Q1OUT_Capacity"/>
-    <token age="0" place="Clock_P_C_B1Exit"/>
-  </transition>
-  <transition id="Clock_T_C_Berth1_Empty">
-    <token age="0" place="Clock_P_C_B1Exit"/>
-  </transition>
-  <transition id="Clock_T_C_Berth2_Empty">
-    <token age="0" place="Clock_P_C_B2Exit"/>
-  </transition>
-  <transition id="Clock_T_C_Berths_Empty">
-    <token age="0" place="Clock_P_C_Serve"/>
-  </transition>
-  <transition id="Clock_T_C_WorkersWorked_Empty">
-    <token age="0" place="Clock_P_C_SetAvailable"/>
-  </transition>
-  <transition id="Clock_T_Berth1Enter">
-    <token age="0" place="Clock_P_Q1IN"/>
-    <token age="0" place="Clock_P_Berth1_Capacity"/>
-    <token age="0" place="Clock_P_C_B1Enter"/>
-  </transition>
-  <transition id="Clock_P_C_B1_Full">
+  <transition id="Clock_T_C_B1_Full">
     <token age="0" place="Clock_P_C_B1Enter"/>
   </transition>
   <transition id="Clock_T_Berth2Enter">
@@ -221,7 +168,7 @@
     <token age="0" place="Clock_P_Berth2_Capacity"/>
     <token age="0" place="Clock_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_Q2IN_Empty">
+  <transition id="Clock_T_C_Q2IN_Empty">
     <token age="0" place="Clock_P_C_B2Enter"/>
   </transition>
   <transition id="Clock_T_Q1Enter">
@@ -229,7 +176,7 @@
     <token age="0" place="Clock_P_CPEnter"/>
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_P_C_CP_Empty">
+  <transition id="Clock_T_C_CP_Empty">
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
   <transition id="Clock_T_EnterCP">
@@ -237,7 +184,7 @@
     <token age="0" place="Clock_P_CP_Capacity"/>
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T0">
+  <transition id="Clock_T_C_PCin_Full">
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
   <transition id="Clock_T_TICK">
@@ -246,8 +193,13 @@
   <transition id="Clock_T_C_CPExitEmpty">
     <token age="0" place="Clock_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_PC_Full">
+  <transition id="Clock_T_C_PCout_Full">
     <token age="0" place="Clock_P_C_QExit"/>
+  </transition>
+  <transition id="Clock_T_Berth1Exit">
+    <token age="0" place="Clock_P_Berth1Served"/>
+    <token age="0" place="Clock_P_Q1OUT_Capacity"/>
+    <token age="0" place="Clock_P_C_B1Exit"/>
   </transition>
   <transition id="Clock_T_C_Q1OUT_Full">
     <token age="0" place="Clock_P_C_B1Exit"/>
@@ -261,7 +213,7 @@
     <token age="0" place="Clock_P_AlternateBerth2"/>
     <token age="0" place="Clock_P_C_Serve"/>
   </transition>
-  <transition id="Clock_T_C_Workers_Empty">
+  <transition id="Clock_T_C_Berths_Empty">
     <token age="0" place="Clock_P_C_Serve"/>
   </transition>
   <transition id="Clock_T_SetWorkersAvailable">
@@ -271,10 +223,15 @@
   <transition id="Clock_T_C_WorkersWorked_Empty">
     <token age="0" place="Clock_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_B1_Full">
+  <transition id="Clock_T_Berth1Enter">
+    <token age="0" place="Clock_P_Q1IN"/>
+    <token age="0" place="Clock_P_Berth1_Capacity"/>
     <token age="0" place="Clock_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_B2_Full">
+  <transition id="Clock_T_C_Q1IN_Empty">
+    <token age="0" place="Clock_P_C_B1Enter"/>
+  </transition>
+  <transition id="Clock_T_C_B2_Full">
     <token age="0" place="Clock_P_C_B2Enter"/>
   </transition>
   <transition id="Clock_T_Q2Enter">
@@ -282,7 +239,7 @@
     <token age="0" place="Clock_P_CPEnter"/>
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_P_C_CP_Empty">
+  <transition id="Clock_T_C_CP_Empty">
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
   <transition id="Clock_T_EnterCP">
@@ -290,7 +247,7 @@
     <token age="0" place="Clock_P_CP_Capacity"/>
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T0">
+  <transition id="Clock_T_C_PCin_Full">
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
   <transition id="Clock_T_TICK">
@@ -299,10 +256,10 @@
   <transition id="Clock_T_C_CPExitEmpty">
     <token age="0" place="Clock_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_PC_Full">
+  <transition id="Clock_T_C_PCout_Full">
     <token age="0" place="Clock_P_C_QExit"/>
   </transition>
-  <transition id="Clock_T_C_Berth1_Empty">
+  <transition id="Clock_T_C_Q1OUT_Full">
     <token age="0" place="Clock_P_C_B1Exit"/>
   </transition>
   <transition id="Clock_T_Berth2Exit">
@@ -329,7 +286,7 @@
   <transition id="Clock_T_C_WorkersWorked_Empty">
     <token age="0" place="Clock_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_B1_Full">
+  <transition id="Clock_T_C_Q1IN_Empty">
     <token age="0" place="Clock_P_C_B1Enter"/>
   </transition>
   <transition id="Clock_T_Berth2Enter">
@@ -337,15 +294,15 @@
     <token age="0" place="Clock_P_Berth2_Capacity"/>
     <token age="0" place="Clock_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_Q2IN_Empty">
+  <transition id="Clock_T_C_B2_Full">
     <token age="0" place="Clock_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_T_Q2Enter">
-    <token age="0" place="Clock_P_Q2IN_Capacity"/>
+  <transition id="Clock_T_Q1Enter">
+    <token age="0" place="Clock_P_Q1IN_Capacity"/>
     <token age="0" place="Clock_P_CPEnter"/>
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_P_C_QEnter_Full">
+  <transition id="Clock_T_C_CP_Empty">
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
   <transition id="Clock_T_EnterCP">
@@ -353,7 +310,7 @@
     <token age="0" place="Clock_P_CP_Capacity"/>
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
-  <transition id="Clock_T0">
+  <transition id="Clock_T_C_PCin_Full">
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
   <transition id="Clock_T_TICK">
@@ -362,13 +319,13 @@
   <transition id="Clock_T_C_CPExitEmpty">
     <token age="0" place="Clock_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_PC_Full">
+  <transition id="Clock_T_C_PCout_Full">
     <token age="0" place="Clock_P_C_QExit"/>
   </transition>
   <transition id="Clock_T_C_Q1OUT_Full">
     <token age="0" place="Clock_P_C_B1Exit"/>
   </transition>
-  <transition id="Clock_T_C_Q2OUT_Full">
+  <transition id="Clock_T_C_Berth2_Empty">
     <token age="0" place="Clock_P_C_B2Exit"/>
   </transition>
   <transition id="Clock_T_ServeBerth2">
@@ -387,16 +344,26 @@
   <transition id="Clock_T_C_WorkersWorked_Empty">
     <token age="0" place="Clock_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_B1_Full">
+  <transition id="Clock_T_C_B1_Full">
     <token age="0" place="Clock_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_B2_Full">
+  <transition id="Clock_T_C_B2_Full">
     <token age="0" place="Clock_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_QEnter_Full">
+  <transition id="Clock_T_Q2Enter">
+    <token age="0" place="Clock_P_Q2IN_Capacity"/>
+    <token age="0" place="Clock_P_CPEnter"/>
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_T0">
+  <transition id="Clock_T_C_CP_Empty">
+    <token age="0" place="Clock_P_C_QEnter"/>
+  </transition>
+  <transition id="Clock_T_EnterCP">
+    <token age="0" place="Clock_P_WaitToDock"/>
+    <token age="0" place="Clock_P_CP_Capacity"/>
+    <token age="0" place="Clock_P_C_EnterCP"/>
+  </transition>
+  <transition id="Clock_T_C_PCin_Full">
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
   <transition id="Clock_T_TICK">
@@ -405,7 +372,7 @@
   <transition id="Clock_T_C_CPExitEmpty">
     <token age="0" place="Clock_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_PC_Full">
+  <transition id="Clock_T_C_PCout_Full">
     <token age="0" place="Clock_P_C_QExit"/>
   </transition>
   <transition id="Clock_T_C_Q1OUT_Full">
@@ -420,16 +387,16 @@
   <transition id="Clock_T_C_WorkersWorked_Empty">
     <token age="0" place="Clock_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_B1_Full">
+  <transition id="Clock_T_C_B1_Full">
     <token age="0" place="Clock_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_B2_Full">
+  <transition id="Clock_T_C_B2_Full">
     <token age="0" place="Clock_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_QEnter_Full">
+  <transition id="Clock_T_C_QEnter_Full">
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_T0">
+  <transition id="Clock_T_C_PCin_Full">
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
   <transition id="Clock_T_TICK">
@@ -438,7 +405,7 @@
   <transition id="Clock_T_C_CPExitEmpty">
     <token age="0" place="Clock_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_PC_Full">
+  <transition id="Clock_T_C_PCout_Full">
     <token age="0" place="Clock_P_C_QExit"/>
   </transition>
   <transition id="Clock_T_C_Q1OUT_Full">
@@ -453,16 +420,16 @@
   <transition id="Clock_T_C_WorkersWorked_Empty">
     <token age="0" place="Clock_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_B1_Full">
+  <transition id="Clock_T_C_B1_Full">
     <token age="0" place="Clock_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_B2_Full">
+  <transition id="Clock_T_C_B2_Full">
     <token age="0" place="Clock_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_QEnter_Full">
+  <transition id="Clock_T_C_QEnter_Full">
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_T0">
+  <transition id="Clock_T_C_PCin_Full">
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
   <transition id="Clock_T_TICK">
@@ -471,7 +438,7 @@
   <transition id="Clock_T_C_CPExitEmpty">
     <token age="0" place="Clock_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_PC_Full">
+  <transition id="Clock_T_C_PCout_Full">
     <token age="0" place="Clock_P_C_QExit"/>
   </transition>
   <transition id="Clock_T_C_Q1OUT_Full">
@@ -486,16 +453,16 @@
   <transition id="Clock_T_C_WorkersWorked_Empty">
     <token age="0" place="Clock_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_B1_Full">
+  <transition id="Clock_T_C_B1_Full">
     <token age="0" place="Clock_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_B2_Full">
+  <transition id="Clock_T_C_B2_Full">
     <token age="0" place="Clock_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_QEnter_Full">
+  <transition id="Clock_T_C_QEnter_Full">
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_T0">
+  <transition id="Clock_T_C_PCin_Full">
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
   <transition id="Clock_T_TICK">
@@ -504,7 +471,7 @@
   <transition id="Clock_T_C_CPExitEmpty">
     <token age="0" place="Clock_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_PC_Full">
+  <transition id="Clock_T_C_PCout_Full">
     <token age="0" place="Clock_P_C_QExit"/>
   </transition>
   <transition id="Clock_T_C_Q1OUT_Full">
@@ -519,16 +486,16 @@
   <transition id="Clock_T_C_WorkersWorked_Empty">
     <token age="0" place="Clock_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_B1_Full">
+  <transition id="Clock_T_C_B1_Full">
     <token age="0" place="Clock_P_C_B1Enter"/>
   </transition>
-  <transition id="Clock_P_C_B2_Full">
+  <transition id="Clock_T_C_B2_Full">
     <token age="0" place="Clock_P_C_B2Enter"/>
   </transition>
-  <transition id="Clock_P_C_QEnter_Full">
+  <transition id="Clock_T_C_QEnter_Full">
     <token age="0" place="Clock_P_C_QEnter"/>
   </transition>
-  <transition id="Clock_T0">
+  <transition id="Clock_T_C_PCin_Full">
     <token age="0" place="Clock_P_C_EnterCP"/>
   </transition>
   <transition id="Clock_T_TICK">
@@ -537,7 +504,7 @@
   <transition id="Clock_T_C_CPExitEmpty">
     <token age="0" place="Clock_P_C_ExitCP"/>
   </transition>
-  <transition id="Clock_T_C_PC_Full">
+  <transition id="Clock_T_C_PCout_Full">
     <token age="0" place="Clock_P_C_QExit"/>
   </transition>
   <transition id="Clock_T_C_Q1OUT_Full">
@@ -552,7 +519,52 @@
   <transition id="Clock_T_C_WorkersWorked_Empty">
     <token age="0" place="Clock_P_C_SetAvailable"/>
   </transition>
-  <transition id="Clock_P_C_B1_Full">
+  <transition id="Clock_T_C_B1_Full">
     <token age="0" place="Clock_P_C_B1Enter"/>
+  </transition>
+  <transition id="Clock_T_C_B2_Full">
+    <token age="0" place="Clock_P_C_B2Enter"/>
+  </transition>
+  <transition id="Clock_T_C_QEnter_Full">
+    <token age="0" place="Clock_P_C_QEnter"/>
+  </transition>
+  <transition id="Clock_T_C_PCin_Full">
+    <token age="0" place="Clock_P_C_EnterCP"/>
+  </transition>
+  <transition id="Clock_T_TICK">
+    <token age="0" place="Clock_P_C_ArrivedBoats"/>
+  </transition>
+  <transition id="Clock_T_C_CPExitEmpty">
+    <token age="0" place="Clock_P_C_ExitCP"/>
+  </transition>
+  <transition id="Clock_T_C_PCout_Full">
+    <token age="0" place="Clock_P_C_QExit"/>
+  </transition>
+  <transition id="Clock_T_C_Q1OUT_Full">
+    <token age="0" place="Clock_P_C_B1Exit"/>
+  </transition>
+  <transition id="Clock_T_C_Q2OUT_Full">
+    <token age="0" place="Clock_P_C_B2Exit"/>
+  </transition>
+  <transition id="Clock_T_C_Berths_Empty">
+    <token age="0" place="Clock_P_C_Serve"/>
+  </transition>
+  <transition id="Clock_T_C_WorkersWorked_Empty">
+    <token age="0" place="Clock_P_C_SetAvailable"/>
+  </transition>
+  <transition id="Clock_T_C_B1_Full">
+    <token age="0" place="Clock_P_C_B1Enter"/>
+  </transition>
+  <transition id="Clock_T_C_B2_Full">
+    <token age="0" place="Clock_P_C_B2Enter"/>
+  </transition>
+  <transition id="Clock_T_C_QEnter_Full">
+    <token age="0" place="Clock_P_C_QEnter"/>
+  </transition>
+  <transition id="Clock_T_C_PCin_Full">
+    <token age="0" place="Clock_P_C_EnterCP"/>
+  </transition>
+  <transition id="Clock_T_TICK">
+    <token age="0" place="Clock_P_C_ArrivedBoats"/>
   </transition>
 </trace>
