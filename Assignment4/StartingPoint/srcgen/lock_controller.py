@@ -15,13 +15,18 @@ class LockController:
 		""" State Enum
 		"""
 		(
-			main_region_a,
-			main_region_b,
-			main_region_c,
-			main_region_d,
-			main_region_e,
+			main_region_idk,
+			main_region_idk_r1b,
+			main_region_idk_r1a,
+			main_region_idk_r1d,
+			main_region_idk_r1e,
+			main_region_idk_r1c,
+			main_region_idk_r2low_water_level,
+			main_region_idk_r2idk_initial,
+			main_region_idk_r2high_water_level,
+			main_region_emergency_mode,
 			null_state
-		) = range(6)
+		) = range(11)
 	
 	
 	def __init__(self):
@@ -61,26 +66,43 @@ class LockController:
 		self.red_light_value = None
 		self.red_light_observable = Observable()
 		
+		self.__internal_event_queue = queue.Queue()
 		self.in_event_queue = queue.Queue()
+		self.__previous_water_lvl = None
+		self.__working_side = None
+		self.__opposite_side = None
+		self.__temp = None
+		self.water_lvl_reached = None
 		
 		# enumeration of all states:
 		self.__State = LockController.State
 		self.__state_conf_vector_changed = None
-		self.__state_vector = [None] * 1
-		for __state_index in range(1):
+		self.__state_vector = [None] * 2
+		for __state_index in range(2):
 			self.__state_vector[__state_index] = self.State.null_state
 		
 		# for timed statechart:
 		self.timer_service = None
 		self.__time_events = [None] * 2
 		
+		# history vector:
+		self.__history_vector = [None] * 2
+		for __history_index in range(2):
+			self.__history_vector[__history_index] = self.State.null_state
+		
 		# initializations:
+		#Default init sequence for statechart LockController
+		self.__previous_water_lvl = self.LOW_LVL
+		self.__working_side = self.LOW
+		self.__opposite_side = self.HIGH
+		self.__temp = 0
 		self.__is_executing = False
+		self.__state_conf_vector_position = None
 	
 	def is_active(self):
 		"""Checks if the state machine is active.
 		"""
-		return self.__state_vector[0] is not self.__State.null_state
+		return self.__state_vector[0] is not self.__State.null_state or self.__state_vector[1] is not self.__State.null_state
 	
 	def is_final(self):
 		"""Checks if the statemachine is final.
@@ -92,16 +114,27 @@ class LockController:
 		"""Checks if the state is currently active.
 		"""
 		s = state
-		if s == self.__State.main_region_a:
-			return self.__state_vector[0] == self.__State.main_region_a
-		if s == self.__State.main_region_b:
-			return self.__state_vector[0] == self.__State.main_region_b
-		if s == self.__State.main_region_c:
-			return self.__state_vector[0] == self.__State.main_region_c
-		if s == self.__State.main_region_d:
-			return self.__state_vector[0] == self.__State.main_region_d
-		if s == self.__State.main_region_e:
-			return self.__state_vector[0] == self.__State.main_region_e
+		if s == self.__State.main_region_idk:
+			return (self.__state_vector[0] >= self.__State.main_region_idk)\
+				and (self.__state_vector[0] <= self.__State.main_region_idk_r2high_water_level)
+		if s == self.__State.main_region_idk_r1b:
+			return self.__state_vector[0] == self.__State.main_region_idk_r1b
+		if s == self.__State.main_region_idk_r1a:
+			return self.__state_vector[0] == self.__State.main_region_idk_r1a
+		if s == self.__State.main_region_idk_r1d:
+			return self.__state_vector[0] == self.__State.main_region_idk_r1d
+		if s == self.__State.main_region_idk_r1e:
+			return self.__state_vector[0] == self.__State.main_region_idk_r1e
+		if s == self.__State.main_region_idk_r1c:
+			return self.__state_vector[0] == self.__State.main_region_idk_r1c
+		if s == self.__State.main_region_idk_r2low_water_level:
+			return self.__state_vector[1] == self.__State.main_region_idk_r2low_water_level
+		if s == self.__State.main_region_idk_r2idk_initial:
+			return self.__state_vector[1] == self.__State.main_region_idk_r2idk_initial
+		if s == self.__State.main_region_idk_r2high_water_level:
+			return self.__state_vector[1] == self.__State.main_region_idk_r2high_water_level
+		if s == self.__State.main_region_emergency_mode:
+			return self.__state_vector[0] == self.__State.main_region_emergency_mode
 		return False
 		
 	def time_elapsed(self, event_id):
@@ -120,10 +153,22 @@ class LockController:
 		func()
 	
 	def __get_next_event(self):
+		if not self.__internal_event_queue.empty():
+			return self.__internal_event_queue.get()
 		if not self.in_event_queue.empty():
 			return self.in_event_queue.get()
 		return None
 	
+	
+	def raise_water_lvl_reached(self):
+		"""Raise method for event water_lvl_reached.
+		"""
+		self.__internal_event_queue.put(self.__raise_water_lvl_reached_call)
+	
+	def __raise_water_lvl_reached_call(self):
+		"""Raise callback for event water_lvl_reached.
+		"""
+		self.water_lvl_reached = True
 	
 	def raise_request_lvl_change(self):
 		"""Raise method for event request_lvl_change.
@@ -170,96 +215,172 @@ class LockController:
 		"""
 		self.door_obstructed = True
 	
-	def __entry_action_main_region_a(self):
-		"""Entry action for state 'A'..
-		"""
-		#Entry action for state 'A'.
-		self.open_doors_observable.next(self.LOW)
-		self.green_light_observable.next(self.LOW)
-		
-	def __entry_action_main_region_b(self):
+	def __entry_action_main_region_idk_r1_b(self):
 		"""Entry action for state 'B'..
 		"""
 		#Entry action for state 'B'.
 		self.timer_service.set_timer(self, 0, (2 * 1000), False)
+		self.red_light_observable.next(self.__working_side)
+		self.set_request_pending_observable.next(True)
 		
-	def __entry_action_main_region_c(self):
-		"""Entry action for state 'C'..
+	def __entry_action_main_region_idk_r1_a(self):
+		"""Entry action for state 'A'..
 		"""
-		#Entry action for state 'C'.
-		self.close_doors_observable.next(self.LOW)
-		self.open_flow_observable.next(self.HIGH)
+		#Entry action for state 'A'.
+		self.open_doors_observable.next(self.__working_side)
+		self.green_light_observable.next(self.__working_side)
 		
-	def __entry_action_main_region_d(self):
+	def __entry_action_main_region_idk_r1_d(self):
 		"""Entry action for state 'D'..
 		"""
 		#Entry action for state 'D'.
 		self.timer_service.set_timer(self, 1, (1 * 1000), False)
 		
-	def __entry_action_main_region_e(self):
+	def __entry_action_main_region_idk_r1_e(self):
 		"""Entry action for state 'E'..
 		"""
 		#Entry action for state 'E'.
-		self.close_flow_observable.next(self.HIGH)
-		self.open_doors_observable.next(self.HIGH)
-		self.green_light_observable.next(self.HIGH)
+		self.close_flow_observable.next(self.__working_side)
+		self.set_request_pending_observable.next(False)
+		self.open_doors_observable.next(self.__working_side)
+		self.green_light_observable.next(self.__working_side)
 		
-	def __exit_action_main_region_a(self):
-		"""Exit action for state 'A'..
+	def __entry_action_main_region_idk_r1_c(self):
+		"""Entry action for state 'C'..
 		"""
-		#Exit action for state 'A'.
-		self.red_light_observable.next(self.LOW)
+		#Entry action for state 'C'.
+		self.close_doors_observable.next(self.__working_side)
+		self.open_flow_observable.next(self.__opposite_side)
 		
-	def __exit_action_main_region_b(self):
+	def __entry_action_main_region_idk_r2_low_water_level(self):
+		"""Entry action for state 'Low water level'..
+		"""
+		#Entry action for state 'Low water level'.
+		self.__previous_water_lvl = self.water_lvl_value
+		
+	def __entry_action_main_region_idk_r2_high_water_level(self):
+		"""Entry action for state 'High water level'..
+		"""
+		#Entry action for state 'High water level'.
+		self.__previous_water_lvl = self.water_lvl_value
+		
+	def __entry_action_main_region_emergency_mode(self):
+		"""Entry action for state 'EmergencyMode'..
+		"""
+		#Entry action for state 'EmergencyMode'.
+		self.red_light_observable.next(self.HIGH)
+		self.red_light_observable.next(self.LOW)
+		self.close_doors_observable.next(self.HIGH)
+		self.close_doors_observable.next(self.LOW)
+		self.close_flow_observable.next(self.HIGH)
+		self.close_flow_observable.next(self.LOW)
+		self.set_sensor_broken_observable.next()
+		
+	def __exit_action_main_region_idk_r1_b(self):
 		"""Exit action for state 'B'..
 		"""
 		#Exit action for state 'B'.
 		self.timer_service.unset_timer(self, 0)
 		
-	def __exit_action_main_region_d(self):
+	def __exit_action_main_region_idk_r1_d(self):
 		"""Exit action for state 'D'..
 		"""
 		#Exit action for state 'D'.
 		self.timer_service.unset_timer(self, 1)
 		
-	def __enter_sequence_main_region_a_default(self):
-		"""'default' enter sequence for state A.
+	def __enter_sequence_main_region_idk_default(self):
+		"""'default' enter sequence for state idk.
 		"""
-		#'default' enter sequence for state A
-		self.__entry_action_main_region_a()
-		self.__state_vector[0] = self.State.main_region_a
-		self.__state_conf_vector_changed = True
+		#'default' enter sequence for state idk
+		self.__enter_sequence_main_region_idk_r1_default()
+		self.__enter_sequence_main_region_idk_r2_default()
 		
-	def __enter_sequence_main_region_b_default(self):
+	def __enter_sequence_main_region_idk_r1_b_default(self):
 		"""'default' enter sequence for state B.
 		"""
 		#'default' enter sequence for state B
-		self.__entry_action_main_region_b()
-		self.__state_vector[0] = self.State.main_region_b
+		self.__entry_action_main_region_idk_r1_b()
+		self.__state_vector[0] = self.State.main_region_idk_r1b
+		self.__state_conf_vector_position = 0
 		self.__state_conf_vector_changed = True
+		self.__history_vector[0] = self.__state_vector[0]
 		
-	def __enter_sequence_main_region_c_default(self):
-		"""'default' enter sequence for state C.
+	def __enter_sequence_main_region_idk_r1_a_default(self):
+		"""'default' enter sequence for state A.
 		"""
-		#'default' enter sequence for state C
-		self.__entry_action_main_region_c()
-		self.__state_vector[0] = self.State.main_region_c
+		#'default' enter sequence for state A
+		self.__entry_action_main_region_idk_r1_a()
+		self.__state_vector[0] = self.State.main_region_idk_r1a
+		self.__state_conf_vector_position = 0
 		self.__state_conf_vector_changed = True
+		self.__history_vector[0] = self.__state_vector[0]
 		
-	def __enter_sequence_main_region_d_default(self):
+	def __enter_sequence_main_region_idk_r1_d_default(self):
 		"""'default' enter sequence for state D.
 		"""
 		#'default' enter sequence for state D
-		self.__entry_action_main_region_d()
-		self.__state_vector[0] = self.State.main_region_d
+		self.__entry_action_main_region_idk_r1_d()
+		self.__state_vector[0] = self.State.main_region_idk_r1d
+		self.__state_conf_vector_position = 0
 		self.__state_conf_vector_changed = True
+		self.__history_vector[0] = self.__state_vector[0]
 		
-	def __enter_sequence_main_region_e_default(self):
+	def __enter_sequence_main_region_idk_r1_e_default(self):
 		"""'default' enter sequence for state E.
 		"""
 		#'default' enter sequence for state E
-		self.__entry_action_main_region_e()
-		self.__state_vector[0] = self.State.main_region_e
+		self.__entry_action_main_region_idk_r1_e()
+		self.__state_vector[0] = self.State.main_region_idk_r1e
+		self.__state_conf_vector_position = 0
+		self.__state_conf_vector_changed = True
+		self.__history_vector[0] = self.__state_vector[0]
+		
+	def __enter_sequence_main_region_idk_r1_c_default(self):
+		"""'default' enter sequence for state C.
+		"""
+		#'default' enter sequence for state C
+		self.__entry_action_main_region_idk_r1_c()
+		self.__state_vector[0] = self.State.main_region_idk_r1c
+		self.__state_conf_vector_position = 0
+		self.__state_conf_vector_changed = True
+		self.__history_vector[0] = self.__state_vector[0]
+		
+	def __enter_sequence_main_region_idk_r2_low_water_level_default(self):
+		"""'default' enter sequence for state Low water level.
+		"""
+		#'default' enter sequence for state Low water level
+		self.__entry_action_main_region_idk_r2_low_water_level()
+		self.__state_vector[1] = self.State.main_region_idk_r2low_water_level
+		self.__state_conf_vector_position = 1
+		self.__state_conf_vector_changed = True
+		self.__history_vector[1] = self.__state_vector[1]
+		
+	def __enter_sequence_main_region_idk_r2_idk_initial_default(self):
+		"""'default' enter sequence for state idk initial.
+		"""
+		#'default' enter sequence for state idk initial
+		self.__state_vector[1] = self.State.main_region_idk_r2idk_initial
+		self.__state_conf_vector_position = 1
+		self.__state_conf_vector_changed = True
+		self.__history_vector[1] = self.__state_vector[1]
+		
+	def __enter_sequence_main_region_idk_r2_high_water_level_default(self):
+		"""'default' enter sequence for state High water level.
+		"""
+		#'default' enter sequence for state High water level
+		self.__entry_action_main_region_idk_r2_high_water_level()
+		self.__state_vector[1] = self.State.main_region_idk_r2high_water_level
+		self.__state_conf_vector_position = 1
+		self.__state_conf_vector_changed = True
+		self.__history_vector[1] = self.__state_vector[1]
+		
+	def __enter_sequence_main_region_emergency_mode_default(self):
+		"""'default' enter sequence for state EmergencyMode.
+		"""
+		#'default' enter sequence for state EmergencyMode
+		self.__entry_action_main_region_emergency_mode()
+		self.__state_vector[0] = self.State.main_region_emergency_mode
+		self.__state_conf_vector_position = 0
 		self.__state_conf_vector_changed = True
 		
 	def __enter_sequence_main_region_default(self):
@@ -268,60 +389,225 @@ class LockController:
 		#'default' enter sequence for region main region
 		self.__react_main_region__entry_default()
 		
-	def __exit_sequence_main_region_a(self):
-		"""Default exit sequence for state A.
+	def __enter_sequence_main_region_idk_r1_default(self):
+		"""'default' enter sequence for region r1.
 		"""
-		#Default exit sequence for state A
-		self.__state_vector[0] = self.State.null_state
-		self.__exit_action_main_region_a()
+		#'default' enter sequence for region r1
+		self.__react_main_region_idk_r1__entry_default()
 		
-	def __exit_sequence_main_region_b(self):
+	def __shallow_enter_sequence_main_region_idk_r1(self):
+		"""shallow enterSequence with history in child r1.
+		"""
+		#shallow enterSequence with history in child r1
+		state = self.__history_vector[0]
+		if state == self.State.main_region_idk_r1b:
+			self.__enter_sequence_main_region_idk_r1_b_default()
+		elif state == self.State.main_region_idk_r1a:
+			self.__enter_sequence_main_region_idk_r1_a_default()
+		elif state == self.State.main_region_idk_r1d:
+			self.__enter_sequence_main_region_idk_r1_d_default()
+		elif state == self.State.main_region_idk_r1e:
+			self.__enter_sequence_main_region_idk_r1_e_default()
+		elif state == self.State.main_region_idk_r1c:
+			self.__enter_sequence_main_region_idk_r1_c_default()
+		
+	def __enter_sequence_main_region_idk_r2_default(self):
+		"""'default' enter sequence for region r2.
+		"""
+		#'default' enter sequence for region r2
+		self.__react_main_region_idk_r2__entry_default()
+		
+	def __shallow_enter_sequence_main_region_idk_r2(self):
+		"""shallow enterSequence with history in child r2.
+		"""
+		#shallow enterSequence with history in child r2
+		state = self.__history_vector[1]
+		if state == self.State.main_region_idk_r2low_water_level:
+			self.__enter_sequence_main_region_idk_r2_low_water_level_default()
+		elif state == self.State.main_region_idk_r2idk_initial:
+			self.__enter_sequence_main_region_idk_r2_idk_initial_default()
+		elif state == self.State.main_region_idk_r2high_water_level:
+			self.__enter_sequence_main_region_idk_r2_high_water_level_default()
+		
+	def __exit_sequence_main_region_idk(self):
+		"""Default exit sequence for state idk.
+		"""
+		#Default exit sequence for state idk
+		self.__exit_sequence_main_region_idk_r1()
+		self.__exit_sequence_main_region_idk_r2()
+		self.__state_vector[0] = self.State.null_state
+		self.__state_vector[1] = self.State.null_state
+		self.__state_conf_vector_position = 1
+		
+	def __exit_sequence_main_region_idk_r1_b(self):
 		"""Default exit sequence for state B.
 		"""
 		#Default exit sequence for state B
-		self.__state_vector[0] = self.State.null_state
-		self.__exit_action_main_region_b()
+		self.__state_vector[0] = self.State.main_region_idk
+		self.__state_conf_vector_position = 0
+		self.__exit_action_main_region_idk_r1_b()
 		
-	def __exit_sequence_main_region_c(self):
-		"""Default exit sequence for state C.
+	def __exit_sequence_main_region_idk_r1_a(self):
+		"""Default exit sequence for state A.
 		"""
-		#Default exit sequence for state C
-		self.__state_vector[0] = self.State.null_state
+		#Default exit sequence for state A
+		self.__state_vector[0] = self.State.main_region_idk
+		self.__state_conf_vector_position = 0
 		
-	def __exit_sequence_main_region_d(self):
+	def __exit_sequence_main_region_idk_r1_d(self):
 		"""Default exit sequence for state D.
 		"""
 		#Default exit sequence for state D
-		self.__state_vector[0] = self.State.null_state
-		self.__exit_action_main_region_d()
+		self.__state_vector[0] = self.State.main_region_idk
+		self.__state_conf_vector_position = 0
+		self.__exit_action_main_region_idk_r1_d()
 		
-	def __exit_sequence_main_region_e(self):
+	def __exit_sequence_main_region_idk_r1_e(self):
 		"""Default exit sequence for state E.
 		"""
 		#Default exit sequence for state E
+		self.__state_vector[0] = self.State.main_region_idk
+		self.__state_conf_vector_position = 0
+		
+	def __exit_sequence_main_region_idk_r1_c(self):
+		"""Default exit sequence for state C.
+		"""
+		#Default exit sequence for state C
+		self.__state_vector[0] = self.State.main_region_idk
+		self.__state_conf_vector_position = 0
+		
+	def __exit_sequence_main_region_idk_r2_low_water_level(self):
+		"""Default exit sequence for state Low water level.
+		"""
+		#Default exit sequence for state Low water level
+		self.__state_vector[1] = self.State.main_region_idk
+		self.__state_conf_vector_position = 1
+		
+	def __exit_sequence_main_region_idk_r2_idk_initial(self):
+		"""Default exit sequence for state idk initial.
+		"""
+		#Default exit sequence for state idk initial
+		self.__state_vector[1] = self.State.main_region_idk
+		self.__state_conf_vector_position = 1
+		
+	def __exit_sequence_main_region_idk_r2_high_water_level(self):
+		"""Default exit sequence for state High water level.
+		"""
+		#Default exit sequence for state High water level
+		self.__state_vector[1] = self.State.main_region_idk
+		self.__state_conf_vector_position = 1
+		
+	def __exit_sequence_main_region_emergency_mode(self):
+		"""Default exit sequence for state EmergencyMode.
+		"""
+		#Default exit sequence for state EmergencyMode
 		self.__state_vector[0] = self.State.null_state
+		self.__state_conf_vector_position = 0
 		
 	def __exit_sequence_main_region(self):
 		"""Default exit sequence for region main region.
 		"""
 		#Default exit sequence for region main region
 		state = self.__state_vector[0]
-		if state == self.State.main_region_a:
-			self.__exit_sequence_main_region_a()
-		elif state == self.State.main_region_b:
-			self.__exit_sequence_main_region_b()
-		elif state == self.State.main_region_c:
-			self.__exit_sequence_main_region_c()
-		elif state == self.State.main_region_d:
-			self.__exit_sequence_main_region_d()
-		elif state == self.State.main_region_e:
-			self.__exit_sequence_main_region_e()
+		if state == self.State.main_region_idk_r1b:
+			self.__exit_sequence_main_region_idk_r1_b()
+		elif state == self.State.main_region_idk_r1a:
+			self.__exit_sequence_main_region_idk_r1_a()
+		elif state == self.State.main_region_idk_r1d:
+			self.__exit_sequence_main_region_idk_r1_d()
+		elif state == self.State.main_region_idk_r1e:
+			self.__exit_sequence_main_region_idk_r1_e()
+		elif state == self.State.main_region_idk_r1c:
+			self.__exit_sequence_main_region_idk_r1_c()
+		elif state == self.State.main_region_emergency_mode:
+			self.__exit_sequence_main_region_emergency_mode()
+		state = self.__state_vector[1]
+		if state == self.State.main_region_idk_r2low_water_level:
+			self.__exit_sequence_main_region_idk_r2_low_water_level()
+		elif state == self.State.main_region_idk_r2idk_initial:
+			self.__exit_sequence_main_region_idk_r2_idk_initial()
+		elif state == self.State.main_region_idk_r2high_water_level:
+			self.__exit_sequence_main_region_idk_r2_high_water_level()
+		
+	def __exit_sequence_main_region_idk_r1(self):
+		"""Default exit sequence for region r1.
+		"""
+		#Default exit sequence for region r1
+		state = self.__state_vector[0]
+		if state == self.State.main_region_idk_r1b:
+			self.__exit_sequence_main_region_idk_r1_b()
+		elif state == self.State.main_region_idk_r1a:
+			self.__exit_sequence_main_region_idk_r1_a()
+		elif state == self.State.main_region_idk_r1d:
+			self.__exit_sequence_main_region_idk_r1_d()
+		elif state == self.State.main_region_idk_r1e:
+			self.__exit_sequence_main_region_idk_r1_e()
+		elif state == self.State.main_region_idk_r1c:
+			self.__exit_sequence_main_region_idk_r1_c()
+		
+	def __exit_sequence_main_region_idk_r2(self):
+		"""Default exit sequence for region r2.
+		"""
+		#Default exit sequence for region r2
+		state = self.__state_vector[1]
+		if state == self.State.main_region_idk_r2low_water_level:
+			self.__exit_sequence_main_region_idk_r2_low_water_level()
+		elif state == self.State.main_region_idk_r2idk_initial:
+			self.__exit_sequence_main_region_idk_r2_idk_initial()
+		elif state == self.State.main_region_idk_r2high_water_level:
+			self.__exit_sequence_main_region_idk_r2_high_water_level()
+		
+	def __react_main_region_idk_r2__choice_0(self):
+		"""The reactions of state null..
+		"""
+		#The reactions of state null.
+		if (((self.water_lvl_value - self.__previous_water_lvl)) if ((self.water_lvl_value - self.__previous_water_lvl)) >= 0 else -(((self.water_lvl_value - self.__previous_water_lvl)))) > 1000:
+			self.__exit_sequence_main_region_idk()
+			self.__enter_sequence_main_region_emergency_mode_default()
+		elif self.water_lvl_value > (self.HIGH_LVL - 30):
+			self.raise_water_lvl_reached()
+			self.__enter_sequence_main_region_idk_r2_high_water_level_default()
+		else:
+			self.__enter_sequence_main_region_idk_r2_low_water_level_default()
+		
+	def __react_main_region_idk_r2__choice_1(self):
+		"""The reactions of state null..
+		"""
+		#The reactions of state null.
+		if (((self.water_lvl_value - self.__previous_water_lvl)) if ((self.water_lvl_value - self.__previous_water_lvl)) >= 0 else -(((self.water_lvl_value - self.__previous_water_lvl)))) > 1000:
+			self.__exit_sequence_main_region_idk()
+			self.__enter_sequence_main_region_emergency_mode_default()
+		elif self.water_lvl_value < (self.LOW_LVL + 30):
+			self.raise_water_lvl_reached()
+			self.__enter_sequence_main_region_idk_r2_low_water_level_default()
+		else:
+			self.__enter_sequence_main_region_idk_r2_high_water_level_default()
+		
+	def __react_main_region_idk_r1__entry_default(self):
+		"""Default react sequence for shallow history entry .
+		"""
+		#Default react sequence for shallow history entry 
+		#Enter the region with shallow history
+		if self.__history_vector[0] is not self.State.null_state:
+			self.__shallow_enter_sequence_main_region_idk_r1()
+		else:
+			self.__enter_sequence_main_region_idk_r1_a_default()
+		
+	def __react_main_region_idk_r2__entry_default(self):
+		"""Default react sequence for shallow history entry .
+		"""
+		#Default react sequence for shallow history entry 
+		#Enter the region with shallow history
+		if self.__history_vector[1] is not self.State.null_state:
+			self.__shallow_enter_sequence_main_region_idk_r2()
+		else:
+			self.__enter_sequence_main_region_idk_r2_idk_initial_default()
 		
 	def __react_main_region__entry_default(self):
 		"""Default react sequence for initial entry .
 		"""
 		#Default react sequence for initial entry 
-		self.__enter_sequence_main_region_a_default()
+		self.__enter_sequence_main_region_idk_default()
 		
 	def __react(self, transitioned_before):
 		"""Implementation of __react function.
@@ -330,69 +616,137 @@ class LockController:
 		return transitioned_before
 	
 	
-	def __main_region_a_react(self, transitioned_before):
-		"""Implementation of __main_region_a_react function.
+	def __main_region_idk_react(self, transitioned_before):
+		"""Implementation of __main_region_idk_react function.
 		"""
-		#The reactions of state A.
-		transitioned_after = self.__react(transitioned_before)
-		if transitioned_after < 0:
-			if self.request_lvl_change:
-				self.__exit_sequence_main_region_a()
-				self.__enter_sequence_main_region_b_default()
-				transitioned_after = 0
-		return transitioned_after
+		#The reactions of state idk.
+		return self.__react(transitioned_before)
 	
 	
-	def __main_region_b_react(self, transitioned_before):
-		"""Implementation of __main_region_b_react function.
+	def __main_region_idk_r1_b_react(self, transitioned_before):
+		"""Implementation of __main_region_idk_r1_b_react function.
 		"""
 		#The reactions of state B.
-		transitioned_after = self.__react(transitioned_before)
+		transitioned_after = self.__main_region_idk_react(transitioned_before)
 		if transitioned_after < 0:
 			if self.__time_events[0]:
-				self.__exit_sequence_main_region_b()
+				self.__exit_sequence_main_region_idk_r1_b()
 				self.__time_events[0] = False
-				self.__enter_sequence_main_region_c_default()
+				self.__enter_sequence_main_region_idk_r1_c_default()
 				transitioned_after = 0
 			elif self.door_obstructed:
-				self.__exit_sequence_main_region_b()
-				self.__enter_sequence_main_region_b_default()
+				self.__exit_sequence_main_region_idk_r1_b()
+				self.__enter_sequence_main_region_idk_r1_b_default()
 				transitioned_after = 0
 		return transitioned_after
 	
 	
-	def __main_region_c_react(self, transitioned_before):
-		"""Implementation of __main_region_c_react function.
+	def __main_region_idk_r1_a_react(self, transitioned_before):
+		"""Implementation of __main_region_idk_r1_a_react function.
 		"""
-		#The reactions of state C.
-		transitioned_after = self.__react(transitioned_before)
+		#The reactions of state A.
+		transitioned_after = self.__main_region_idk_react(transitioned_before)
 		if transitioned_after < 0:
-			if (self.water_lvl) and (self.water_lvl_value >= (self.HIGH_LVL - 30)):
-				self.__exit_sequence_main_region_c()
-				self.__enter_sequence_main_region_d_default()
+			if self.request_lvl_change:
+				self.__exit_sequence_main_region_idk_r1_a()
+				self.__enter_sequence_main_region_idk_r1_b_default()
 				transitioned_after = 0
 		return transitioned_after
 	
 	
-	def __main_region_d_react(self, transitioned_before):
-		"""Implementation of __main_region_d_react function.
+	def __main_region_idk_r1_d_react(self, transitioned_before):
+		"""Implementation of __main_region_idk_r1_d_react function.
 		"""
 		#The reactions of state D.
-		transitioned_after = self.__react(transitioned_before)
+		transitioned_after = self.__main_region_idk_react(transitioned_before)
 		if transitioned_after < 0:
 			if self.__time_events[1]:
-				self.__exit_sequence_main_region_d()
+				self.__exit_sequence_main_region_idk_r1_d()
+				self.__temp = self.__working_side
+				self.__working_side = self.__opposite_side
+				self.__opposite_side = self.__temp
 				self.__time_events[1] = False
-				self.__enter_sequence_main_region_e_default()
+				self.__enter_sequence_main_region_idk_r1_e_default()
 				transitioned_after = 0
 		return transitioned_after
 	
 	
-	def __main_region_e_react(self, transitioned_before):
-		"""Implementation of __main_region_e_react function.
+	def __main_region_idk_r1_e_react(self, transitioned_before):
+		"""Implementation of __main_region_idk_r1_e_react function.
 		"""
 		#The reactions of state E.
-		return self.__react(transitioned_before)
+		transitioned_after = self.__main_region_idk_react(transitioned_before)
+		if transitioned_after < 0:
+			if self.request_lvl_change:
+				self.__exit_sequence_main_region_idk_r1_e()
+				self.__enter_sequence_main_region_idk_r1_b_default()
+				transitioned_after = 0
+		return transitioned_after
+	
+	
+	def __main_region_idk_r1_c_react(self, transitioned_before):
+		"""Implementation of __main_region_idk_r1_c_react function.
+		"""
+		#The reactions of state C.
+		transitioned_after = self.__main_region_idk_react(transitioned_before)
+		if transitioned_after < 0:
+			if self.water_lvl_reached:
+				self.__exit_sequence_main_region_idk_r1_c()
+				self.__enter_sequence_main_region_idk_r1_d_default()
+				transitioned_after = 0
+		return transitioned_after
+	
+	
+	def __main_region_idk_r2_low_water_level_react(self, transitioned_before):
+		"""Implementation of __main_region_idk_r2_low_water_level_react function.
+		"""
+		#The reactions of state Low water level.
+		transitioned_after = transitioned_before
+		if transitioned_after < 1:
+			if self.water_lvl:
+				self.__exit_sequence_main_region_idk_r2_low_water_level()
+				self.__react_main_region_idk_r2__choice_0()
+				transitioned_after = 1
+		return transitioned_after
+	
+	
+	def __main_region_idk_r2_idk_initial_react(self, transitioned_before):
+		"""Implementation of __main_region_idk_r2_idk_initial_react function.
+		"""
+		#The reactions of state idk initial.
+		transitioned_after = transitioned_before
+		if transitioned_after < 1:
+			if self.water_lvl:
+				self.__exit_sequence_main_region_idk_r2_idk_initial()
+				self.__react_main_region_idk_r2__choice_0()
+				transitioned_after = 1
+		return transitioned_after
+	
+	
+	def __main_region_idk_r2_high_water_level_react(self, transitioned_before):
+		"""Implementation of __main_region_idk_r2_high_water_level_react function.
+		"""
+		#The reactions of state High water level.
+		transitioned_after = transitioned_before
+		if transitioned_after < 1:
+			if self.water_lvl:
+				self.__exit_sequence_main_region_idk_r2_high_water_level()
+				self.__react_main_region_idk_r2__choice_1()
+				transitioned_after = 1
+		return transitioned_after
+	
+	
+	def __main_region_emergency_mode_react(self, transitioned_before):
+		"""Implementation of __main_region_emergency_mode_react function.
+		"""
+		#The reactions of state EmergencyMode.
+		transitioned_after = self.__react(transitioned_before)
+		if transitioned_after < 0:
+			if self.resume:
+				self.__exit_sequence_main_region_emergency_mode()
+				self.__enter_sequence_main_region_idk_default()
+				transitioned_after = 0
+		return transitioned_after
 	
 	
 	def __clear_in_events(self):
@@ -406,20 +760,38 @@ class LockController:
 		self.__time_events[1] = False
 	
 	
+	def __clear_internal_events(self):
+		"""Implementation of __clear_internal_events function.
+		"""
+		self.water_lvl_reached = False
+	
+	
 	def __micro_step(self):
 		"""Implementation of __micro_step function.
 		"""
+		transitioned = -1
+		self.__state_conf_vector_position = 0
 		state = self.__state_vector[0]
-		if state == self.State.main_region_a:
-			self.__main_region_a_react(-1)
-		elif state == self.State.main_region_b:
-			self.__main_region_b_react(-1)
-		elif state == self.State.main_region_c:
-			self.__main_region_c_react(-1)
-		elif state == self.State.main_region_d:
-			self.__main_region_d_react(-1)
-		elif state == self.State.main_region_e:
-			self.__main_region_e_react(-1)
+		if state == self.State.main_region_idk_r1b:
+			transitioned = self.__main_region_idk_r1_b_react(transitioned)
+		elif state == self.State.main_region_idk_r1a:
+			transitioned = self.__main_region_idk_r1_a_react(transitioned)
+		elif state == self.State.main_region_idk_r1d:
+			transitioned = self.__main_region_idk_r1_d_react(transitioned)
+		elif state == self.State.main_region_idk_r1e:
+			transitioned = self.__main_region_idk_r1_e_react(transitioned)
+		elif state == self.State.main_region_idk_r1c:
+			transitioned = self.__main_region_idk_r1_c_react(transitioned)
+		elif state == self.State.main_region_emergency_mode:
+			transitioned = self.__main_region_emergency_mode_react(transitioned)
+		if self.__state_conf_vector_position < 1:
+			state = self.__state_vector[1]
+			if state == self.State.main_region_idk_r2low_water_level:
+				self.__main_region_idk_r2_low_water_level_react(transitioned)
+			elif state == self.State.main_region_idk_r2idk_initial:
+				self.__main_region_idk_r2_idk_initial_react(transitioned)
+			elif state == self.State.main_region_idk_r2high_water_level:
+				self.__main_region_idk_r2_high_water_level_react(transitioned)
 	
 	
 	def run_cycle(self):
@@ -439,6 +811,7 @@ class LockController:
 		while condition_0:
 			self.__micro_step()
 			self.__clear_in_events()
+			self.__clear_internal_events()
 			condition_0 = False
 			next_event = self.__get_next_event()
 			if next_event is not None:
@@ -472,6 +845,8 @@ class LockController:
 		#Default exit sequence for statechart LockController
 		self.__exit_sequence_main_region()
 		self.__state_vector[0] = self.State.null_state
+		self.__state_vector[1] = self.State.null_state
+		self.__state_conf_vector_position = 1
 		self.__is_executing = False
 	
 	
