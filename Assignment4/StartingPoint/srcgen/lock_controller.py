@@ -23,8 +23,8 @@ class LockController:
 			main_region_idk_r1c,
 			main_region_idk_r2low_water_level,
 			main_region_idk_r2idk_initial,
-			main_region_idk_r2high_water_level,
 			main_region_emergency_mode,
+			main_region_request_in_sensor_break,
 			null_state
 		) = range(11)
 	
@@ -116,7 +116,7 @@ class LockController:
 		s = state
 		if s == self.__State.main_region_idk:
 			return (self.__state_vector[0] >= self.__State.main_region_idk)\
-				and (self.__state_vector[0] <= self.__State.main_region_idk_r2high_water_level)
+				and (self.__state_vector[0] <= self.__State.main_region_idk_r2idk_initial)
 		if s == self.__State.main_region_idk_r1b:
 			return self.__state_vector[0] == self.__State.main_region_idk_r1b
 		if s == self.__State.main_region_idk_r1a:
@@ -131,10 +131,10 @@ class LockController:
 			return self.__state_vector[1] == self.__State.main_region_idk_r2low_water_level
 		if s == self.__State.main_region_idk_r2idk_initial:
 			return self.__state_vector[1] == self.__State.main_region_idk_r2idk_initial
-		if s == self.__State.main_region_idk_r2high_water_level:
-			return self.__state_vector[1] == self.__State.main_region_idk_r2high_water_level
 		if s == self.__State.main_region_emergency_mode:
 			return self.__state_vector[0] == self.__State.main_region_emergency_mode
+		if s == self.__State.main_region_request_in_sensor_break:
+			return self.__state_vector[0] == self.__State.main_region_request_in_sensor_break
 		return False
 		
 	def time_elapsed(self, event_id):
@@ -220,8 +220,6 @@ class LockController:
 		"""
 		#Entry action for state 'B'.
 		self.timer_service.set_timer(self, 0, (2 * 1000), False)
-		self.red_light_observable.next(self.__working_side)
-		self.set_request_pending_observable.next(True)
 		
 	def __entry_action_main_region_idk_r1_a(self):
 		"""Entry action for state 'A'..
@@ -256,12 +254,6 @@ class LockController:
 		"""Entry action for state 'Low water level'..
 		"""
 		#Entry action for state 'Low water level'.
-		self.__previous_water_lvl = self.water_lvl_value
-		
-	def __entry_action_main_region_idk_r2_high_water_level(self):
-		"""Entry action for state 'High water level'..
-		"""
-		#Entry action for state 'High water level'.
 		self.__previous_water_lvl = self.water_lvl_value
 		
 	def __entry_action_main_region_emergency_mode(self):
@@ -364,22 +356,20 @@ class LockController:
 		self.__state_conf_vector_changed = True
 		self.__history_vector[1] = self.__state_vector[1]
 		
-	def __enter_sequence_main_region_idk_r2_high_water_level_default(self):
-		"""'default' enter sequence for state High water level.
-		"""
-		#'default' enter sequence for state High water level
-		self.__entry_action_main_region_idk_r2_high_water_level()
-		self.__state_vector[1] = self.State.main_region_idk_r2high_water_level
-		self.__state_conf_vector_position = 1
-		self.__state_conf_vector_changed = True
-		self.__history_vector[1] = self.__state_vector[1]
-		
 	def __enter_sequence_main_region_emergency_mode_default(self):
 		"""'default' enter sequence for state EmergencyMode.
 		"""
 		#'default' enter sequence for state EmergencyMode
 		self.__entry_action_main_region_emergency_mode()
 		self.__state_vector[0] = self.State.main_region_emergency_mode
+		self.__state_conf_vector_position = 0
+		self.__state_conf_vector_changed = True
+		
+	def __enter_sequence_main_region_request_in_sensor_break_default(self):
+		"""'default' enter sequence for state request in sensor break.
+		"""
+		#'default' enter sequence for state request in sensor break
+		self.__state_vector[0] = self.State.main_region_request_in_sensor_break
 		self.__state_conf_vector_position = 0
 		self.__state_conf_vector_changed = True
 		
@@ -426,8 +416,6 @@ class LockController:
 			self.__enter_sequence_main_region_idk_r2_low_water_level_default()
 		elif state == self.State.main_region_idk_r2idk_initial:
 			self.__enter_sequence_main_region_idk_r2_idk_initial_default()
-		elif state == self.State.main_region_idk_r2high_water_level:
-			self.__enter_sequence_main_region_idk_r2_high_water_level_default()
 		
 	def __exit_sequence_main_region_idk(self):
 		"""Default exit sequence for state idk.
@@ -490,17 +478,17 @@ class LockController:
 		self.__state_vector[1] = self.State.main_region_idk
 		self.__state_conf_vector_position = 1
 		
-	def __exit_sequence_main_region_idk_r2_high_water_level(self):
-		"""Default exit sequence for state High water level.
-		"""
-		#Default exit sequence for state High water level
-		self.__state_vector[1] = self.State.main_region_idk
-		self.__state_conf_vector_position = 1
-		
 	def __exit_sequence_main_region_emergency_mode(self):
 		"""Default exit sequence for state EmergencyMode.
 		"""
 		#Default exit sequence for state EmergencyMode
+		self.__state_vector[0] = self.State.null_state
+		self.__state_conf_vector_position = 0
+		
+	def __exit_sequence_main_region_request_in_sensor_break(self):
+		"""Default exit sequence for state request in sensor break.
+		"""
+		#Default exit sequence for state request in sensor break
 		self.__state_vector[0] = self.State.null_state
 		self.__state_conf_vector_position = 0
 		
@@ -521,13 +509,13 @@ class LockController:
 			self.__exit_sequence_main_region_idk_r1_c()
 		elif state == self.State.main_region_emergency_mode:
 			self.__exit_sequence_main_region_emergency_mode()
+		elif state == self.State.main_region_request_in_sensor_break:
+			self.__exit_sequence_main_region_request_in_sensor_break()
 		state = self.__state_vector[1]
 		if state == self.State.main_region_idk_r2low_water_level:
 			self.__exit_sequence_main_region_idk_r2_low_water_level()
 		elif state == self.State.main_region_idk_r2idk_initial:
 			self.__exit_sequence_main_region_idk_r2_idk_initial()
-		elif state == self.State.main_region_idk_r2high_water_level:
-			self.__exit_sequence_main_region_idk_r2_high_water_level()
 		
 	def __exit_sequence_main_region_idk_r1(self):
 		"""Default exit sequence for region r1.
@@ -554,8 +542,6 @@ class LockController:
 			self.__exit_sequence_main_region_idk_r2_low_water_level()
 		elif state == self.State.main_region_idk_r2idk_initial:
 			self.__exit_sequence_main_region_idk_r2_idk_initial()
-		elif state == self.State.main_region_idk_r2high_water_level:
-			self.__exit_sequence_main_region_idk_r2_high_water_level()
 		
 	def __react_main_region_idk_r2__choice_0(self):
 		"""The reactions of state null..
@@ -564,24 +550,11 @@ class LockController:
 		if (((self.water_lvl_value - self.__previous_water_lvl)) if ((self.water_lvl_value - self.__previous_water_lvl)) >= 0 else -(((self.water_lvl_value - self.__previous_water_lvl)))) > 1000:
 			self.__exit_sequence_main_region_idk()
 			self.__enter_sequence_main_region_emergency_mode_default()
-		elif self.water_lvl_value > (self.HIGH_LVL - 30):
-			self.raise_water_lvl_reached()
-			self.__enter_sequence_main_region_idk_r2_high_water_level_default()
-		else:
-			self.__enter_sequence_main_region_idk_r2_low_water_level_default()
-		
-	def __react_main_region_idk_r2__choice_1(self):
-		"""The reactions of state null..
-		"""
-		#The reactions of state null.
-		if (((self.water_lvl_value - self.__previous_water_lvl)) if ((self.water_lvl_value - self.__previous_water_lvl)) >= 0 else -(((self.water_lvl_value - self.__previous_water_lvl)))) > 1000:
-			self.__exit_sequence_main_region_idk()
-			self.__enter_sequence_main_region_emergency_mode_default()
-		elif self.water_lvl_value < (self.LOW_LVL + 30):
+		elif self.water_lvl_value > (self.HIGH_LVL - 30) if (self.__working_side == self.LOW) else self.water_lvl_value < (self.LOW_LVL + 30):
 			self.raise_water_lvl_reached()
 			self.__enter_sequence_main_region_idk_r2_low_water_level_default()
 		else:
-			self.__enter_sequence_main_region_idk_r2_high_water_level_default()
+			self.__enter_sequence_main_region_idk_r2_low_water_level_default()
 		
 	def __react_main_region_idk_r1__entry_default(self):
 		"""Default react sequence for shallow history entry .
@@ -649,6 +622,8 @@ class LockController:
 		if transitioned_after < 0:
 			if self.request_lvl_change:
 				self.__exit_sequence_main_region_idk_r1_a()
+				self.red_light_observable.next(self.__working_side)
+				self.set_request_pending_observable.next(True)
 				self.__enter_sequence_main_region_idk_r1_b_default()
 				transitioned_after = 0
 		return transitioned_after
@@ -679,6 +654,8 @@ class LockController:
 		if transitioned_after < 0:
 			if self.request_lvl_change:
 				self.__exit_sequence_main_region_idk_r1_e()
+				self.red_light_observable.next(self.__working_side)
+				self.set_request_pending_observable.next(True)
 				self.__enter_sequence_main_region_idk_r1_b_default()
 				transitioned_after = 0
 		return transitioned_after
@@ -723,19 +700,6 @@ class LockController:
 		return transitioned_after
 	
 	
-	def __main_region_idk_r2_high_water_level_react(self, transitioned_before):
-		"""Implementation of __main_region_idk_r2_high_water_level_react function.
-		"""
-		#The reactions of state High water level.
-		transitioned_after = transitioned_before
-		if transitioned_after < 1:
-			if self.water_lvl:
-				self.__exit_sequence_main_region_idk_r2_high_water_level()
-				self.__react_main_region_idk_r2__choice_1()
-				transitioned_after = 1
-		return transitioned_after
-	
-	
 	def __main_region_emergency_mode_react(self, transitioned_before):
 		"""Implementation of __main_region_emergency_mode_react function.
 		"""
@@ -744,6 +708,26 @@ class LockController:
 		if transitioned_after < 0:
 			if self.resume:
 				self.__exit_sequence_main_region_emergency_mode()
+				self.__enter_sequence_main_region_idk_default()
+				transitioned_after = 0
+			elif self.request_lvl_change:
+				self.__exit_sequence_main_region_emergency_mode()
+				self.set_request_pending_observable.next(True)
+				self.__enter_sequence_main_region_request_in_sensor_break_default()
+				transitioned_after = 0
+		return transitioned_after
+	
+	
+	def __main_region_request_in_sensor_break_react(self, transitioned_before):
+		"""Implementation of __main_region_request_in_sensor_break_react function.
+		"""
+		#The reactions of state request in sensor break.
+		transitioned_after = self.__react(transitioned_before)
+		if transitioned_after < 0:
+			if self.resume:
+				self.__exit_sequence_main_region_request_in_sensor_break()
+				self.red_light_observable.next(self.__working_side)
+				self.raise_request_lvl_change()
 				self.__enter_sequence_main_region_idk_default()
 				transitioned_after = 0
 		return transitioned_after
@@ -784,14 +768,14 @@ class LockController:
 			transitioned = self.__main_region_idk_r1_c_react(transitioned)
 		elif state == self.State.main_region_emergency_mode:
 			transitioned = self.__main_region_emergency_mode_react(transitioned)
+		elif state == self.State.main_region_request_in_sensor_break:
+			transitioned = self.__main_region_request_in_sensor_break_react(transitioned)
 		if self.__state_conf_vector_position < 1:
 			state = self.__state_vector[1]
 			if state == self.State.main_region_idk_r2low_water_level:
 				self.__main_region_idk_r2_low_water_level_react(transitioned)
 			elif state == self.State.main_region_idk_r2idk_initial:
 				self.__main_region_idk_r2_idk_initial_react(transitioned)
-			elif state == self.State.main_region_idk_r2high_water_level:
-				self.__main_region_idk_r2_high_water_level_react(transitioned)
 	
 	
 	def run_cycle(self):
