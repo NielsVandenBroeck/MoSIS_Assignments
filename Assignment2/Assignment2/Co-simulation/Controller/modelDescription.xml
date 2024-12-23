@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription fmiVersion="2.0" modelName="PID_controller"
+	guid="{02c3be52-9ed3-4d21-b2c3-89a982e141d8}"
+	description="" generationTool="CBD2FMU">
+
+	<ModelExchange modelIdentifier="PID_controller">
+		<SourceFiles>
+			<File name="all.c"/>
+			<File name="lsolve.c"/>
+		</SourceFiles>
+	</ModelExchange>
+	<CoSimulation modelIdentifier="PID_controller" canHandleVariableCommunicationStepSize="true">
+		<SourceFiles>
+			<File name="all.c"/>
+			<File name="lsolve.c"/>
+		</SourceFiles>
+	</CoSimulation>
+
+	<!-- Unit definitions: Not required/used in CBD -->
+	<!-- Log categories: Not required/used in CBD -->
+
+	<DefaultExperiment startTime="0.0"
+		stopTime="4"
+		stepSize="0.001"
+		tolerance="1e-06" />
+
+	<!-- Vendor Annotations: Not required/used in CBD -->
+
+	<ModelVariables>
+		<ScalarVariable name="PID_controller.IN" valueReference="0"  
+			causality="input" variability="continuous">
+			<Real start="0"/>
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.OUT" valueReference="1" initial="calculated" 
+			causality="output" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-93.OUT1" valueReference="2" initial="exact" 
+			causality="local" variability="constant">
+			<Real start="26"/>
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-95.OUT1" valueReference="3" initial="exact" 
+			causality="local" variability="constant">
+			<Real start="1"/>
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-97.OUT1" valueReference="4" initial="exact" 
+			causality="local" variability="constant">
+			<Real start="10"/>
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-105.OUT1" valueReference="5" initial="exact" 
+			causality="local" variability="constant">
+			<Real start="10"/>
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-108.IN1" valueReference="6" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-108.OUT1" valueReference="7" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-111.IN1" valueReference="8" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-111.IN2" valueReference="9" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-111.OUT1" valueReference="10" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-121.IN1" valueReference="11" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-121.IN2" valueReference="12" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-121.OUT1" valueReference="13" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-125.IN1" valueReference="14" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-125.IN2" valueReference="15" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-125.OUT1" valueReference="16" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-129.IN1" valueReference="17" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-129.IN2" valueReference="18" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-129.OUT1" valueReference="19" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-135.IN1" valueReference="20" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-135.IN2" valueReference="21" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-135.OUT1" valueReference="22" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-145.IN1" valueReference="23" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-145.IN2" valueReference="24" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-145.OUT1" valueReference="25" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-158.OUT1" valueReference="26" initial="exact" 
+			causality="local" variability="constant">
+			<Real start="0"/>
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_delta_t.OUT1" valueReference="27" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_multIc.IN1" valueReference="28" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_multIc.IN2" valueReference="29" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_multIc.OUT1" valueReference="30" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_neg1.IN1" valueReference="31" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_neg1.OUT1" valueReference="32" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_sum1.IN1" valueReference="33" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_sum1.IN2" valueReference="34" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_sum1.OUT1" valueReference="35" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_delay.IN1" valueReference="36" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_delay.IC" valueReference="37" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_delay.OUT1" valueReference="38" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_neg2.IN1" valueReference="39" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_neg2.OUT1" valueReference="40" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_sum2.IN1" valueReference="41" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_sum2.IN2" valueReference="42" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_sum2.OUT1" valueReference="43" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_mult.IN1" valueReference="44" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_mult.IN2" valueReference="45" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_mult.OUT1" valueReference="46" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_inv.IN1" valueReference="47" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-117_inv.OUT1" valueReference="48" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_zero.OUT1" valueReference="49" initial="exact" 
+			causality="local" variability="constant">
+			<Real start="0"/>
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_delta_t.OUT1" valueReference="50" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_delayIn.IN1" valueReference="51" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_delayIn.IC" valueReference="52" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_delayIn.OUT1" valueReference="53" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_multDelta.IN1" valueReference="54" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_multDelta.IN2" valueReference="55" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_multDelta.OUT1" valueReference="56" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_delayState.IN1" valueReference="57" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_delayState.IC" valueReference="58" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_delayState.OUT1" valueReference="59" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_sumState.IN1" valueReference="60" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_sumState.IN2" valueReference="61" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+		<ScalarVariable name="PID_controller.xFvxAx3d5TRpq_XM0aEQ-140_sumState.OUT1" valueReference="62" initial="calculated" 
+			causality="local" variability="continuous">
+			<Real />
+		</ScalarVariable>
+	</ModelVariables>
+
+	<ModelStructure>
+		<Outputs>
+			<Unknown index="2"/>
+		</Outputs>
+		<InitialUnknowns>
+			<Unknown index="2"/>
+		</InitialUnknowns>
+	</ModelStructure>
+</fmiModelDescription>

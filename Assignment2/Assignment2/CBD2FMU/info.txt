@@ -1,0 +1,45 @@
+- command line arguments allow a lot of settings
+- can also be set with config file (e.g., YAML)
+- link config and command line
+- config creator GUI?
+
+What does this software have to do?
+1. Generate xml, c and h files; based on config
+2. Compile C-code
+3. Compress as a ZIP
+4. rename ZIP to FMU
+5. compile FMU sources to binaries
+6. simulate FMU
+
+The FMUs can be simulated using FMpy.
+
+TODO:
+	- GenericBlock: OK for all common math functions between <math.h> and python math module
+	- DerivatorBlock
+			- OK: solved by using the Backwards Difference (Euler) formula
+	- Internal Algebraic Loops ????
+			- I can use the lsolve lib from CBD2C, but is this what I'm supposed to do?
+			- Maybe use SymPy for symbolic equation solving and use that?
+			  From what I can see, this is what OMEdit appears to do
+	- Add a DeltaT block to CBD sim: always get the current simulation delta: OK
+	- StEL / LCC: Add to CBD sim for completeness
+
+
+UML calling sequence: 3.2.3, page 87
+
+----------------------------------------------------------------------------------------------------
+
+The example FMU that is created is the bounding ball, which describes:
+
+der(h) = v
+der(v) = g
+
+when h <= 0    then h := 0 and v := -e * v
+when v < v_min then h := 0 and v := 0
+
+WHERE:
+h(0) := 1     |   Distance to the ground
+v(0) := 0     |   Velocity
+g := -9.81    |   Gravity Constant
+e := 0.7      |   Rebound factor (elasticity)
+v_min := 0.1  |   Threshold of when to stop bouncing

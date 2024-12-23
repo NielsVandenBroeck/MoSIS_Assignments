@@ -1,0 +1,19 @@
+The things that might (?), can (o) or should (+) be stored in a config file:
+
++ CBD model
+o Model name
+o File name
+o ModelExchange, CoSimulation, or both
+? Compile as C source or as DLL (changes C-define)
+? header file to compile instead of default fmi2TypesPlatform.h
+o Default experiment setup [Section 2.2.5]
+? Unit/Type definitions [Section 2.2.2/2.2.3]
+? Logger definitions [Section 2.2.4]
+? allow STeL?
+? Choose which signals are exposed by the FMU
+    By default this is all signals.
+    To hide signals in the generation:
+      * don't add them to the <ModelVariable> in xml
+      * cannot hide derivatives, inputs or outputs
+? Constant blocks as parameters
+  * Tunable parameters

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription fmiVersion="3.0-beta.3" modelName="{{ model.model_name }}"
+	instantiationToken="{{ '{' + model.guid + '}' }}"
+	description="{{ model.description }}" generationTool="CBD2FMU">
+
+	{% if model.mode in [0b01, 0b11] %}
+	<ModelExchange modelIdentifier="{{ model.model_name }}"/>
+	{% endif %}
+	{% if model.mode in [0b10, 0b11] %}
+	<CoSimulation modelIdentifier="{{ model.model_name }}"/>
+	{% endif %}
+
+	<!-- Unit definitions: Not required/used in CBD -->
+	<!-- Log categories: Not required/used in CBD -->
+
+	<DefaultExperiment startTime="{{ model.experiment.start }}"
+		stopTime="{{ model.experiment.end }}"
+		stepSize="{{ model.experiment.delta }}"
+		tolerance="{{ model.experiment.tolerance }}" />
+
+	<!-- Vendor Annotations: Not required/used in CBD -->
+
+	<ModelVariables>
+		{% for var in variables %}
+			{% if var.visible %}
+		<Float64 name="{{ var.path }}" valueReference="{{ loop.index0 }}" initial="{{ var.initial }}"
+			causality="{{ var.causality }}" variability="{{ var.variability }}"
+			{% if var.start is not none %}start="{{ var.start }}"{% endif %}
+			{% if var.derivative %}derivative="{{ var.derivative }}"{% endif %} />
+			{% endif %}
+		{% endfor %}
+		<!-- Required in FMU 3.0: a time-independent variable. Will not be used however. -->
+		<Float64 name="time" valueReference="{{variables|length}}" causality="independent" variability="continuous"/>
+	</ModelVariables>
+
+	<ModelStructure>
+		{% for var in outputs %}
+		<Output valueReference="{{ var.index - 1 }}"/>
+		{% endfor %}
+
+		{% for var in derivatives %}
+		<ContinuousStateDerivative valueReference="{{ var.index - 1 }}"/>
+		{% endfor %}
+
+		{% for var in initials %}
+		<InitialUnknown valueReference="{{ var.index - 1 }}"/>
+		{% endfor %}
+	</ModelStructure>
+</fmiModelDescription>

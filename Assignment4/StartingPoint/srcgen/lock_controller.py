@@ -16,13 +16,13 @@ class LockController:
 		"""
 		(
 			main_region_water_way_lock,
-			main_region_water_way_lock_r1water_level_request,
-			main_region_water_way_lock_r1initial,
-			main_region_water_way_lock_r1water_level_reached,
-			main_region_water_way_lock_r1end_flow,
-			main_region_water_way_lock_r1start_flow,
-			main_region_water_way_lock_r2water_check,
-			main_region_water_way_lock_r2initial,
+			main_region_water_way_lock_water_way_logic_water_level_request,
+			main_region_water_way_lock_water_way_logic_initial,
+			main_region_water_way_lock_water_way_logic_water_level_reached,
+			main_region_water_way_lock_water_way_logic_end_flow,
+			main_region_water_way_lock_water_way_logic_start_flow,
+			main_region_water_way_lock_water_level_check_water_check,
+			main_region_water_way_lock_water_level_check_initial,
 			main_region_emergency_mode,
 			main_region_request_while_in_emergency,
 			null_state
@@ -116,21 +116,21 @@ class LockController:
 		s = state
 		if s == self.__State.main_region_water_way_lock:
 			return (self.__state_vector[0] >= self.__State.main_region_water_way_lock)\
-				and (self.__state_vector[0] <= self.__State.main_region_water_way_lock_r2initial)
-		if s == self.__State.main_region_water_way_lock_r1water_level_request:
-			return self.__state_vector[0] == self.__State.main_region_water_way_lock_r1water_level_request
-		if s == self.__State.main_region_water_way_lock_r1initial:
-			return self.__state_vector[0] == self.__State.main_region_water_way_lock_r1initial
-		if s == self.__State.main_region_water_way_lock_r1water_level_reached:
-			return self.__state_vector[0] == self.__State.main_region_water_way_lock_r1water_level_reached
-		if s == self.__State.main_region_water_way_lock_r1end_flow:
-			return self.__state_vector[0] == self.__State.main_region_water_way_lock_r1end_flow
-		if s == self.__State.main_region_water_way_lock_r1start_flow:
-			return self.__state_vector[0] == self.__State.main_region_water_way_lock_r1start_flow
-		if s == self.__State.main_region_water_way_lock_r2water_check:
-			return self.__state_vector[1] == self.__State.main_region_water_way_lock_r2water_check
-		if s == self.__State.main_region_water_way_lock_r2initial:
-			return self.__state_vector[1] == self.__State.main_region_water_way_lock_r2initial
+				and (self.__state_vector[0] <= self.__State.main_region_water_way_lock_water_level_check_initial)
+		if s == self.__State.main_region_water_way_lock_water_way_logic_water_level_request:
+			return self.__state_vector[0] == self.__State.main_region_water_way_lock_water_way_logic_water_level_request
+		if s == self.__State.main_region_water_way_lock_water_way_logic_initial:
+			return self.__state_vector[0] == self.__State.main_region_water_way_lock_water_way_logic_initial
+		if s == self.__State.main_region_water_way_lock_water_way_logic_water_level_reached:
+			return self.__state_vector[0] == self.__State.main_region_water_way_lock_water_way_logic_water_level_reached
+		if s == self.__State.main_region_water_way_lock_water_way_logic_end_flow:
+			return self.__state_vector[0] == self.__State.main_region_water_way_lock_water_way_logic_end_flow
+		if s == self.__State.main_region_water_way_lock_water_way_logic_start_flow:
+			return self.__state_vector[0] == self.__State.main_region_water_way_lock_water_way_logic_start_flow
+		if s == self.__State.main_region_water_way_lock_water_level_check_water_check:
+			return self.__state_vector[1] == self.__State.main_region_water_way_lock_water_level_check_water_check
+		if s == self.__State.main_region_water_way_lock_water_level_check_initial:
+			return self.__state_vector[1] == self.__State.main_region_water_way_lock_water_level_check_initial
 		if s == self.__State.main_region_emergency_mode:
 			return self.__state_vector[0] == self.__State.main_region_emergency_mode
 		if s == self.__State.main_region_request_while_in_emergency:
@@ -215,7 +215,7 @@ class LockController:
 		"""
 		self.door_obstructed = True
 	
-	def __entry_action_main_region_water_way_lock_r1_water_level_request(self):
+	def __entry_action_main_region_water_way_lock_water_way_logic_water_level_request(self):
 		"""Entry action for state 'Water Level Request'..
 		"""
 		#Entry action for state 'Water Level Request'.
@@ -223,20 +223,20 @@ class LockController:
 		self.red_light_observable.next(self.__working_side)
 		self.set_request_pending_observable.next(True)
 		
-	def __entry_action_main_region_water_way_lock_r1_initial(self):
+	def __entry_action_main_region_water_way_lock_water_way_logic_initial(self):
 		"""Entry action for state 'Initial'..
 		"""
 		#Entry action for state 'Initial'.
 		self.open_doors_observable.next(self.__working_side)
 		self.green_light_observable.next(self.__working_side)
 		
-	def __entry_action_main_region_water_way_lock_r1_water_level_reached(self):
+	def __entry_action_main_region_water_way_lock_water_way_logic_water_level_reached(self):
 		"""Entry action for state 'Water Level Reached'..
 		"""
 		#Entry action for state 'Water Level Reached'.
 		self.timer_service.set_timer(self, 1, (1 * 1000), False)
 		
-	def __entry_action_main_region_water_way_lock_r1_end_flow(self):
+	def __entry_action_main_region_water_way_lock_water_way_logic_end_flow(self):
 		"""Entry action for state 'End Flow'..
 		"""
 		#Entry action for state 'End Flow'.
@@ -245,14 +245,14 @@ class LockController:
 		self.open_doors_observable.next(self.__working_side)
 		self.green_light_observable.next(self.__working_side)
 		
-	def __entry_action_main_region_water_way_lock_r1_start_flow(self):
+	def __entry_action_main_region_water_way_lock_water_way_logic_start_flow(self):
 		"""Entry action for state 'Start Flow'..
 		"""
 		#Entry action for state 'Start Flow'.
 		self.close_doors_observable.next(self.__working_side)
 		self.open_flow_observable.next(self.__opposite_side)
 		
-	def __entry_action_main_region_water_way_lock_r2_water_check(self):
+	def __entry_action_main_region_water_way_lock_water_level_check_water_check(self):
 		"""Entry action for state 'Water Check'..
 		"""
 		#Entry action for state 'Water Check'.
@@ -270,13 +270,13 @@ class LockController:
 		self.close_flow_observable.next(self.LOW)
 		self.set_sensor_broken_observable.next()
 		
-	def __exit_action_main_region_water_way_lock_r1_water_level_request(self):
+	def __exit_action_main_region_water_way_lock_water_way_logic_water_level_request(self):
 		"""Exit action for state 'Water Level Request'..
 		"""
 		#Exit action for state 'Water Level Request'.
 		self.timer_service.unset_timer(self, 0)
 		
-	def __exit_action_main_region_water_way_lock_r1_water_level_reached(self):
+	def __exit_action_main_region_water_way_lock_water_way_logic_water_level_reached(self):
 		"""Exit action for state 'Water Level Reached'..
 		"""
 		#Exit action for state 'Water Level Reached'.
@@ -286,74 +286,74 @@ class LockController:
 		"""'default' enter sequence for state Water Way Lock.
 		"""
 		#'default' enter sequence for state Water Way Lock
-		self.__enter_sequence_main_region_water_way_lock_r1_default()
-		self.__enter_sequence_main_region_water_way_lock_r2_default()
+		self.__enter_sequence_main_region_water_way_lock_water_way_logic_default()
+		self.__enter_sequence_main_region_water_way_lock_water_level_check_default()
 		
-	def __enter_sequence_main_region_water_way_lock_r1_water_level_request_default(self):
+	def __enter_sequence_main_region_water_way_lock_water_way_logic_water_level_request_default(self):
 		"""'default' enter sequence for state Water Level Request.
 		"""
 		#'default' enter sequence for state Water Level Request
-		self.__entry_action_main_region_water_way_lock_r1_water_level_request()
-		self.__state_vector[0] = self.State.main_region_water_way_lock_r1water_level_request
+		self.__entry_action_main_region_water_way_lock_water_way_logic_water_level_request()
+		self.__state_vector[0] = self.State.main_region_water_way_lock_water_way_logic_water_level_request
 		self.__state_conf_vector_position = 0
 		self.__state_conf_vector_changed = True
 		self.__history_vector[0] = self.__state_vector[0]
 		
-	def __enter_sequence_main_region_water_way_lock_r1_initial_default(self):
+	def __enter_sequence_main_region_water_way_lock_water_way_logic_initial_default(self):
 		"""'default' enter sequence for state Initial.
 		"""
 		#'default' enter sequence for state Initial
-		self.__entry_action_main_region_water_way_lock_r1_initial()
-		self.__state_vector[0] = self.State.main_region_water_way_lock_r1initial
+		self.__entry_action_main_region_water_way_lock_water_way_logic_initial()
+		self.__state_vector[0] = self.State.main_region_water_way_lock_water_way_logic_initial
 		self.__state_conf_vector_position = 0
 		self.__state_conf_vector_changed = True
 		self.__history_vector[0] = self.__state_vector[0]
 		
-	def __enter_sequence_main_region_water_way_lock_r1_water_level_reached_default(self):
+	def __enter_sequence_main_region_water_way_lock_water_way_logic_water_level_reached_default(self):
 		"""'default' enter sequence for state Water Level Reached.
 		"""
 		#'default' enter sequence for state Water Level Reached
-		self.__entry_action_main_region_water_way_lock_r1_water_level_reached()
-		self.__state_vector[0] = self.State.main_region_water_way_lock_r1water_level_reached
+		self.__entry_action_main_region_water_way_lock_water_way_logic_water_level_reached()
+		self.__state_vector[0] = self.State.main_region_water_way_lock_water_way_logic_water_level_reached
 		self.__state_conf_vector_position = 0
 		self.__state_conf_vector_changed = True
 		self.__history_vector[0] = self.__state_vector[0]
 		
-	def __enter_sequence_main_region_water_way_lock_r1_end_flow_default(self):
+	def __enter_sequence_main_region_water_way_lock_water_way_logic_end_flow_default(self):
 		"""'default' enter sequence for state End Flow.
 		"""
 		#'default' enter sequence for state End Flow
-		self.__entry_action_main_region_water_way_lock_r1_end_flow()
-		self.__state_vector[0] = self.State.main_region_water_way_lock_r1end_flow
+		self.__entry_action_main_region_water_way_lock_water_way_logic_end_flow()
+		self.__state_vector[0] = self.State.main_region_water_way_lock_water_way_logic_end_flow
 		self.__state_conf_vector_position = 0
 		self.__state_conf_vector_changed = True
 		self.__history_vector[0] = self.__state_vector[0]
 		
-	def __enter_sequence_main_region_water_way_lock_r1_start_flow_default(self):
+	def __enter_sequence_main_region_water_way_lock_water_way_logic_start_flow_default(self):
 		"""'default' enter sequence for state Start Flow.
 		"""
 		#'default' enter sequence for state Start Flow
-		self.__entry_action_main_region_water_way_lock_r1_start_flow()
-		self.__state_vector[0] = self.State.main_region_water_way_lock_r1start_flow
+		self.__entry_action_main_region_water_way_lock_water_way_logic_start_flow()
+		self.__state_vector[0] = self.State.main_region_water_way_lock_water_way_logic_start_flow
 		self.__state_conf_vector_position = 0
 		self.__state_conf_vector_changed = True
 		self.__history_vector[0] = self.__state_vector[0]
 		
-	def __enter_sequence_main_region_water_way_lock_r2_water_check_default(self):
+	def __enter_sequence_main_region_water_way_lock_water_level_check_water_check_default(self):
 		"""'default' enter sequence for state Water Check.
 		"""
 		#'default' enter sequence for state Water Check
-		self.__entry_action_main_region_water_way_lock_r2_water_check()
-		self.__state_vector[1] = self.State.main_region_water_way_lock_r2water_check
+		self.__entry_action_main_region_water_way_lock_water_level_check_water_check()
+		self.__state_vector[1] = self.State.main_region_water_way_lock_water_level_check_water_check
 		self.__state_conf_vector_position = 1
 		self.__state_conf_vector_changed = True
 		self.__history_vector[1] = self.__state_vector[1]
 		
-	def __enter_sequence_main_region_water_way_lock_r2_initial_default(self):
+	def __enter_sequence_main_region_water_way_lock_water_level_check_initial_default(self):
 		"""'default' enter sequence for state Initial.
 		"""
 		#'default' enter sequence for state Initial
-		self.__state_vector[1] = self.State.main_region_water_way_lock_r2initial
+		self.__state_vector[1] = self.State.main_region_water_way_lock_water_level_check_initial
 		self.__state_conf_vector_position = 1
 		self.__state_conf_vector_changed = True
 		self.__history_vector[1] = self.__state_vector[1]
@@ -381,99 +381,99 @@ class LockController:
 		#'default' enter sequence for region main region
 		self.__react_main_region__entry_default()
 		
-	def __enter_sequence_main_region_water_way_lock_r1_default(self):
-		"""'default' enter sequence for region r1.
+	def __enter_sequence_main_region_water_way_lock_water_way_logic_default(self):
+		"""'default' enter sequence for region WaterWayLogic.
 		"""
-		#'default' enter sequence for region r1
-		self.__react_main_region_water_way_lock_r1__entry_default()
+		#'default' enter sequence for region WaterWayLogic
+		self.__react_main_region_water_way_lock_water_way_logic__entry_default()
 		
-	def __shallow_enter_sequence_main_region_water_way_lock_r1(self):
-		"""shallow enterSequence with history in child r1.
+	def __shallow_enter_sequence_main_region_water_way_lock_water_way_logic(self):
+		"""shallow enterSequence with history in child WaterWayLogic.
 		"""
-		#shallow enterSequence with history in child r1
+		#shallow enterSequence with history in child WaterWayLogic
 		state = self.__history_vector[0]
-		if state == self.State.main_region_water_way_lock_r1water_level_request:
-			self.__enter_sequence_main_region_water_way_lock_r1_water_level_request_default()
-		elif state == self.State.main_region_water_way_lock_r1initial:
-			self.__enter_sequence_main_region_water_way_lock_r1_initial_default()
-		elif state == self.State.main_region_water_way_lock_r1water_level_reached:
-			self.__enter_sequence_main_region_water_way_lock_r1_water_level_reached_default()
-		elif state == self.State.main_region_water_way_lock_r1end_flow:
-			self.__enter_sequence_main_region_water_way_lock_r1_end_flow_default()
-		elif state == self.State.main_region_water_way_lock_r1start_flow:
-			self.__enter_sequence_main_region_water_way_lock_r1_start_flow_default()
+		if state == self.State.main_region_water_way_lock_water_way_logic_water_level_request:
+			self.__enter_sequence_main_region_water_way_lock_water_way_logic_water_level_request_default()
+		elif state == self.State.main_region_water_way_lock_water_way_logic_initial:
+			self.__enter_sequence_main_region_water_way_lock_water_way_logic_initial_default()
+		elif state == self.State.main_region_water_way_lock_water_way_logic_water_level_reached:
+			self.__enter_sequence_main_region_water_way_lock_water_way_logic_water_level_reached_default()
+		elif state == self.State.main_region_water_way_lock_water_way_logic_end_flow:
+			self.__enter_sequence_main_region_water_way_lock_water_way_logic_end_flow_default()
+		elif state == self.State.main_region_water_way_lock_water_way_logic_start_flow:
+			self.__enter_sequence_main_region_water_way_lock_water_way_logic_start_flow_default()
 		
-	def __enter_sequence_main_region_water_way_lock_r2_default(self):
-		"""'default' enter sequence for region r2.
+	def __enter_sequence_main_region_water_way_lock_water_level_check_default(self):
+		"""'default' enter sequence for region WaterLevelCheck.
 		"""
-		#'default' enter sequence for region r2
-		self.__react_main_region_water_way_lock_r2__entry_default()
+		#'default' enter sequence for region WaterLevelCheck
+		self.__react_main_region_water_way_lock_water_level_check__entry_default()
 		
-	def __shallow_enter_sequence_main_region_water_way_lock_r2(self):
-		"""shallow enterSequence with history in child r2.
+	def __shallow_enter_sequence_main_region_water_way_lock_water_level_check(self):
+		"""shallow enterSequence with history in child WaterLevelCheck.
 		"""
-		#shallow enterSequence with history in child r2
+		#shallow enterSequence with history in child WaterLevelCheck
 		state = self.__history_vector[1]
-		if state == self.State.main_region_water_way_lock_r2water_check:
-			self.__enter_sequence_main_region_water_way_lock_r2_water_check_default()
-		elif state == self.State.main_region_water_way_lock_r2initial:
-			self.__enter_sequence_main_region_water_way_lock_r2_initial_default()
+		if state == self.State.main_region_water_way_lock_water_level_check_water_check:
+			self.__enter_sequence_main_region_water_way_lock_water_level_check_water_check_default()
+		elif state == self.State.main_region_water_way_lock_water_level_check_initial:
+			self.__enter_sequence_main_region_water_way_lock_water_level_check_initial_default()
 		
 	def __exit_sequence_main_region_water_way_lock(self):
 		"""Default exit sequence for state Water Way Lock.
 		"""
 		#Default exit sequence for state Water Way Lock
-		self.__exit_sequence_main_region_water_way_lock_r1()
-		self.__exit_sequence_main_region_water_way_lock_r2()
+		self.__exit_sequence_main_region_water_way_lock_water_way_logic()
+		self.__exit_sequence_main_region_water_way_lock_water_level_check()
 		self.__state_vector[0] = self.State.null_state
 		self.__state_vector[1] = self.State.null_state
 		self.__state_conf_vector_position = 1
 		
-	def __exit_sequence_main_region_water_way_lock_r1_water_level_request(self):
+	def __exit_sequence_main_region_water_way_lock_water_way_logic_water_level_request(self):
 		"""Default exit sequence for state Water Level Request.
 		"""
 		#Default exit sequence for state Water Level Request
 		self.__state_vector[0] = self.State.main_region_water_way_lock
 		self.__state_conf_vector_position = 0
-		self.__exit_action_main_region_water_way_lock_r1_water_level_request()
+		self.__exit_action_main_region_water_way_lock_water_way_logic_water_level_request()
 		
-	def __exit_sequence_main_region_water_way_lock_r1_initial(self):
+	def __exit_sequence_main_region_water_way_lock_water_way_logic_initial(self):
 		"""Default exit sequence for state Initial.
 		"""
 		#Default exit sequence for state Initial
 		self.__state_vector[0] = self.State.main_region_water_way_lock
 		self.__state_conf_vector_position = 0
 		
-	def __exit_sequence_main_region_water_way_lock_r1_water_level_reached(self):
+	def __exit_sequence_main_region_water_way_lock_water_way_logic_water_level_reached(self):
 		"""Default exit sequence for state Water Level Reached.
 		"""
 		#Default exit sequence for state Water Level Reached
 		self.__state_vector[0] = self.State.main_region_water_way_lock
 		self.__state_conf_vector_position = 0
-		self.__exit_action_main_region_water_way_lock_r1_water_level_reached()
+		self.__exit_action_main_region_water_way_lock_water_way_logic_water_level_reached()
 		
-	def __exit_sequence_main_region_water_way_lock_r1_end_flow(self):
+	def __exit_sequence_main_region_water_way_lock_water_way_logic_end_flow(self):
 		"""Default exit sequence for state End Flow.
 		"""
 		#Default exit sequence for state End Flow
 		self.__state_vector[0] = self.State.main_region_water_way_lock
 		self.__state_conf_vector_position = 0
 		
-	def __exit_sequence_main_region_water_way_lock_r1_start_flow(self):
+	def __exit_sequence_main_region_water_way_lock_water_way_logic_start_flow(self):
 		"""Default exit sequence for state Start Flow.
 		"""
 		#Default exit sequence for state Start Flow
 		self.__state_vector[0] = self.State.main_region_water_way_lock
 		self.__state_conf_vector_position = 0
 		
-	def __exit_sequence_main_region_water_way_lock_r2_water_check(self):
+	def __exit_sequence_main_region_water_way_lock_water_level_check_water_check(self):
 		"""Default exit sequence for state Water Check.
 		"""
 		#Default exit sequence for state Water Check
 		self.__state_vector[1] = self.State.main_region_water_way_lock
 		self.__state_conf_vector_position = 1
 		
-	def __exit_sequence_main_region_water_way_lock_r2_initial(self):
+	def __exit_sequence_main_region_water_way_lock_water_level_check_initial(self):
 		"""Default exit sequence for state Initial.
 		"""
 		#Default exit sequence for state Initial
@@ -499,53 +499,53 @@ class LockController:
 		"""
 		#Default exit sequence for region main region
 		state = self.__state_vector[0]
-		if state == self.State.main_region_water_way_lock_r1water_level_request:
-			self.__exit_sequence_main_region_water_way_lock_r1_water_level_request()
-		elif state == self.State.main_region_water_way_lock_r1initial:
-			self.__exit_sequence_main_region_water_way_lock_r1_initial()
-		elif state == self.State.main_region_water_way_lock_r1water_level_reached:
-			self.__exit_sequence_main_region_water_way_lock_r1_water_level_reached()
-		elif state == self.State.main_region_water_way_lock_r1end_flow:
-			self.__exit_sequence_main_region_water_way_lock_r1_end_flow()
-		elif state == self.State.main_region_water_way_lock_r1start_flow:
-			self.__exit_sequence_main_region_water_way_lock_r1_start_flow()
+		if state == self.State.main_region_water_way_lock_water_way_logic_water_level_request:
+			self.__exit_sequence_main_region_water_way_lock_water_way_logic_water_level_request()
+		elif state == self.State.main_region_water_way_lock_water_way_logic_initial:
+			self.__exit_sequence_main_region_water_way_lock_water_way_logic_initial()
+		elif state == self.State.main_region_water_way_lock_water_way_logic_water_level_reached:
+			self.__exit_sequence_main_region_water_way_lock_water_way_logic_water_level_reached()
+		elif state == self.State.main_region_water_way_lock_water_way_logic_end_flow:
+			self.__exit_sequence_main_region_water_way_lock_water_way_logic_end_flow()
+		elif state == self.State.main_region_water_way_lock_water_way_logic_start_flow:
+			self.__exit_sequence_main_region_water_way_lock_water_way_logic_start_flow()
 		elif state == self.State.main_region_emergency_mode:
 			self.__exit_sequence_main_region_emergency_mode()
 		elif state == self.State.main_region_request_while_in_emergency:
 			self.__exit_sequence_main_region_request_while_in_emergency()
 		state = self.__state_vector[1]
-		if state == self.State.main_region_water_way_lock_r2water_check:
-			self.__exit_sequence_main_region_water_way_lock_r2_water_check()
-		elif state == self.State.main_region_water_way_lock_r2initial:
-			self.__exit_sequence_main_region_water_way_lock_r2_initial()
+		if state == self.State.main_region_water_way_lock_water_level_check_water_check:
+			self.__exit_sequence_main_region_water_way_lock_water_level_check_water_check()
+		elif state == self.State.main_region_water_way_lock_water_level_check_initial:
+			self.__exit_sequence_main_region_water_way_lock_water_level_check_initial()
 		
-	def __exit_sequence_main_region_water_way_lock_r1(self):
-		"""Default exit sequence for region r1.
+	def __exit_sequence_main_region_water_way_lock_water_way_logic(self):
+		"""Default exit sequence for region WaterWayLogic.
 		"""
-		#Default exit sequence for region r1
+		#Default exit sequence for region WaterWayLogic
 		state = self.__state_vector[0]
-		if state == self.State.main_region_water_way_lock_r1water_level_request:
-			self.__exit_sequence_main_region_water_way_lock_r1_water_level_request()
-		elif state == self.State.main_region_water_way_lock_r1initial:
-			self.__exit_sequence_main_region_water_way_lock_r1_initial()
-		elif state == self.State.main_region_water_way_lock_r1water_level_reached:
-			self.__exit_sequence_main_region_water_way_lock_r1_water_level_reached()
-		elif state == self.State.main_region_water_way_lock_r1end_flow:
-			self.__exit_sequence_main_region_water_way_lock_r1_end_flow()
-		elif state == self.State.main_region_water_way_lock_r1start_flow:
-			self.__exit_sequence_main_region_water_way_lock_r1_start_flow()
+		if state == self.State.main_region_water_way_lock_water_way_logic_water_level_request:
+			self.__exit_sequence_main_region_water_way_lock_water_way_logic_water_level_request()
+		elif state == self.State.main_region_water_way_lock_water_way_logic_initial:
+			self.__exit_sequence_main_region_water_way_lock_water_way_logic_initial()
+		elif state == self.State.main_region_water_way_lock_water_way_logic_water_level_reached:
+			self.__exit_sequence_main_region_water_way_lock_water_way_logic_water_level_reached()
+		elif state == self.State.main_region_water_way_lock_water_way_logic_end_flow:
+			self.__exit_sequence_main_region_water_way_lock_water_way_logic_end_flow()
+		elif state == self.State.main_region_water_way_lock_water_way_logic_start_flow:
+			self.__exit_sequence_main_region_water_way_lock_water_way_logic_start_flow()
 		
-	def __exit_sequence_main_region_water_way_lock_r2(self):
-		"""Default exit sequence for region r2.
+	def __exit_sequence_main_region_water_way_lock_water_level_check(self):
+		"""Default exit sequence for region WaterLevelCheck.
 		"""
-		#Default exit sequence for region r2
+		#Default exit sequence for region WaterLevelCheck
 		state = self.__state_vector[1]
-		if state == self.State.main_region_water_way_lock_r2water_check:
-			self.__exit_sequence_main_region_water_way_lock_r2_water_check()
-		elif state == self.State.main_region_water_way_lock_r2initial:
-			self.__exit_sequence_main_region_water_way_lock_r2_initial()
+		if state == self.State.main_region_water_way_lock_water_level_check_water_check:
+			self.__exit_sequence_main_region_water_way_lock_water_level_check_water_check()
+		elif state == self.State.main_region_water_way_lock_water_level_check_initial:
+			self.__exit_sequence_main_region_water_way_lock_water_level_check_initial()
 		
-	def __react_main_region_water_way_lock_r2__choice_0(self):
+	def __react_main_region_water_way_lock_water_level_check__choice_0(self):
 		"""The reactions of state null..
 		"""
 		#The reactions of state null.
@@ -554,29 +554,29 @@ class LockController:
 			self.__enter_sequence_main_region_emergency_mode_default()
 		elif self.water_lvl_value > (self.HIGH_LVL - 30) if (self.__working_side == self.LOW) else self.water_lvl_value < (self.LOW_LVL + 30):
 			self.raise_water_lvl_reached()
-			self.__enter_sequence_main_region_water_way_lock_r2_water_check_default()
+			self.__enter_sequence_main_region_water_way_lock_water_level_check_water_check_default()
 		else:
-			self.__enter_sequence_main_region_water_way_lock_r2_water_check_default()
+			self.__enter_sequence_main_region_water_way_lock_water_level_check_water_check_default()
 		
-	def __react_main_region_water_way_lock_r1__entry_default(self):
+	def __react_main_region_water_way_lock_water_way_logic__entry_default(self):
 		"""Default react sequence for shallow history entry .
 		"""
 		#Default react sequence for shallow history entry 
 		#Enter the region with shallow history
 		if self.__history_vector[0] is not self.State.null_state:
-			self.__shallow_enter_sequence_main_region_water_way_lock_r1()
+			self.__shallow_enter_sequence_main_region_water_way_lock_water_way_logic()
 		else:
-			self.__enter_sequence_main_region_water_way_lock_r1_initial_default()
+			self.__enter_sequence_main_region_water_way_lock_water_way_logic_initial_default()
 		
-	def __react_main_region_water_way_lock_r2__entry_default(self):
+	def __react_main_region_water_way_lock_water_level_check__entry_default(self):
 		"""Default react sequence for shallow history entry .
 		"""
 		#Default react sequence for shallow history entry 
 		#Enter the region with shallow history
 		if self.__history_vector[1] is not self.State.null_state:
-			self.__shallow_enter_sequence_main_region_water_way_lock_r2()
+			self.__shallow_enter_sequence_main_region_water_way_lock_water_level_check()
 		else:
-			self.__enter_sequence_main_region_water_way_lock_r2_initial_default()
+			self.__enter_sequence_main_region_water_way_lock_water_level_check_initial_default()
 		
 	def __react_main_region__entry_default(self):
 		"""Default react sequence for initial entry .
@@ -598,102 +598,102 @@ class LockController:
 		return self.__react(transitioned_before)
 	
 	
-	def __main_region_water_way_lock_r1_water_level_request_react(self, transitioned_before):
-		"""Implementation of __main_region_water_way_lock_r1_water_level_request_react function.
+	def __main_region_water_way_lock_water_way_logic_water_level_request_react(self, transitioned_before):
+		"""Implementation of __main_region_water_way_lock_water_way_logic_water_level_request_react function.
 		"""
 		#The reactions of state Water Level Request.
 		transitioned_after = self.__main_region_water_way_lock_react(transitioned_before)
 		if transitioned_after < 0:
 			if self.__time_events[0]:
-				self.__exit_sequence_main_region_water_way_lock_r1_water_level_request()
+				self.__exit_sequence_main_region_water_way_lock_water_way_logic_water_level_request()
 				self.__time_events[0] = False
-				self.__enter_sequence_main_region_water_way_lock_r1_start_flow_default()
+				self.__enter_sequence_main_region_water_way_lock_water_way_logic_start_flow_default()
 				transitioned_after = 0
 			elif self.door_obstructed:
-				self.__exit_sequence_main_region_water_way_lock_r1_water_level_request()
-				self.__enter_sequence_main_region_water_way_lock_r1_water_level_request_default()
+				self.__exit_sequence_main_region_water_way_lock_water_way_logic_water_level_request()
+				self.__enter_sequence_main_region_water_way_lock_water_way_logic_water_level_request_default()
 				transitioned_after = 0
 		return transitioned_after
 	
 	
-	def __main_region_water_way_lock_r1_initial_react(self, transitioned_before):
-		"""Implementation of __main_region_water_way_lock_r1_initial_react function.
+	def __main_region_water_way_lock_water_way_logic_initial_react(self, transitioned_before):
+		"""Implementation of __main_region_water_way_lock_water_way_logic_initial_react function.
 		"""
 		#The reactions of state Initial.
 		transitioned_after = self.__main_region_water_way_lock_react(transitioned_before)
 		if transitioned_after < 0:
 			if self.request_lvl_change:
-				self.__exit_sequence_main_region_water_way_lock_r1_initial()
-				self.__enter_sequence_main_region_water_way_lock_r1_water_level_request_default()
+				self.__exit_sequence_main_region_water_way_lock_water_way_logic_initial()
+				self.__enter_sequence_main_region_water_way_lock_water_way_logic_water_level_request_default()
 				transitioned_after = 0
 		return transitioned_after
 	
 	
-	def __main_region_water_way_lock_r1_water_level_reached_react(self, transitioned_before):
-		"""Implementation of __main_region_water_way_lock_r1_water_level_reached_react function.
+	def __main_region_water_way_lock_water_way_logic_water_level_reached_react(self, transitioned_before):
+		"""Implementation of __main_region_water_way_lock_water_way_logic_water_level_reached_react function.
 		"""
 		#The reactions of state Water Level Reached.
 		transitioned_after = self.__main_region_water_way_lock_react(transitioned_before)
 		if transitioned_after < 0:
 			if self.__time_events[1]:
-				self.__exit_sequence_main_region_water_way_lock_r1_water_level_reached()
+				self.__exit_sequence_main_region_water_way_lock_water_way_logic_water_level_reached()
 				self.__temp = self.__working_side
 				self.__working_side = self.__opposite_side
 				self.__opposite_side = self.__temp
 				self.__time_events[1] = False
-				self.__enter_sequence_main_region_water_way_lock_r1_end_flow_default()
+				self.__enter_sequence_main_region_water_way_lock_water_way_logic_end_flow_default()
 				transitioned_after = 0
 		return transitioned_after
 	
 	
-	def __main_region_water_way_lock_r1_end_flow_react(self, transitioned_before):
-		"""Implementation of __main_region_water_way_lock_r1_end_flow_react function.
+	def __main_region_water_way_lock_water_way_logic_end_flow_react(self, transitioned_before):
+		"""Implementation of __main_region_water_way_lock_water_way_logic_end_flow_react function.
 		"""
 		#The reactions of state End Flow.
 		transitioned_after = self.__main_region_water_way_lock_react(transitioned_before)
 		if transitioned_after < 0:
 			if self.request_lvl_change:
-				self.__exit_sequence_main_region_water_way_lock_r1_end_flow()
-				self.__enter_sequence_main_region_water_way_lock_r1_water_level_request_default()
+				self.__exit_sequence_main_region_water_way_lock_water_way_logic_end_flow()
+				self.__enter_sequence_main_region_water_way_lock_water_way_logic_water_level_request_default()
 				transitioned_after = 0
 		return transitioned_after
 	
 	
-	def __main_region_water_way_lock_r1_start_flow_react(self, transitioned_before):
-		"""Implementation of __main_region_water_way_lock_r1_start_flow_react function.
+	def __main_region_water_way_lock_water_way_logic_start_flow_react(self, transitioned_before):
+		"""Implementation of __main_region_water_way_lock_water_way_logic_start_flow_react function.
 		"""
 		#The reactions of state Start Flow.
 		transitioned_after = self.__main_region_water_way_lock_react(transitioned_before)
 		if transitioned_after < 0:
 			if self.water_lvl_reached:
-				self.__exit_sequence_main_region_water_way_lock_r1_start_flow()
-				self.__enter_sequence_main_region_water_way_lock_r1_water_level_reached_default()
+				self.__exit_sequence_main_region_water_way_lock_water_way_logic_start_flow()
+				self.__enter_sequence_main_region_water_way_lock_water_way_logic_water_level_reached_default()
 				transitioned_after = 0
 		return transitioned_after
 	
 	
-	def __main_region_water_way_lock_r2_water_check_react(self, transitioned_before):
-		"""Implementation of __main_region_water_way_lock_r2_water_check_react function.
+	def __main_region_water_way_lock_water_level_check_water_check_react(self, transitioned_before):
+		"""Implementation of __main_region_water_way_lock_water_level_check_water_check_react function.
 		"""
 		#The reactions of state Water Check.
 		transitioned_after = transitioned_before
 		if transitioned_after < 1:
 			if self.water_lvl:
-				self.__exit_sequence_main_region_water_way_lock_r2_water_check()
-				self.__react_main_region_water_way_lock_r2__choice_0()
+				self.__exit_sequence_main_region_water_way_lock_water_level_check_water_check()
+				self.__react_main_region_water_way_lock_water_level_check__choice_0()
 				transitioned_after = 1
 		return transitioned_after
 	
 	
-	def __main_region_water_way_lock_r2_initial_react(self, transitioned_before):
-		"""Implementation of __main_region_water_way_lock_r2_initial_react function.
+	def __main_region_water_way_lock_water_level_check_initial_react(self, transitioned_before):
+		"""Implementation of __main_region_water_way_lock_water_level_check_initial_react function.
 		"""
 		#The reactions of state Initial.
 		transitioned_after = transitioned_before
 		if transitioned_after < 1:
 			if self.water_lvl:
-				self.__exit_sequence_main_region_water_way_lock_r2_initial()
-				self.__react_main_region_water_way_lock_r2__choice_0()
+				self.__exit_sequence_main_region_water_way_lock_water_level_check_initial()
+				self.__react_main_region_water_way_lock_water_level_check__choice_0()
 				transitioned_after = 1
 		return transitioned_after
 	
@@ -724,8 +724,8 @@ class LockController:
 		if transitioned_after < 0:
 			if self.resume:
 				self.__exit_sequence_main_region_request_while_in_emergency()
-				self.__enter_sequence_main_region_water_way_lock_r1_water_level_request_default()
-				self.__enter_sequence_main_region_water_way_lock_r2_default()
+				self.__enter_sequence_main_region_water_way_lock_water_way_logic_water_level_request_default()
+				self.__enter_sequence_main_region_water_way_lock_water_level_check_default()
 				transitioned_after = 0
 		return transitioned_after
 	
@@ -753,26 +753,26 @@ class LockController:
 		transitioned = -1
 		self.__state_conf_vector_position = 0
 		state = self.__state_vector[0]
-		if state == self.State.main_region_water_way_lock_r1water_level_request:
-			transitioned = self.__main_region_water_way_lock_r1_water_level_request_react(transitioned)
-		elif state == self.State.main_region_water_way_lock_r1initial:
-			transitioned = self.__main_region_water_way_lock_r1_initial_react(transitioned)
-		elif state == self.State.main_region_water_way_lock_r1water_level_reached:
-			transitioned = self.__main_region_water_way_lock_r1_water_level_reached_react(transitioned)
-		elif state == self.State.main_region_water_way_lock_r1end_flow:
-			transitioned = self.__main_region_water_way_lock_r1_end_flow_react(transitioned)
-		elif state == self.State.main_region_water_way_lock_r1start_flow:
-			transitioned = self.__main_region_water_way_lock_r1_start_flow_react(transitioned)
+		if state == self.State.main_region_water_way_lock_water_way_logic_water_level_request:
+			transitioned = self.__main_region_water_way_lock_water_way_logic_water_level_request_react(transitioned)
+		elif state == self.State.main_region_water_way_lock_water_way_logic_initial:
+			transitioned = self.__main_region_water_way_lock_water_way_logic_initial_react(transitioned)
+		elif state == self.State.main_region_water_way_lock_water_way_logic_water_level_reached:
+			transitioned = self.__main_region_water_way_lock_water_way_logic_water_level_reached_react(transitioned)
+		elif state == self.State.main_region_water_way_lock_water_way_logic_end_flow:
+			transitioned = self.__main_region_water_way_lock_water_way_logic_end_flow_react(transitioned)
+		elif state == self.State.main_region_water_way_lock_water_way_logic_start_flow:
+			transitioned = self.__main_region_water_way_lock_water_way_logic_start_flow_react(transitioned)
 		elif state == self.State.main_region_emergency_mode:
 			transitioned = self.__main_region_emergency_mode_react(transitioned)
 		elif state == self.State.main_region_request_while_in_emergency:
 			transitioned = self.__main_region_request_while_in_emergency_react(transitioned)
 		if self.__state_conf_vector_position < 1:
 			state = self.__state_vector[1]
-			if state == self.State.main_region_water_way_lock_r2water_check:
-				self.__main_region_water_way_lock_r2_water_check_react(transitioned)
-			elif state == self.State.main_region_water_way_lock_r2initial:
-				self.__main_region_water_way_lock_r2_initial_react(transitioned)
+			if state == self.State.main_region_water_way_lock_water_level_check_water_check:
+				self.__main_region_water_way_lock_water_level_check_water_check_react(transitioned)
+			elif state == self.State.main_region_water_way_lock_water_level_check_initial:
+				self.__main_region_water_way_lock_water_level_check_initial_react(transitioned)
 	
 	
 	def run_cycle(self):
