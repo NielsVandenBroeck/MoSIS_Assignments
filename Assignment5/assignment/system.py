@@ -55,7 +55,15 @@ class LockQueueingSystem(CoupledDEVS):
 
         # Don't forget to connect the input/output ports of the different sub-models:
         #   for instance:
-        #     self.connectPorts(generator.out_ship, queue.in_ship)
+        self.connectPorts(generator.out_ship, queue.in_ship)
+        self.connectPorts(load_balancer.out_get_ship, queue.in_get_ship)
+        self.connectPorts(queue.out_ship, load_balancer.in_ship)
+
+
+        self.connectPorts(load_balancer.out_ship, locks[0].in_ship)#TODO only uses one lock
+        self.connectPorts(locks[0].out_lock_opened, load_balancer.in_lock_open)#TODO only uses one lock
+
+        self.connectPorts(locks[0].out_ships, sink.in_ships)
         #     ...
 
         # Our runner.py script needs access to the 'sink'-state after completing the simulation:
