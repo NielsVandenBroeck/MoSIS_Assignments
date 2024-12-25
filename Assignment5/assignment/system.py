@@ -61,7 +61,8 @@ class LockQueueingSystem(CoupledDEVS):
 
 
         self.connectPorts(load_balancer.out_ship, locks[0].in_ship)#TODO only uses one lock
-        self.connectPorts(locks[0].out_lock_opened, load_balancer.in_lock_open)#TODO only uses one lock
+        self.connectPorts(locks[0].out_lock_opened, load_balancer.in_lock_opened)#TODO only uses one lock
+        self.connectPorts(locks[0].out_ship_ack, load_balancer.in_ship_ack)  # TODO only uses one lock
 
         self.connectPorts(locks[0].out_ships, sink.in_ships)
         #     ...

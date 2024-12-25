@@ -76,6 +76,8 @@ class SinkState:
         self.current_time = 0.0
         self.ships = []
 
+    def __repr__(self):
+        return f"SinkState(ships={len(self.ships)})"
 class Sink(AtomicDEVS):
     def __init__(self):
         super().__init__("Sink")

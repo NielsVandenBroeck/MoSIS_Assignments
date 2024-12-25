@@ -67,7 +67,7 @@ for priority in priorities:
             )
             sim = Simulator(sys)
             sim.setClassicDEVS()
-            # sim.setVerbose() # <-- uncomment to see what's going on
+            sim.setVerbose() # <-- uncomment to see what's going on
             sim.simulate()
 
             # all the ships that made it through
