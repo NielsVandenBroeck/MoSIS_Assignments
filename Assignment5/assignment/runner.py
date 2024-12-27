@@ -62,7 +62,7 @@ for priority in priorities:
                 load_balancer_strategy=strategy,
                 lock_capacities=lock_capacities,
                 priority=priority,
-                max_wait_duration=max_wait_duration,
+                max_wait_duration=500000000000,
                 passthrough_duration=passthrough_duration,
             )
             sim = Simulator(sys)

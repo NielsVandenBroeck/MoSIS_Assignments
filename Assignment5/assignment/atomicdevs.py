@@ -108,14 +108,15 @@ class RoundRobinLoadBalancer(AtomicDEVS):
 
 
     def extTransition(self, inputs):
-        ask_for_new_ship = False
+        assert self.state.lock_available_space[0] >= 0, f"Negative lock space {self.state.lock_available_space}"
+        assert self.state.lock_available_space[1] >= 0, f"Negative lock space {self.state.lock_available_space}"
+
         for i in range(len(self.state.lock_capacities)):
-            if self.in_ship_ack_list[i] in inputs: #ship was successfully moved to lock
+            if self.in_ship_ack_list[i] in inputs and self.state.next_ship is not None: #ship was successfully moved to lock
                 self.state.lock_available_space[i] -= self.state.next_ship.size
+                assert self.state.lock_available_space[i] >= 0, f"Negative lock space {self.state.lock_available_space}"
                 self.state.next_ship = None
                 self.state.remaining_time = 0 #ask for new ship immediately
-                ask_for_new_ship = True
-
 
         if self.in_ship in inputs and inputs[self.in_ship] is not None: #when ships comes in and there is not currently another ship
             self.state.next_ship = inputs[self.in_ship]
@@ -224,7 +225,7 @@ class Lock(AtomicDEVS):
             elif self.state.closed:
                 self.state.ack_ship = False
                 pass
-            elif sum(ship.size for ship in self.state.ships) <= self.state.available_capacity:
+            elif sum(ship.size for ship in self.state.ships) + inputs[self.in_ship].size <= self.state.available_capacity:
                 self.state.ack_ship = True
                 self.state.remaining_time = 0 #sendout ship ack immediately
                 self.state.ships.append(inputs[self.in_ship])
