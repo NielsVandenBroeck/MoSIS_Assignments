@@ -26,14 +26,23 @@ class Queue(AtomicDEVS):
         self.in_ship = self.addInPort("in_ship")
         self.in_get_ship = self.addInPort("in_get_ship")
         self.out_ship = self.addOutPort("out_ship")
+        self.in_return_ship = self.addInPort("in_return_ship")
         self.out_available_ships = self.addOutPort("out_available_ships")
 
     def extTransition(self, inputs):
+        if self.in_return_ship in inputs:
+            self.state.queues[inputs[self.in_return_ship].size].append(inputs[self.in_return_ship])
+            self.state.outgoing_ship = None
+            self.state.remaining_time = 0
+            return self.state
+
         if self.in_ship in inputs:
             self.state.queues[inputs[self.in_ship].size].insert(0, inputs[self.in_ship])
             self.state.outgoing_ship = None
             self.state.remaining_time = 0
+
         if self.in_get_ship in inputs:
+            assert self.state.outgoing_ship is None, f"WTF {inputs}"
             self.state.outgoing_ship = self.state.queues[inputs[self.in_get_ship]].pop()
             self.state.remaining_time = 0
 
@@ -66,6 +75,7 @@ class LoadBalancerState:
     available_ship_count_in_queue: dict
     locked: bool
     get_ship_size: int
+    wait_for_ship: bool
     def __init__(self, lock_capacities, priority):
         self.lock_capacities = lock_capacities
         self.lock_available_space = deepcopy(lock_capacities)
@@ -77,6 +87,7 @@ class LoadBalancerState:
         self.available_ship_count_in_queue = {}
         self.locked = False
         self.get_ship_size = -1
+        self.wait_for_ship = False
         #0: ship is ready to be moved
         #1: there are ships availble in queue
         #2: ship is ack
@@ -93,6 +104,7 @@ class RoundRobinLoadBalancer(AtomicDEVS):
         super().__init__("RoundRobinLoadBalancer")
         self.state = LoadBalancerState(lock_capacities, priority)
         self.in_ship = self.addInPort("in_ship")
+        self.out_return_ship = self.addOutPort("out_return_ship")
         self.out_get_ship = self.addOutPort("out_get_ship")
         self.in_available_ships = self.addInPort("in_available_ships")
 
@@ -128,10 +140,12 @@ class RoundRobinLoadBalancer(AtomicDEVS):
         return self.state.remaining_time
 
     def outputFnc(self):
-        if self.state.next_ship is not None:
+        if self.state.next_ship is not None and self.state.lock_open_list[self.state.current_serving_lock]:
             return {self.out_ship_list[self.state.current_serving_lock]: self.state.next_ship}
-        elif self.get_needed_ship_size() != -1:
-            return {self.out_get_ship: self.get_needed_ship_size()}
+        elif self.state.next_ship is not None and not self.state.lock_open_list[self.state.current_serving_lock]:
+            return {self.out_return_ship: self.state.next_ship}
+        elif self.state.get_ship_size != -1:
+            return {self.out_get_ship: self.state.get_ship_size}
         return {}
 
     def check_if_boats_and_lock_are_available(self):
@@ -159,18 +173,23 @@ class RoundRobinLoadBalancer(AtomicDEVS):
         if self.state.next_ship is not None:
             self.state.lock_available_space[self.state.current_serving_lock] -= self.state.next_ship.size
             self.state.current_serving_lock = (self.state.current_serving_lock + 1) % len(self.state.lock_capacities)  # take other lock when a ship was moved
+            self.state.wait_for_ship = False
         self.state.next_ship = None
         self.state.locked = False
 
-        if not self.check_if_boats_and_lock_are_available():
+        if self.state.wait_for_ship:
+            self.state.get_ship_size = -1
+            self.state.remaining_time = float("inf")
+        elif not self.check_if_boats_and_lock_are_available():
             self.state.locked = True
             self.state.remaining_time = float("inf")  # There can nothing be done wait for a new external event
         else:
+            self.state.wait_for_ship = True
             self.state.remaining_time = 0
-            get_ship_size = self.get_needed_ship_size()  # try the next lock (roundrobin)
-            while get_ship_size == -1:  # When the default roundrobin lock is not valid loop until a valid lock is found, cannot be an inf loop because of the check_if_boats_and_lock_are_available
+            self.state.get_ship_size = self.get_needed_ship_size()  # try the next lock (roundrobin)
+            while self.state.get_ship_size == -1:  # When the default roundrobin lock is not valid loop until a valid lock is found, cannot be an inf loop because of the check_if_boats_and_lock_are_available
                 self.state.current_serving_lock = (self.state.current_serving_lock + 1) % len(self.state.lock_capacities)
-                get_ship_size = self.get_needed_ship_size()
+                self.state.get_ship_size = self.get_needed_ship_size()
 
         return self.state
 
@@ -183,6 +202,7 @@ class FillErUpLoadBalancer(AtomicDEVS):
         super().__init__("FillErUpLoadBalancer")
         self.state = LoadBalancerState(lock_capacities, priority)
         self.in_ship = self.addInPort("in_ship")
+        self.out_return_ship = self.addOutPort("out_return_ship")
         self.out_get_ship = self.addOutPort("out_get_ship")
         self.in_available_ships = self.addInPort("in_available_ships")
 
@@ -195,7 +215,6 @@ class FillErUpLoadBalancer(AtomicDEVS):
         self.state.remaining_time = 0
 
     def extTransition(self, inputs):
-        self.state.get_ship_size = -1
         if self.in_available_ships in inputs:
             self.state.available_ship_count_in_queue = inputs[self.in_available_ships]
             if self.state.locked:
@@ -219,8 +238,10 @@ class FillErUpLoadBalancer(AtomicDEVS):
         return self.state.remaining_time
 
     def outputFnc(self):
-        if self.state.next_ship is not None:
+        if self.state.next_ship is not None and self.state.lock_open_list[self.state.current_serving_lock]:
             return {self.out_ship_list[self.state.current_serving_lock]: self.state.next_ship}
+        elif self.state.next_ship is not None and not self.state.lock_open_list[self.state.current_serving_lock]:
+            return {self.out_return_ship: self.state.next_ship}
         elif self.state.get_ship_size != -1:
             return {self.out_get_ship: self.state.get_ship_size}
         return {}
@@ -229,32 +250,33 @@ class FillErUpLoadBalancer(AtomicDEVS):
         """
         Based on self.state.current_serving_lock
         """
-        maximal_fill = (-1, +float("inf"))
+        maximal_fill = (-1, -1, +float("inf"))
         for lock in range(len(self.state.lock_capacities)):
             if not self.state.lock_open_list[lock]:
                 continue
             for boat_size, boats in self.state.available_ship_count_in_queue.items():
                 if (self.state.available_ship_count_in_queue[boat_size] > 0 and self.state.lock_available_space[lock] >= boat_size and
-                        self.state.lock_available_space[lock] - boat_size < maximal_fill[1]):
-                    maximal_fill = (lock, boat_size)
-        if maximal_fill[1] == +float("inf"):
-            maximal_fill = (-1, -1)
+                        self.state.lock_available_space[lock] - boat_size < maximal_fill[2]):
+                    maximal_fill = (lock, boat_size, self.state.lock_available_space[lock] - boat_size)
         return maximal_fill
 
     def intTransition(self):
         if self.state.next_ship is not None:
             self.state.lock_available_space[self.state.current_serving_lock] -= self.state.next_ship.size
+            self.state.wait_for_ship = False
         self.state.next_ship = None
         self.state.locked = False
 
         optimal_solution = self.get_needed_optimal_ship_and_lock()
-        if optimal_solution[0] == -1:
+        if self.state.wait_for_ship:
+            self.state.get_ship_size = -1
+            self.state.remaining_time = float("inf")
+        elif optimal_solution[0] == -1:
             self.state.locked = True
             self.state.remaining_time = float("inf")  # There can nothing be done wait for a new external event
         else:
             self.state.wait_for_ship = True
             self.state.remaining_time = 0 #get boat
-            self.state.available_ship_count_in_queue[optimal_solution[1]] -= 1
             self.state.current_serving_lock = optimal_solution[0]
             self.state.get_ship_size = optimal_solution[1]
 
@@ -309,7 +331,6 @@ class Lock(AtomicDEVS):
         if self.in_ship in inputs:
             if len(self.state.ships) == 0:
                 self.state.remaining_time = self.state.max_wait_duration
-
             self.state.ships.append(inputs[self.in_ship])
 
         if sum(ship.size for ship in self.state.ships) >= self.state.available_capacity:

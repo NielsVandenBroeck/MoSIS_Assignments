@@ -57,6 +57,7 @@ class LockQueueingSystem(CoupledDEVS):
         #   for instance:
         self.connectPorts(generator.out_ship, queue.in_ship)
         self.connectPorts(load_balancer.out_get_ship, queue.in_get_ship)
+        self.connectPorts(load_balancer.out_return_ship, queue.in_return_ship)
         self.connectPorts(queue.out_ship, load_balancer.in_ship)
         self.connectPorts(queue.out_available_ships, load_balancer.in_available_ships)
 
