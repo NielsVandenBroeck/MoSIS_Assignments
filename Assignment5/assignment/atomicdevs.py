@@ -258,6 +258,9 @@ class FillErUpLoadBalancer(AtomicDEVS):
                 if (self.state.available_ship_count_in_queue[boat_size] > 0 and self.state.lock_available_space[lock] >= boat_size and
                         self.state.lock_available_space[lock] - boat_size < maximal_fill[2]):
                     maximal_fill = (lock, boat_size, self.state.lock_available_space[lock] - boat_size)
+                elif self.state.available_ship_count_in_queue[boat_size] > 0 and self.state.lock_available_space[lock] >= boat_size and (self.state.lock_available_space[lock] - boat_size == maximal_fill[2] and
+                      ((PRIORITIZE_BIGGER_SHIPS == self.state.priority and maximal_fill[1] < boat_size) or (PRIORITIZE_SMALLER_SHIPS == self.state.priority and maximal_fill[1] > boat_size))):
+                    maximal_fill = (lock, boat_size, self.state.lock_available_space[lock] - boat_size)
         return maximal_fill
 
     def intTransition(self):
@@ -314,7 +317,7 @@ class Lock(AtomicDEVS):
     ):
         super().__init__("Lock")
         self.state = LockState(capacity, max_wait_duration, passthrough_duration)
-        self.state.remaining_time = max_wait_duration
+        self.state.remaining_time = float('inf')
         self.in_ship = self.addInPort("in_ship")
 
         self.out_ships = self.addOutPort("out_ships")

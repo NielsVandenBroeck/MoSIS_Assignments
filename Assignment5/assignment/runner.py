@@ -33,6 +33,7 @@ lock_capacities=[3,2] # two locks, of capacity 3 and 2
 
 # The different parameters to try for max_wait_duration
 max_wait_durations = [ 0.0+i*120.0 for i in range(5) ] # all these values will be attempted
+print(max_wait_durations)
 # max_wait_durations = [ 15.0 ] # <-- uncomment if you only want to run an experiment with this value (useful for debugging)
 
 # How long does it take for a ship to pass through a lock
@@ -67,7 +68,7 @@ for priority in priorities:
             )
             sim = Simulator(sys)
             sim.setClassicDEVS()
-            #sim.setVerbose() # <-- uncomment to see what's going on
+            sim.setVerbose() # <-- uncomment to see what's going on
             sim.simulate()
 
             # all the ships that made it through
