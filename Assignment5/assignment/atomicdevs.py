@@ -251,16 +251,19 @@ class FillErUpLoadBalancer(AtomicDEVS):
         Based on self.state.current_serving_lock
         """
         maximal_fill = (-1, -1, +float("inf"))
-        for lock in range(len(self.state.lock_capacities)):
+        for lock in range(len(self.state.lock_capacities) - 1, -1, -1):
+            print(lock)
             if not self.state.lock_open_list[lock]:
                 continue
             for boat_size, boats in self.state.available_ship_count_in_queue.items():
-                if (self.state.available_ship_count_in_queue[boat_size] > 0 and self.state.lock_available_space[lock] >= boat_size and
-                        self.state.lock_available_space[lock] - boat_size < maximal_fill[2]):
-                    maximal_fill = (lock, boat_size, self.state.lock_available_space[lock] - boat_size)
-                elif self.state.available_ship_count_in_queue[boat_size] > 0 and self.state.lock_available_space[lock] >= boat_size and (self.state.lock_available_space[lock] - boat_size == maximal_fill[2] and
-                      ((PRIORITIZE_BIGGER_SHIPS == self.state.priority and maximal_fill[1] < boat_size) or (PRIORITIZE_SMALLER_SHIPS == self.state.priority and maximal_fill[1] > boat_size))):
-                    maximal_fill = (lock, boat_size, self.state.lock_available_space[lock] - boat_size)
+                if self.state.available_ship_count_in_queue[boat_size] > 0 and self.state.lock_available_space[
+                    lock] >= boat_size:
+                    if self.state.lock_available_space[lock] - boat_size < maximal_fill[2]:
+                        maximal_fill = (lock, boat_size, self.state.lock_available_space[lock] - boat_size)
+                    elif self.state.lock_available_space[lock] - boat_size == maximal_fill[2] and (
+                            PRIORITIZE_BIGGER_SHIPS == self.state.priority and maximal_fill[1] <= boat_size) or (
+                            PRIORITIZE_SMALLER_SHIPS == self.state.priority and maximal_fill[1] >= boat_size):
+                        maximal_fill = (lock, boat_size, self.state.lock_available_space[lock] - boat_size)
         return maximal_fill
 
     def intTransition(self):
