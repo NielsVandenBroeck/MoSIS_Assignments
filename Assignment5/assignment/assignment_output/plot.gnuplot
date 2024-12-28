@@ -22,11 +22,10 @@ set xrange [0:500]
 set style fill solid
 
 plot 'output_roundrobin_bigger.csv' \
-    using 1:2 title '0.0' w boxes ls 1, \
- '' using 1:3 title '120.0' w boxes ls 2, \
- '' using 1:4 title '240.0' w boxes ls 3, \
- '' using 1:5 title '360.0' w boxes ls 4, \
- '' using 1:6 title '480.0' w boxes ls 5
+    using 1:2 title '120.0' w boxes ls 1, \
+ '' using 1:3 title '240.0' w boxes ls 2, \
+ '' using 1:4 title '360.0' w boxes ls 3, \
+ '' using 1:5 title '480.0' w boxes ls 4
 
 
 ### priority=bigger, strategy=fillerup ###
@@ -52,11 +51,10 @@ set xrange [0:500]
 set style fill solid
 
 plot 'output_fillerup_bigger.csv' \
-    using 1:2 title '0.0' w boxes ls 1, \
- '' using 1:3 title '120.0' w boxes ls 2, \
- '' using 1:4 title '240.0' w boxes ls 3, \
- '' using 1:5 title '360.0' w boxes ls 4, \
- '' using 1:6 title '480.0' w boxes ls 5
+    using 1:2 title '120.0' w boxes ls 1, \
+ '' using 1:3 title '240.0' w boxes ls 2, \
+ '' using 1:4 title '360.0' w boxes ls 3, \
+ '' using 1:5 title '480.0' w boxes ls 4
 
 
 ### priority=smaller, strategy=roundrobin ###
@@ -82,11 +80,10 @@ set xrange [0:500]
 set style fill solid
 
 plot 'output_roundrobin_smaller.csv' \
-    using 1:2 title '0.0' w boxes ls 1, \
- '' using 1:3 title '120.0' w boxes ls 2, \
- '' using 1:4 title '240.0' w boxes ls 3, \
- '' using 1:5 title '360.0' w boxes ls 4, \
- '' using 1:6 title '480.0' w boxes ls 5
+    using 1:2 title '120.0' w boxes ls 1, \
+ '' using 1:3 title '240.0' w boxes ls 2, \
+ '' using 1:4 title '360.0' w boxes ls 3, \
+ '' using 1:5 title '480.0' w boxes ls 4
 
 
 ### priority=smaller, strategy=fillerup ###
@@ -112,11 +109,10 @@ set xrange [0:500]
 set style fill solid
 
 plot 'output_fillerup_smaller.csv' \
-    using 1:2 title '0.0' w boxes ls 1, \
- '' using 1:3 title '120.0' w boxes ls 2, \
- '' using 1:4 title '240.0' w boxes ls 3, \
- '' using 1:5 title '360.0' w boxes ls 4, \
- '' using 1:6 title '480.0' w boxes ls 5
+    using 1:2 title '120.0' w boxes ls 1, \
+ '' using 1:3 title '240.0' w boxes ls 2, \
+ '' using 1:4 title '360.0' w boxes ls 3, \
+ '' using 1:5 title '480.0' w boxes ls 4
 
 # plot 2. x-axis: max-wait parameter, y-axis: queueing durations of ships
 
@@ -131,14 +127,13 @@ set xlabel "Max Wait"
 unset xrange
 unset yrange
 
-set xtics ('0.0' 0, '120.0' 1, '240.0' 2, '360.0' 3, '480.0' 4)
+set xtics ('120.0' 0, '240.0' 1, '360.0' 2, '480.0' 3)
 
 plot 'output_roundrobin_bigger.csv' \
-    using (0):2 title '0.0', \
-  '' using (1):3 title '120.0', \
-  '' using (2):4 title '240.0', \
-  '' using (3):5 title '360.0', \
-  '' using (4):6 title '480.0'
+    using (0):2 title '120.0', \
+  '' using (1):3 title '240.0', \
+  '' using (2):4 title '360.0', \
+  '' using (3):5 title '480.0'
 
 
 
@@ -155,14 +150,13 @@ set xlabel "Max Wait"
 unset xrange
 unset yrange
 
-set xtics ('0.0' 0, '120.0' 1, '240.0' 2, '360.0' 3, '480.0' 4)
+set xtics ('120.0' 0, '240.0' 1, '360.0' 2, '480.0' 3)
 
 plot 'output_fillerup_bigger.csv' \
-    using (0):2 title '0.0', \
-  '' using (1):3 title '120.0', \
-  '' using (2):4 title '240.0', \
-  '' using (3):5 title '360.0', \
-  '' using (4):6 title '480.0'
+    using (0):2 title '120.0', \
+  '' using (1):3 title '240.0', \
+  '' using (2):4 title '360.0', \
+  '' using (3):5 title '480.0'
 
 
 
@@ -179,14 +173,13 @@ set xlabel "Max Wait"
 unset xrange
 unset yrange
 
-set xtics ('0.0' 0, '120.0' 1, '240.0' 2, '360.0' 3, '480.0' 4)
+set xtics ('120.0' 0, '240.0' 1, '360.0' 2, '480.0' 3)
 
 plot 'output_roundrobin_smaller.csv' \
-    using (0):2 title '0.0', \
-  '' using (1):3 title '120.0', \
-  '' using (2):4 title '240.0', \
-  '' using (3):5 title '360.0', \
-  '' using (4):6 title '480.0'
+    using (0):2 title '120.0', \
+  '' using (1):3 title '240.0', \
+  '' using (2):4 title '360.0', \
+  '' using (3):5 title '480.0'
 
 
 
@@ -203,14 +196,13 @@ set xlabel "Max Wait"
 unset xrange
 unset yrange
 
-set xtics ('0.0' 0, '120.0' 1, '240.0' 2, '360.0' 3, '480.0' 4)
+set xtics ('120.0' 0, '240.0' 1, '360.0' 2, '480.0' 3)
 
 plot 'output_fillerup_smaller.csv' \
-    using (0):2 title '0.0', \
-  '' using (1):3 title '120.0', \
-  '' using (2):4 title '240.0', \
-  '' using (3):5 title '360.0', \
-  '' using (4):6 title '480.0'
+    using (0):2 title '120.0', \
+  '' using (1):3 title '240.0', \
+  '' using (2):4 title '360.0', \
+  '' using (3):5 title '480.0'
 
 # plot 3. x-axis: queueing duration interval, y-axis: number of ships
 
@@ -234,11 +226,10 @@ bin_number(x) = floor(x/bin_width)
 rounded(x) = bin_width * ( bin_number(x) + 0.5 )
 
 plot 'output_roundrobin_bigger.csv' \
-    using (rounded($2)):(1) title '0.0' smooth frequency with boxes, \
- '' using (rounded($3)):(1) title '120.0' smooth frequency with boxes, \
- '' using (rounded($4)):(1) title '240.0' smooth frequency with boxes, \
- '' using (rounded($5)):(1) title '360.0' smooth frequency with boxes, \
- '' using (rounded($6)):(1) title '480.0' smooth frequency with boxes
+    using (rounded($2)):(1) title '120.0' smooth frequency with boxes, \
+ '' using (rounded($3)):(1) title '240.0' smooth frequency with boxes, \
+ '' using (rounded($4)):(1) title '360.0' smooth frequency with boxes, \
+ '' using (rounded($5)):(1) title '480.0' smooth frequency with boxes
 
 
 
@@ -264,11 +255,10 @@ bin_number(x) = floor(x/bin_width)
 rounded(x) = bin_width * ( bin_number(x) + 0.5 )
 
 plot 'output_fillerup_bigger.csv' \
-    using (rounded($2)):(1) title '0.0' smooth frequency with boxes, \
- '' using (rounded($3)):(1) title '120.0' smooth frequency with boxes, \
- '' using (rounded($4)):(1) title '240.0' smooth frequency with boxes, \
- '' using (rounded($5)):(1) title '360.0' smooth frequency with boxes, \
- '' using (rounded($6)):(1) title '480.0' smooth frequency with boxes
+    using (rounded($2)):(1) title '120.0' smooth frequency with boxes, \
+ '' using (rounded($3)):(1) title '240.0' smooth frequency with boxes, \
+ '' using (rounded($4)):(1) title '360.0' smooth frequency with boxes, \
+ '' using (rounded($5)):(1) title '480.0' smooth frequency with boxes
 
 
 
@@ -294,11 +284,10 @@ bin_number(x) = floor(x/bin_width)
 rounded(x) = bin_width * ( bin_number(x) + 0.5 )
 
 plot 'output_roundrobin_smaller.csv' \
-    using (rounded($2)):(1) title '0.0' smooth frequency with boxes, \
- '' using (rounded($3)):(1) title '120.0' smooth frequency with boxes, \
- '' using (rounded($4)):(1) title '240.0' smooth frequency with boxes, \
- '' using (rounded($5)):(1) title '360.0' smooth frequency with boxes, \
- '' using (rounded($6)):(1) title '480.0' smooth frequency with boxes
+    using (rounded($2)):(1) title '120.0' smooth frequency with boxes, \
+ '' using (rounded($3)):(1) title '240.0' smooth frequency with boxes, \
+ '' using (rounded($4)):(1) title '360.0' smooth frequency with boxes, \
+ '' using (rounded($5)):(1) title '480.0' smooth frequency with boxes
 
 
 
@@ -324,8 +313,7 @@ bin_number(x) = floor(x/bin_width)
 rounded(x) = bin_width * ( bin_number(x) + 0.5 )
 
 plot 'output_fillerup_smaller.csv' \
-    using (rounded($2)):(1) title '0.0' smooth frequency with boxes, \
- '' using (rounded($3)):(1) title '120.0' smooth frequency with boxes, \
- '' using (rounded($4)):(1) title '240.0' smooth frequency with boxes, \
- '' using (rounded($5)):(1) title '360.0' smooth frequency with boxes, \
- '' using (rounded($6)):(1) title '480.0' smooth frequency with boxes
+    using (rounded($2)):(1) title '120.0' smooth frequency with boxes, \
+ '' using (rounded($3)):(1) title '240.0' smooth frequency with boxes, \
+ '' using (rounded($4)):(1) title '360.0' smooth frequency with boxes, \
+ '' using (rounded($5)):(1) title '480.0' smooth frequency with boxes
