@@ -67,11 +67,13 @@ for priority in priorities:
             )
             sim = Simulator(sys)
             sim.setClassicDEVS()
-            sim.setVerbose() # <-- uncomment to see what's going on
+            #sim.setVerbose() # <-- uncomment to see what's going on
             sim.simulate()
 
             # all the ships that made it through
             ships = sys.sink.state.ships
+            print("ships:", len(ships))
+            #assert len(ships) == 500, "not 500 ships!"
             values.append([ship.queueing_duration for ship in ships])
 
         # Write out all the ship queueuing durations for every 'max_wait_duration' parameter

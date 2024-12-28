@@ -1,5 +1,4 @@
 from copy import deepcopy
-
 ### EDIT THIS FILE ###
 
 from pypdevs.DEVS import AtomicDEVS
@@ -17,7 +16,6 @@ class QueueState:
         for size in ship_sizes:
             self.queues[size] = []
         self.remaining_time = float("inf")
-        self.priority = None
         self.outgoing_ship = None
 
 class Queue(AtomicDEVS):
@@ -27,27 +25,16 @@ class Queue(AtomicDEVS):
         self.in_ship = self.addInPort("in_ship")
         self.in_get_ship = self.addInPort("in_get_ship")
         self.out_ship = self.addOutPort("out_ship")
+        self.out_available_ships = self.addOutPort("out_available_ships")
 
     def extTransition(self, inputs):
         if self.in_ship in inputs:
             self.state.queues[inputs[self.in_ship].size].insert(0, inputs[self.in_ship])
+            self.state.outgoing_ship = None
             self.state.remaining_time = 0
         if self.in_get_ship in inputs:
-            self.state.outgoing_ship = None #LoadBalancer asks for new ship and thus current ship is moved to lock
-            self.state.priority = inputs[self.in_get_ship]
+            self.state.outgoing_ship = self.state.queues[inputs[self.in_get_ship]].pop()
             self.state.remaining_time = 0
-
-        priority = self.state.priority
-        priority_size = 1
-        priority_size_next = 2
-        if priority == PRIORITIZE_BIGGER_SHIPS:
-            priority_size = 2
-            priority_size_next = 1
-
-        if priority_size in self.state.queues and len(self.state.queues[priority_size]) > 0 and self.state.outgoing_ship is None:
-            self.state.outgoing_ship = self.state.queues[priority_size].pop()
-        elif priority_size_next in self.state.queues and self.state.queues[priority_size_next] and self.state.outgoing_ship is None:
-            self.state.outgoing_ship = self.state.queues[priority_size_next].pop()
 
         return self.state
     
@@ -55,13 +42,15 @@ class Queue(AtomicDEVS):
         return self.state.remaining_time
     
     def outputFnc(self):
+        output = {self.out_available_ships: {key: len(value) for key, value in self.state.queues.items()}}
         if self.state.outgoing_ship is not None:
-            return {self.out_ship: self.state.outgoing_ship}
-        return {}
+            output[self.out_ship] = self.state.outgoing_ship
+        return output
     
     def intTransition(self):
         #only called on out event
         self.state.remaining_time = float("inf")
+        self.state.outgoing_ship = None
         return self.state
 
 @dataclasses.dataclass
@@ -72,7 +61,9 @@ class LoadBalancerState:
     next_ship: Ship|None
     priority: int
     lock_open_list: list
-    current_serving_lock: 0
+    current_serving_lock: int
+    available_ship_count_in_queue: dict
+    locked: bool
     def __init__(self, lock_capacities, priority):
         self.lock_capacities = lock_capacities
         self.lock_available_space = deepcopy(lock_capacities)
@@ -81,78 +72,114 @@ class LoadBalancerState:
         self.priority = priority
         self.lock_open_list = [True] * len(lock_capacities)
         self.current_serving_lock = 0
+        self.available_ship_count_in_queue = {}
+        self.locked = False
+        #0: ship is ready to be moved
+        #1: there are ships availble in queue
+        #2: ship is ack
+        #3: the lock state changed
 
 PRIORITIZE_BIGGER_SHIPS = 0
 PRIORITIZE_SMALLER_SHIPS = 1
 
 class RoundRobinLoadBalancer(AtomicDEVS):
     def __init__(self,
-        lock_capacities=[3,2], # two locks of capacities 3 and 2.
-        priority=PRIORITIZE_BIGGER_SHIPS,
-    ):
+                 lock_capacities=[3, 2],  # two locks of capacities 3 and 2.
+                 priority=PRIORITIZE_BIGGER_SHIPS,
+                 ):
         super().__init__("RoundRobinLoadBalancer")
         self.state = LoadBalancerState(lock_capacities, priority)
         self.in_ship = self.addInPort("in_ship")
-        self.out_get_ship = self.addOutPort("out_get_ship")  # ask for ship given a priority
+        self.out_get_ship = self.addOutPort("out_get_ship")
+        self.in_available_ships = self.addInPort("in_available_ships")
 
         self.out_ship_list = []
-        self.in_ship_ack_list = []
         self.in_lock_opened_list = []
         for i in range(len(lock_capacities)):
             self.out_ship_list.append(self.addOutPort(f"out_ship_{i}"))
-            self.in_ship_ack_list.append(self.addInPort(f"in_ship_ack_{i}")) #ack the out_ship
-
             self.in_lock_opened_list.append(self.addInPort(f"in_lock_open_{i}"))
 
         self.state.remaining_time = 0
 
-
     def extTransition(self, inputs):
-        for i in range(len(self.state.lock_capacities)):
-            if self.in_ship_ack_list[i] in inputs and self.state.next_ship is not None: #ship was successfully moved to lock
-                self.state.lock_available_space[i] -= self.state.next_ship.size
-                assert self.state.lock_available_space[i] >= 0, f"Negative lock space {self.state.lock_available_space}"
-                self.state.next_ship = None
-                self.state.remaining_time = 0 #ask for new ship immediately
-                return self.state
+        if self.in_available_ships in inputs:
+            self.state.available_ship_count_in_queue = inputs[self.in_available_ships]
+            if self.state.locked:
+                self.state.remaining_time = 0
 
-        if self.in_ship in inputs and inputs[self.in_ship] is not None: #when ships comes in and there is not currently another ship
+        if self.in_ship in inputs:  # pass boat trough
             self.state.next_ship = inputs[self.in_ship]
+            self.state.remaining_time = 0
+            return self.state
 
-        for i in range(len(self.state.lock_capacities)):
+        for i in range(len(self.state.lock_capacities)):  # When lock open/locked changes
             if self.in_lock_opened_list[i] in inputs:
-                if inputs[self.in_lock_opened_list[i]] == True and self.state.lock_open_list[i] == False:  # when state changes back to open reset available cap to original cap
+                if inputs[self.in_lock_opened_list[i]] and self.state.lock_open_list[i] == False:
                     self.state.lock_available_space[i] = self.state.lock_capacities[i]
+                    self.state.remaining_time = 0
                 self.state.lock_open_list[i] = inputs[self.in_lock_opened_list[i]]
 
-            if self.state.lock_open_list[i] and self.state.next_ship is not None: #when lock is open move ship through to lock
-                self.state.remaining_time = 0
-                break
-            elif not self.state.lock_open_list[i]: #when lock is closed don't move any ships
-                self.state.remaining_time = float("inf")
-
         return self.state
-    
+
     def timeAdvance(self):
         return self.state.remaining_time
-    
+
     def outputFnc(self):
-        output = {}
-        if self.state.next_ship is None:
-            ship_priority = self.state.priority
-            if ship_priority == PRIORITIZE_BIGGER_SHIPS and self.state.lock_available_space[self.state.current_serving_lock] == 1:
-                ship_priority = 1 #get a small ship
-            output[self.out_get_ship] = ship_priority #ask new ship because next_ship is empty
-        elif self.state.next_ship is not None:
-            output[self.out_ship_list[self.state.current_serving_lock]] = self.state.next_ship #pass ship to lock
-
-        return output
-    
-    def intTransition(self):
         if self.state.next_ship is not None:
-            self.state.current_serving_lock = (self.state.current_serving_lock + 1) % len(self.state.lock_capacities)
+            return {self.out_ship_list[self.state.current_serving_lock]: self.state.next_ship}
+        elif self.get_needed_ship_size() != -1:
+            return {self.out_get_ship: self.get_needed_ship_size()}
+        return {}
 
-        self.state.remaining_time = float("inf")
+    def check_if_boats_and_lock_are_available(self):
+        """
+        checks for valid combination
+        """
+        for i in range(len(self.state.lock_capacities)):
+            if ((self.state.lock_available_space[i] >= 2 and self.state.available_ship_count_in_queue[1] > 0 and
+                 self.state.available_ship_count_in_queue[2] > 0) or
+                (self.state.lock_available_space[i] >= 1 and self.state.available_ship_count_in_queue[1] > 0)) and \
+                    self.state.lock_open_list[i] == True:
+                return True
+        return False
+
+    def get_needed_ship_size(self):
+        """
+        Based on self.state.current_serving_lock
+        """
+        if (self.state.priority == PRIORITIZE_BIGGER_SHIPS and self.state.available_ship_count_in_queue[2] > 0 and
+                self.state.lock_available_space[self.state.current_serving_lock] >= 2 and self.state.lock_open_list[self.state.current_serving_lock]):
+            return 2
+        elif (self.state.priority == PRIORITIZE_SMALLER_SHIPS and self.state.available_ship_count_in_queue[1] > 0 and
+              self.state.lock_available_space[self.state.current_serving_lock] >= 1 and self.state.lock_open_list[self.state.current_serving_lock]):
+            return 1
+        elif self.state.available_ship_count_in_queue[2] > 0 and self.state.lock_available_space[
+            self.state.current_serving_lock] >= 2 and self.state.lock_open_list[self.state.current_serving_lock]:
+            return 2
+        elif self.state.available_ship_count_in_queue[1] > 0 and self.state.lock_available_space[
+            self.state.current_serving_lock] >= 1 and self.state.lock_open_list[self.state.current_serving_lock]:
+            return 1
+        else:
+            return -1
+
+    def intTransition(self):
+        if self.state.next_ship:
+            self.state.lock_available_space[self.state.current_serving_lock] -= self.state.next_ship.size
+            self.state.current_serving_lock = (self.state.current_serving_lock + 1) % len(self.state.lock_capacities)  # take other lock when a ship was moved
+        self.state.next_ship = None
+        self.state.locked = False
+
+        if not self.check_if_boats_and_lock_are_available():
+            self.state.locked = True
+            self.state.remaining_time = float("inf")  # There can nothing be done wait for a new external event
+        else:
+            self.state.remaining_time = 0
+            get_ship_size = self.get_needed_ship_size()  # try the next lock (roundrobin)
+            while get_ship_size == -1:  # When the default roundrobin lock is not valid loop until a valid lock is found, cannot be an inf loop because of the check_if_boats_and_lock_are_available
+                self.state.current_serving_lock = (self.state.current_serving_lock + 1) % len(
+                    self.state.lock_capacities)
+                get_ship_size = self.get_needed_ship_size()
+
         return self.state
 
 class FillErUpLoadBalancer(AtomicDEVS):
@@ -165,13 +192,13 @@ class FillErUpLoadBalancer(AtomicDEVS):
 
     # def extTransition(self, inputs):
     #     pass
-    
+
     # def timeAdvance(self):
     #     pass
-    
+
     # def outputFnc(self):
     #     pass
-    
+
     # def intTransition(self):
     #     pass
 
@@ -179,28 +206,25 @@ class FillErUpLoadBalancer(AtomicDEVS):
 class LockState:
     remaining_time: float
     max_wait_duration: float
+    time_until_max_wait_duration: float
+    passthrough_duration: float
     ships: list
     available_capacity: int
-    closed: bool
-    ack_ship: bool
-    total_ships_passed: int
-    max_ships_passed_at_once: int
+    open: bool
+    closed_open_event: bool
     current_time: int
-    time_until_max_wait_duration: float
-    closing: bool
     def __init__(self, capacity, max_wait_duration, passthrough_duration):
         self.max_wait_duration = max_wait_duration
         self.remaining_time = float('inf')
         self.passthrough_duration = passthrough_duration
         self.ships = []
         self.available_capacity = capacity
-        self.closed = False
+        self.open = True
         self.ack_ship = False
-        self.total_ships_passed = 0
-        self.max_ships_passed_at_once = 0
         self.current_time = 0
-        self.time_until_max_wait_duration = 0
-        self.closing = False
+        self.closed_open_event = False
+        self.boat_leave_event = False
+        self.time_until_max_wait_duration =  self.max_wait_duration
 
 class Lock(AtomicDEVS):
     def __init__(self,
@@ -210,74 +234,61 @@ class Lock(AtomicDEVS):
     ):
         super().__init__("Lock")
         self.state = LockState(capacity, max_wait_duration, passthrough_duration)
-        self.state.remaining_time = float('inf')
+        self.state.remaining_time = max_wait_duration
         self.in_ship = self.addInPort("in_ship")
-        self.out_ship_ack = self.addOutPort("out_ship_ack")  # ack the in ship
 
         self.out_ships = self.addOutPort("out_ships")
         self.out_lock_opened = self.addOutPort("out_lock_opened")
+        self.state.time_until_max_wait_duration = self.state.max_wait_duration
 
 
     def extTransition(self, inputs):
         self.state.current_time += self.elapsed
+        if self.state.closed_open_event:
+            assert self.in_ship not in inputs,  f"Cannot have an input event while processing the closed_open_event" #cannot ever happen because the LoadBalancerState never gives a boat when the lock is closed
+            return self.state
+
         if self.in_ship in inputs:
-            if inputs[self.in_ship] is None:
-                pass
-            elif self.state.closed:
-                self.state.ack_ship = False
-                pass
-            elif sum(ship.size for ship in self.state.ships) + inputs[self.in_ship].size <= self.state.available_capacity:
-                self.state.ack_ship = True
-                self.state.remaining_time = 0 #sendout ship ack immediately
-                self.state.ships.append(inputs[self.in_ship])
-            else:
-                #lock is full, allow to pass through
-                self.state.ack_ship = False
-                self.state.closed = True
-                self.state.remaining_time = 0
+            self.state.ships.append(inputs[self.in_ship])
+
+        if sum(ship.size for ship in self.state.ships) >= self.state.available_capacity or (self.state.time_until_max_wait_duration >= self.state.current_time and len(self.state.ships) > 0):
+            self.state.open = False
+            self.state.closed_open_event = True
+            self.state.remaining_time = 0
+
         return self.state
     
     def timeAdvance(self):
         return self.state.remaining_time
     
     def outputFnc(self):
-        if self.state.ack_ship:
-            return {self.out_ship_ack: self.state.ack_ship, self.out_lock_opened: not self.state.closed}
-        elif len(self.state.ships) > 0 and not self.state.closing:
-            return {self.out_ships: self.state.ships, self.out_lock_opened: True} #when comes here boats leave and thus lock opens
-        return {self.out_lock_opened: not self.state.closed}
+        output = {}
+        if self.state.closed_open_event:
+            output[self.out_lock_opened] = self.state.open
+        if self.state.boat_leave_event:
+            output[self.out_ships] = self.state.ships
+        return output
     
     def intTransition(self):
         self.state.current_time += self.state.remaining_time
-        max_waiting_exceeded = self.state.time_until_max_wait_duration <=  self.state.current_time and len(self.state.ships) > 0
-        self.state.remaining_time = float("inf")
-        if self.state.closed and not self.state.closing:
-            #reopen lock and set empty
-            self.state.closed = False
+        if self.state.closed_open_event and self.state.open == False:#close lock
+            self.state.remaining_time = self.state.passthrough_duration
+            self.state.open = True #state will be set to True after passthrough_duration
+            self.state.boat_leave_event = True #let boats exit after passthrough_duration
+            self.state.closed_open_event = True
+        elif self.state.closed_open_event and self.state.open == True:
+            self.state.closed_open_event = False
+            self.state.boat_leave_event = False
             self.state.remaining_time = self.state.max_wait_duration
             self.state.time_until_max_wait_duration = self.state.current_time + self.state.max_wait_duration
-            if sum(ship.size for ship in self.state.ships) >= self.state.max_ships_passed_at_once:
-                self.state.max_ships_passed_at_once = sum(ship.size for ship in self.state.ships)
             self.state.ships = []
-            self.state.total_ships_passed += 1
-        elif self.state.closing:
-            #close lock and wait until processed
-            self.state.remaining_time = self.state.passthrough_duration
-            self.state.closed = True
-            self.state.closing = False
-        elif not self.state.closed and (sum(ship.size for ship in self.state.ships) >= self.state.available_capacity or max_waiting_exceeded):
-            #Close lock by sending signal to RoundRobinLoadBalancer
-            self.state.remaining_time = 0
-            self.state.closing = True
-            self.state.closed = True
-        elif len(self.state.ships) == 0 and self.state.closed:
-            self.state.remaining_time = 0
-            self.state.closed = False
-        elif len(self.state.ships) == 0 and not self.state.closed:
-            self.state.remaining_time = float("inf")
-        if self.state.ack_ship:
-            self.state.remaining_time = self.state.max_wait_duration
-            self.state.ack_ship = False
+        elif self.state.remaining_time == self.state.max_wait_duration and len(self.state.ships) > 0:#max duration time is over let ships through
+            self.state.open = False #close lock
+            self.state.closed_open_event = True #send closing event to load balancer
+            self.state.remaining_time = 0 #do this immediately
+            #this will start the pass through event on line 269
+        else:
+            self.state.remaining_time = float('inf')
 
         return self.state
 
