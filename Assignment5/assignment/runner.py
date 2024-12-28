@@ -24,7 +24,7 @@ priorities = {
 }
 strategies = {
     # you can outcomment one of these lines to reduce the number of experiments (useful for debugging):
-    STRATEGY_ROUND_ROBIN: "roundrobin",
+    #STRATEGY_ROUND_ROBIN: "roundrobin",
     STRATEGY_FILL_ER_UP: "fillerup",
 }
 
@@ -67,13 +67,16 @@ for priority in priorities:
             )
             sim = Simulator(sys)
             sim.setClassicDEVS()
-            #sim.setVerbose() # <-- uncomment to see what's going on
+            sim.setVerbose() # <-- uncomment to see what's going on
             sim.simulate()
 
             # all the ships that made it through
+            for lock in sys.locks:
+                print("max_amount_in_lock_at_once:", lock.state.max_amount_in_lock_at_once, "/", lock.state.available_capacity)
+
             ships = sys.sink.state.ships
             print("ships:", len(ships))
-            #assert len(ships) == 500, "not 500 ships!"
+            assert len(ships) == 500, "not 500 ships!"
             values.append([ship.queueing_duration for ship in ships])
 
         # Write out all the ship queueuing durations for every 'max_wait_duration' parameter

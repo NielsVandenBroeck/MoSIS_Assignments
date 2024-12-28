@@ -66,6 +66,7 @@ class LockQueueingSystem(CoupledDEVS):
             self.connectPorts(lock.out_ships, sink.in_ships)
         #     ...
 
+        self.locks = locks
         # Our runner.py script needs access to the 'sink'-state after completing the simulation:
         self.sink = sink
 
