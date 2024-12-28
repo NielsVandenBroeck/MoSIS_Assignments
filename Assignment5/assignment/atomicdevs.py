@@ -194,6 +194,7 @@ class FillErUpLoadBalancer(AtomicDEVS):
         self.state.remaining_time = 0
 
     def extTransition(self, inputs):
+        self.state.get_ship_size = -1
         if self.in_available_ships in inputs:
             self.state.available_ship_count_in_queue = inputs[self.in_available_ships]
             if self.state.locked:
