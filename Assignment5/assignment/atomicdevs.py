@@ -252,7 +252,6 @@ class FillErUpLoadBalancer(AtomicDEVS):
         """
         maximal_fill = (-1, -1, +float("inf"))
         for lock in range(len(self.state.lock_capacities) - 1, -1, -1):
-            print(lock)
             if not self.state.lock_open_list[lock]:
                 continue
             for boat_size, boats in self.state.available_ship_count_in_queue.items():
