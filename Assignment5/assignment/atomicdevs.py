@@ -161,6 +161,7 @@ class RoundRobinLoadBalancer(AtomicDEVS):
             self.state.current_serving_lock = (self.state.current_serving_lock + 1) % len(self.state.lock_capacities)  # take other lock when a ship was moved
         self.state.next_ship = None
         self.state.locked = False
+
         if not self.check_if_boats_and_lock_are_available():
             self.state.locked = True
             self.state.remaining_time = float("inf")  # There can nothing be done wait for a new external event
@@ -263,7 +264,6 @@ class FillErUpLoadBalancer(AtomicDEVS):
 class LockState:
     remaining_time: float
     max_wait_duration: float
-    time_until_max_wait_duration: float
     passthrough_duration: float
     ships: list
     available_capacity: int
@@ -282,7 +282,6 @@ class LockState:
         self.current_time = 0
         self.closed_open_event = False
         self.boat_leave_event = False
-        self.time_until_max_wait_duration =  self.max_wait_duration
         self.max_amount_in_lock_at_once = 0
 
 class Lock(AtomicDEVS):
@@ -308,9 +307,12 @@ class Lock(AtomicDEVS):
             return self.state
 
         if self.in_ship in inputs:
+            if len(self.state.ships) == 0:
+                self.state.remaining_time = self.state.max_wait_duration
+
             self.state.ships.append(inputs[self.in_ship])
 
-        if sum(ship.size for ship in self.state.ships) >= self.state.available_capacity or (self.state.time_until_max_wait_duration >= self.state.current_time and len(self.state.ships) > 0):
+        if sum(ship.size for ship in self.state.ships) >= self.state.available_capacity:
             self.state.open = False
             self.state.closed_open_event = True
             self.state.remaining_time = 0
@@ -338,8 +340,8 @@ class Lock(AtomicDEVS):
         elif self.state.closed_open_event and self.state.open == True:
             self.state.closed_open_event = False
             self.state.boat_leave_event = False
-            self.state.remaining_time = self.state.max_wait_duration
-            self.state.time_until_max_wait_duration = self.state.current_time + self.state.max_wait_duration
+            self.state.remaining_time = float('inf')
+            #self.state.time_until_max_wait_duration = self.state.current_time + self.state.max_wait_duration
             if self.state.max_amount_in_lock_at_once < len(self.state.ships):
                 self.state.max_amount_in_lock_at_once = len(self.state.ships)
             self.state.ships = []
@@ -349,6 +351,7 @@ class Lock(AtomicDEVS):
             self.state.remaining_time = 0 #do this immediately
             #this will start the pass through event on line 269
         else:
+            assert "wtf is this"
             self.state.remaining_time = float('inf')
 
         return self.state

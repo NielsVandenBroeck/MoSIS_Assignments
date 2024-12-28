@@ -24,8 +24,8 @@ priorities = {
 }
 strategies = {
     # you can outcomment one of these lines to reduce the number of experiments (useful for debugging):
-    #STRATEGY_ROUND_ROBIN: "roundrobin",
-    STRATEGY_FILL_ER_UP: "fillerup",
+    STRATEGY_ROUND_ROBIN: "roundrobin",
+    #STRATEGY_FILL_ER_UP: "fillerup",
 }
 
 # The number of locks and their capacities
@@ -67,7 +67,7 @@ for priority in priorities:
             )
             sim = Simulator(sys)
             sim.setClassicDEVS()
-            sim.setVerbose() # <-- uncomment to see what's going on
+            #sim.setVerbose() # <-- uncomment to see what's going on
             sim.simulate()
 
             # all the ships that made it through
